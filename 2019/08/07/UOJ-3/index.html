@@ -1,0 +1,724 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="UOJ,LCT,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="序言$UOJ$果然是神仙$OJ$啊里面个个都是人才,说话还好听题目的$hack$数据还可以$hack$掉网上一大片的题解….. 题目描述为了得到书法大家的真传，小$E$同学下定决心去拜访住在魔法森林中的隐士。魔法森林可以被看成一个包含个$N$节点$M$条边的无向图，节点标号为$1…n$，边标号为$1…m$。初始时小$E$同学在$1$ 号节点，隐士则住在 $n$ 号节点。小$E$需要通过这一片魔法森">
+<meta name="keywords" content="UOJ,LCT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.[NOI2014]魔法森林">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/UOJ-3/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="序言$UOJ$果然是神仙$OJ$啊里面个个都是人才,说话还好听题目的$hack$数据还可以$hack$掉网上一大片的题解….. 题目描述为了得到书法大家的真传，小$E$同学下定决心去拜访住在魔法森林中的隐士。魔法森林可以被看成一个包含个$N$节点$M$条边的无向图，节点标号为$1…n$，边标号为$1…m$。初始时小$E$同学在$1$ 号节点，隐士则住在 $n$ 号节点。小$E$需要通过这一片魔法森">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190805203018826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-07T13:55:00.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.[NOI2014]魔法森林">
+<meta name="twitter:description" content="序言$UOJ$果然是神仙$OJ$啊里面个个都是人才,说话还好听题目的$hack$数据还可以$hack$掉网上一大片的题解….. 题目描述为了得到书法大家的真传，小$E$同学下定决心去拜访住在魔法森林中的隐士。魔法森林可以被看成一个包含个$N$节点$M$条边的无向图，节点标号为$1…n$，边标号为$1…m$。初始时小$E$同学在$1$ 号节点，隐士则住在 $n$ 号节点。小$E$需要通过这一片魔法森">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190805203018826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/UOJ-3/">
+
+
+
+
+   <title>3.[NOI2014]魔法森林 | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">     <div class="headband"></div>         <a href="https://blog.csdn.net/UnKfrozen"><img style="position: absolute; top: 0;left: 0;border: 0;" src="https://img-blog.csdnimg.cn/20190807221214895.png" class="attachment-full size-full" alt="Fork me on CSDN" data-recalc-dims="1"></a> 
+     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/UOJ-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3.[NOI2014]魔法森林</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T21:51:54+08:00">
+                2019-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UOJ练习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">UOJ练习记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/07/UOJ-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/07/UOJ-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p><strong>$UOJ$果然是神仙$OJ$啊</strong><br>里面个个都是人才,说话还好听<br>题目的$hack$数据还可以$hack$掉网上一大片的题解…..</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>为了得到书法大家的真传，小$E$同学下定决心去拜访住在魔法森林中的隐士。魔法森林可以被看成一个包含个$N$节点$M$条边的无向图，节点标号为$1…n$，边标号为$1…m$。初始时小$E$同学在$1$ 号节点，隐士则住在 $n$ 号节点。小$E$需要通过这一片魔法森林，才能够拜访到隐士。<br>魔法森林中居住了一些妖怪。每当有人经过一条边的时候，这条边上的妖怪就会对其发起攻击。幸运的是，在 $1$ 号节点住着两种守护精灵：$A$型守护精灵与$B$型守护精灵。小$E$可以借助它们的力量，达到自己的目的。<br>只要小E带上足够多的守护精灵，妖怪们就不会发起攻击了。具体来说，无向图中的每一条边 $e_i$ 包含两个权值 $a_i$ 与 $b_i$。若身上携带的$A$型守护精灵个数不少于 $a_i$，且$B$型守护精灵个数不少于 $b_i$，这条边上的妖怪就不会对通过这条边的人发起攻击。当且仅当通过这片魔法森林的过程中没有任意一条边的妖怪向小$E$发起攻击，他才能成功找到隐士。<br>由于携带守护精灵是一件非常麻烦的事，小E想要知道，要能够成功拜访到隐士，最少需要携带守护精灵的总个数。守护精灵的总个数为$A$型守护精灵的个数与$B$型守护精灵的个数之和。</p>
+<hr>
+<p><strong>题目大意:</strong><br>从$1$走到$n$,$m$条边,如何走能使$a$和$b$的和最大值最小.</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>首先,这是一个最小生成树的题目.<br>其次,这应该是一个动态最小生成树的题目.<br>(如果你学过用LCT做最小生成树,这个题就非常的水)<br>我们将$a_i$排序后,按边取,可以保证$a_i$是最小的.<br>在按$a_i$大小取边的时候,同时更新路上$b_i$的最大值.<br>当我们取到一个环的时候怎么办?<br>列如这样:<br><img src="https://img-blog.csdnimg.cn/20190805203018826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="1"><br>我们就要对新加入的边上$b_i$的值,和维护的链上$b_i$的最大值进行比较.</p>
+<ol>
+<li>如果链上的值大,那么我们把链上最大的那条边$cut$,如何把新边连上.</li>
+<li>如果新边大,我们便直接跳过.</li>
+</ol>
+<p>如此往复,直到$1$<del>$n$这条路连通.<br>连通后,我们加入另一个操作:<br>判断,加入的这条边对于答案的影响.$a$大并不代表$b$也大,因为问的是$a+b$的和.<br>直到遍历完所有边.<br>~</del>过了最小生成树的代码居然只有97~~</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x, y, a, b;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> a &lt; rhs.a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;edge[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">vec</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> fa, son[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">bool</span> rev;</span><br><span class="line">	<span class="keyword">int</span> maxx, id;</span><br><span class="line">&#125;p[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isroot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p[p[x].fa].son[<span class="number">0</span>] != x &amp;&amp; p[p[x].fa].son[<span class="number">1</span>] != x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> A = p[x].id, B = p[p[x].son[<span class="number">0</span>]].maxx, C = p[p[x].son[<span class="number">1</span>]].maxx;</span><br><span class="line">	<span class="keyword">if</span> (edge[A].b &gt;= edge[B].b&amp;&amp;edge[A].b &gt;= edge[C].b)</span><br><span class="line">		p[x].maxx = A;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (edge[B].b &gt;= edge[C].b)</span><br><span class="line">		p[x].maxx = B;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		p[x].maxx = C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p[x].rev) &#123;</span><br><span class="line">		<span class="keyword">int</span> l = p[x].son[<span class="number">0</span>], r = p[x].son[<span class="number">1</span>];</span><br><span class="line">		swap(p[l].son[<span class="number">0</span>], p[l].son[<span class="number">1</span>]), p[l].rev ^= <span class="number">1</span>;</span><br><span class="line">		swap(p[r].son[<span class="number">0</span>], p[r].son[<span class="number">1</span>]), p[r].rev ^= <span class="number">1</span>;</span><br><span class="line">		p[x].rev ^= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p[p[x].fa].son[<span class="number">1</span>] == x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> y = p[x].fa, t = p[y].fa, f = get(x), k = p[x].son[f ^ <span class="number">1</span>];</span><br><span class="line">	p[p[k].fa = y].son[f] = p[x].son[f ^ <span class="number">1</span>];</span><br><span class="line">	p[x].fa = t;</span><br><span class="line">	<span class="keyword">if</span> (!isroot(y))</span><br><span class="line">		p[t].son[get(y)] = x;</span><br><span class="line">	p[p[y].fa = x].son[f ^ <span class="number">1</span>] = y;</span><br><span class="line">	pushup(y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> top, stk[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	stk[top = <span class="number">1</span>] = x;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = x; !isroot(i); i = p[i].fa)</span><br><span class="line">		stk[++top] = p[i].fa;</span><br><span class="line">	<span class="keyword">while</span> (top)</span><br><span class="line">		pushdown(stk[top--]);</span><br><span class="line">	<span class="keyword">for</span> (; !isroot(x); rotate(x))</span><br><span class="line">		<span class="keyword">if</span> (!isroot(p[x].fa))</span><br><span class="line">			rotate(get(x) ^ get(p[x].fa) ? x : p[x].fa);</span><br><span class="line">	pushup(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; x; x = p[i = x].fa)</span><br><span class="line">		splay(x), p[x].son[<span class="number">1</span>] = i, pushup(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeroot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	access(x);</span><br><span class="line">	splay(x);</span><br><span class="line">	p[x].rev ^= <span class="number">1</span>;</span><br><span class="line">	swap(p[x].son[<span class="number">0</span>], p[x].son[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findroot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	access(x); splay(x);</span><br><span class="line">	<span class="keyword">while</span> (p[x].son[<span class="number">0</span>])</span><br><span class="line">		pushdown(x), x = p[x].son[<span class="number">0</span>];</span><br><span class="line">	splay(x);</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	makeroot(x);</span><br><span class="line">	access(y);</span><br><span class="line">	splay(y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	makeroot(x);</span><br><span class="line">	<span class="keyword">if</span> (findroot(y) == x)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	p[x].fa = y;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Cut</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	split(x, y);</span><br><span class="line">	<span class="keyword">if</span> (p[y].son[<span class="number">0</span>] == x)</span><br><span class="line">		p[x].fa = p[y].son[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Addedge</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x = edge[id].x, y = edge[id].y;</span><br><span class="line">	<span class="keyword">if</span> (findroot(x) != findroot(y))</span><br><span class="line">		link(x, id + n), link(id + n, y);</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		split(x, y);</span><br><span class="line">		<span class="keyword">if</span> (edge[p[y].maxx].b &gt; edge[id].b) &#123;</span><br><span class="line">			<span class="keyword">int</span> tmp = p[y].maxx;</span><br><span class="line">			Cut(edge[tmp].x, tmp + n), Cut(tmp + n, edge[tmp].y);</span><br><span class="line">			link(edge[id].x, id + n), link(id + n, edge[id].y);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; edge[i].x &gt;&gt; edge[i].y &gt;&gt; edge[i].a &gt;&gt; edge[i].b;</span><br><span class="line"></span><br><span class="line">	sort(edge + <span class="number">1</span>, edge + m + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		p[i + n].maxx = p[i + n].id = i;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> ans = INF;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		Addedge(i);</span><br><span class="line">		<span class="keyword">while</span> (edge[i].a == edge[i + <span class="number">1</span>].a)</span><br><span class="line">			Addedge(++i);</span><br><span class="line">		<span class="keyword">if</span> (findroot(<span class="number">1</span>) == findroot(n)) &#123;</span><br><span class="line">			split(<span class="number">1</span>, n);</span><br><span class="line">			ans = min(ans, edge[p[n].maxx].b + edge[i].a);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans == INF ? <span class="number">-1</span> : ans);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//system("pause");</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UOJ/" rel="tag"># UOJ</a>
+          
+            <a href="/tags/LCT/" rel="tag"># LCT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/UOJ-2/" rel="next" title="[NOI2014]起床困难综合症">
+                <i class="fa fa-chevron-left"></i> [NOI2014]起床困难综合症
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.jpg" alt="HaiJeng">
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">3.</span> <span class="nav-text">解析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Kyon.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/07/UOJ-3/';
+          this.page.identifier = '2019/08/07/UOJ-3/';
+          this.page.title = '3.[NOI2014]魔法森林';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Kyon.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 

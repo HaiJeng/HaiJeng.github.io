@@ -78,7 +78,7 @@
 <meta property="og:site_name" content="rp++">
 <meta property="og:description" content="描述 链接:http://uoj.ac/problem/2 21 世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm 一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因：在深邃的太平洋海底中，出现了一条名为 drd 的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。正是由于 drd 的活动，起床困难综合症愈演">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-08-07T07:25:26.717Z">
+<meta property="og:updated_time" content="2019-08-07T13:17:32.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[NOI2014]起床困难综合症">
 <meta name="twitter:description" content="描述 链接:http://uoj.ac/problem/2 21 世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm 一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因：在深邃的太平洋海底中，出现了一条名为 drd 的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。正是由于 drd 的活动，起床困难综合症愈演">
@@ -124,7 +124,7 @@
 
 
 
- </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">     <div class="headband"></div>         <a href="https://blog.csdn.net/UnKfrozen"><img style="position: absolute; top: 0;left: 0;border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on CSDN" data-recalc-dims="1"></a> 
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">     <div class="headband"></div>         <a href="https://blog.csdn.net/UnKfrozen"><img style="position: absolute; top: 0;left: 0;border: 0;" src="https://img-blog.csdnimg.cn/20190807221214895.png" class="attachment-full size-full" alt="Fork me on CSDN" data-recalc-dims="1"></a> 
      <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -323,7 +323,7 @@
       
         <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p> 链接:<a href="http://uoj.ac/problem/2" target="_blank" rel="noopener">http://uoj.ac/problem/2</a></p>
 <p>21 世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm 一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因：在深邃的太平洋海底中，出现了一条名为 drd 的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。正是由于 drd 的活动，起床困难综合症愈演愈烈，以惊人的速度在世界上传播。为了彻底消灭这种病，atm 决定前往海底，消灭这条恶龙.</p>
-<p>历经千辛万苦，atm 终于来到了 drd 所在的地方，准备与其展开艰苦卓绝的战斗。drd 有着十分特殊的技能，他的防御战线能够使用一定的运算来改变他受到的伤害。具体说来，drd 的防御战线由 $n$ 扇防御门组成。每扇防御门包括一个运算$op$ 和一个参数$t$，其中运算一定是 $OR,XOR,AND$ 中的一种，参数则一定为非负整数。如果还未通过防御门时攻击力为 $x$，则其通过这扇防御门后攻击力将变为 $x op t$。最终drd 受到的伤害为对方初始攻击力 $x$ 依次经过所有 $n$扇防御门后转变得到的攻击力。</p>
+<p>历经千辛万苦，atm 终于来到了 drd 所在的地方，准备与其展开艰苦卓绝的战斗。drd 有着十分特殊的技能，他的防御战线能够使用一定的运算来改变他受到的伤害。具体说来，drd 的防御战线由 $n$ 扇防御门组成。每扇防御门包括一个运算$op$ 和一个参数$t$，其中运算一定是 $OR,XOR,AND$ 中的一种，参数则一定为非负整数。如果还未通过防御门时攻击力为 $x$，则其通过这扇防御门后攻击力将变为 $x;op;t$。最终drd 受到的伤害为对方初始攻击力 $x$ 依次经过所有 $n$扇防御门后转变得到的攻击力。</p>
 <p>由于 atm 水平有限，他的初始攻击力只能为 $0$ 到 $m$ 之间的一个整数（即他的初始攻击力只能在 $0,1,…,m$ 中任选，但在通过防御门之后的攻击力不受 $m$ 的限制）。为了节省体力，他希望通过选择合适的初始攻击力使得他的攻击能让 drd 受到最大的伤害，请你帮他计算一下，他的一次攻击最多能使 drd 受到多少伤害。</p>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>很有意思的题目,想到二进制拆位的话,思路就很清晰了.</p>
 <p><del>虽然我由于不知名的原因一直50分</del></p>
@@ -372,6 +372,22 @@
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/UOJ-3/" rel="prev" title="3.[NOI2014]魔法森林">
+                3.[NOI2014]魔法森林 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -457,7 +473,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -479,7 +495,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
