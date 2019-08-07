@@ -1,0 +1,780 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="线段树,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助 本篇很多地方借鉴英雄哪里出来的博客%%% 一、基本概念 线段树是一棵二叉搜索树，它储存的是一个区间的信息。 每个节点以结构体的方式存储，结构体包含以下几个信息：每个节点以结构体的方式存储，结构体包含以下几个信息： (1). 区间左端点、右端点     (2). 区间所代表的值   (3). 该节点的子节点  线段树的基本思想：二分。 线段树一">
+<meta name="keywords" content="线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构-线段树模板">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/线段树/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助 本篇很多地方借鉴英雄哪里出来的博客%%% 一、基本概念 线段树是一棵二叉搜索树，它储存的是一个区间的信息。 每个节点以结构体的方式存储，结构体包含以下几个信息：每个节点以结构体的方式存储，结构体包含以下几个信息： (1). 区间左端点、右端点     (2). 区间所代表的值   (3). 该节点的子节点  线段树的基本思想：二分。 线段树一">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181118154637655.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181120203343387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181120202017187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181120202525174.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181120202748582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-07T16:01:19.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构-线段树模板">
+<meta name="twitter:description" content="欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助 本篇很多地方借鉴英雄哪里出来的博客%%% 一、基本概念 线段树是一棵二叉搜索树，它储存的是一个区间的信息。 每个节点以结构体的方式存储，结构体包含以下几个信息：每个节点以结构体的方式存储，结构体包含以下几个信息： (1). 区间左端点、右端点     (2). 区间所代表的值   (3). 该节点的子节点  线段树的基本思想：二分。 线段树一">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181118154637655.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/线段树/">
+
+
+
+
+   <title>数据结构-线段树模板 | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">     <div class="headband"></div>         <a href="https://blog.csdn.net/UnKfrozen"><img style="position: absolute; top: 0;left: 0;border: 0;" src="https://i.loli.net/2019/08/07/v61yEPClK5kQVYp.png" class="attachment-full size-full" alt="Fork me on CSDN" data-recalc-dims="1"></a> 
+     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/线段树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构-线段树模板</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T22:39:40+08:00">
+                2019-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/07/线段树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/07/线段树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><font size="3" color="blue">欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助</font></p>
+<p>本篇很多地方借鉴<font color="blue">英雄哪里出来</font>的博客<a href="https://blog.csdn.net/WhereIsHeroFrom/article/details/78969718" target="_blank" rel="noopener">%%%</a></p>
+<h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><ol>
+<li>线段树是一棵二叉搜索树，它储存的是一个区间的信息。</li>
+<li>每个节点以结构体的方式存储，结构体包含以下几个信息：每个节点以结构体的方式存储，结构体包含以下几个信息：<blockquote>
+<p>(1). 区间左端点、右端点</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>(2). 区间所代表的值</p>
+</blockquote>
+<blockquote>
+<p>(3). 该节点的子节点</p>
+<ol start="5">
+<li>线段树的基本思想：二分。</li>
+<li>线段树一般结构如图所示：<br>假设数据为4个数，则树应是这样<img src="https://img-blog.csdnimg.cn/20181118154637655.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="word大法好"><ol start="7">
+<li>由上图可知，每个节点的</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>每个节点的左孩子区间范围为[left，mid]，右孩子为[mid+1,right]</p>
+</blockquote>
+<h2 id="二、代码实现与基本操作"><a href="#二、代码实现与基本操作" class="headerlink" title="二、代码实现与基本操作"></a>二、代码实现与基本操作</h2><h3 id="0-基础数据结构"><a href="#0-基础数据结构" class="headerlink" title="0.基础数据结构"></a>0.基础数据结构</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL  <span class="comment">//防报错</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span>* <span class="title">Node</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> d;</span><br><span class="line">	<span class="keyword">int</span> left, right;</span><br><span class="line">	Node lson, rson;</span><br><span class="line">&#125;*root;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-建树-built函数"><a href="#1-建树-built函数" class="headerlink" title="1.建树 built函数"></a>1.建树 built函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node <span class="title">built</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	Node p = <span class="keyword">new</span>(Segment_Tree);<span class="comment">//Node p=(Node) malloc(sizeof(Segment_Tree));,c用法</span></span><br><span class="line">    	<span class="comment">//申请一个新内存，并令p指向该处</span></span><br><span class="line">    	p-&gt;left = left; 	<span class="comment">//储存区间信息</span></span><br><span class="line">    	p-&gt;right = right;</span><br><span class="line">    	<span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">    		p-&gt;d = a[left];  <span class="comment">//scanf("%d",&amp;p-&gt;d),cin&gt;&gt;p-&gt;d,皆可，及储存数据</span></span><br><span class="line">    		p-&gt;lson = <span class="literal">NULL</span>;	<span class="comment">//令左儿子和右儿子指向NULL</span></span><br><span class="line">    		p-&gt;rson = <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span> &#123;</span><br><span class="line">    		<span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;	<span class="comment">//二分</span></span><br><span class="line">    		p-&gt;lson = built(left, mid);	<span class="comment">//左儿子</span></span><br><span class="line">    		p-&gt;rson = built(mid + <span class="number">1</span>, right); <span class="comment">//右儿子</span></span><br><span class="line">    		p-&gt;d=p-&gt;lson-&gt;d+p-&gt;rson-&gt;d;  <span class="comment">//存储左儿子和右儿子的和</span></span><br><span class="line">    	&#125; </span><br><span class="line">    	<span class="keyword">return</span> p; <span class="comment">//返回指向该处的指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;除了建树，相应关闭树的函数为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">(Node p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		close(p-&gt;lson);</span><br><span class="line">		close(p-&gt;rson);</span><br><span class="line">		<span class="keyword">delete</span>(p); <span class="comment">//free(p);c用法</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;<font color="blue">非常需要注意的一件事，每次用指针建立树的时候，请务必写一个关闭清理申请的内存的函数</font></p>
+<h3 id="2-单点查询"><a href="#2-单点查询" class="headerlink" title="2. 单点查询"></a>2. 单点查询</h3><p>&emsp;&emsp;(1).查找k位置的数据</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(Node p, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;left == p-&gt;right&amp;&amp;p-&gt;left == k)</span><br><span class="line">		<span class="keyword">return</span> p-&gt;d;</span><br><span class="line">	<span class="keyword">int</span> mid = (p-&gt;left + p-&gt;right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span> (k &lt;= mid)</span><br><span class="line">		<span class="keyword">return</span> find(p-&gt;lson, k);</span><br><span class="line">	<span class="keyword">return</span> find(p-&gt;rson, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-单点修改"><a href="#3-单点修改" class="headerlink" title="3.单点修改"></a>3.单点修改</h3><p>&emsp;&emsp;(1).知道点所在位置，修改该点处值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(Node p, <span class="keyword">int</span> x,<span class="keyword">int</span> k)</span>  <span class="comment">//对x位置的值，进行k值的变动</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;left == p-&gt;right&amp;&amp;p-&gt;left == x)  <span class="comment">//如过找到了k位置</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d +=k;   		<span class="comment">//对该点值进行操作，可以为+-*/等</span></span><br><span class="line">	<span class="keyword">int</span> mid = (p-&gt;left + p-&gt;right) / <span class="number">2</span>; <span class="comment">//判断该点在左区间还是右区间</span></span><br><span class="line">	<span class="keyword">if</span> (x &lt;= mid)   <span class="comment">//如果是左区间，只对左区间进行递归查询</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d = update(p-&gt;lson, x, k)+p-&gt;rson-&gt;d;  <span class="comment">//查找完后对父节点存储值进行修改</span></span><br><span class="line">	<span class="keyword">return</span> p-&gt;d = p-&gt;lson-&gt;d+update(p-&gt;rson, x, k); <span class="comment">//不是该点，也不在左区间，只能是右区间</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-区间查询"><a href="#4-区间查询" class="headerlink" title="4.区间查询"></a>4.区间查询</h3><p><img src="https://img-blog.csdnimg.cn/20181120203343387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="手绘的哦"><br>&emsp;&emsp;所给区间仅可能为上图四种情况。<br>&emsp;&emsp;通过一定操作，我们都可以将上三种，全部转换为最后一种直接输出。<br>&emsp;&emsp;闲话少说，代码实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(Node p, <span class="keyword">int</span> x,<span class="keyword">int</span> y)</span>  <span class="comment">//注，这里假设任意x,y，都有x&lt;y</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;left == x &amp;&amp; p-&gt;right == y)  <span class="comment">//如果是第四种情况，直接返回</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d;</span><br><span class="line">	<span class="keyword">int</span> mid = (p-&gt;left + p-&gt;right) / <span class="number">2</span>;   <span class="comment">//求中间值</span></span><br><span class="line">	<span class="keyword">if</span> (y &lt;= mid)   <span class="comment">//如果查询区间在mid左边，因为x&lt;y&lt;=mid</span></span><br><span class="line">		<span class="keyword">return</span> find(p-&gt;lson, x, y); <span class="comment">//那么直接递归左儿子</span></span><br><span class="line">	<span class="keyword">if</span> (x &gt; mid)   <span class="comment">//如果查询区间在mid右边，因为mid&lt;x&lt;y</span></span><br><span class="line">		<span class="keyword">return</span> find(p-&gt;rson, x, y);  <span class="comment">//那么直接递归右儿子</span></span><br><span class="line">	<span class="keyword">return</span> find(p-&gt;lson, x, mid)+find(p-&gt;rson, mid + <span class="number">1</span>, y);  <span class="comment">//两式都不符合，及x&lt;=mid&lt;y</span></span><br><span class="line">							<span class="comment">//则从mid为中间值分开</span></span><br><span class="line">							<span class="comment">//左儿子查询[x,mid],右儿子查询[mid+1,y]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-区间修改"><a href="#5-区间修改" class="headerlink" title="5.区间修改"></a>5.区间修改</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(Node p, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> k)</span>  <span class="comment">//设区间为[x,y]，修改的值为k</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;left == p-&gt;right &amp;&amp; p-&gt;left == x)  <span class="comment">//如果是这个区间内的元素，就让它+k</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d+=k;</span><br><span class="line">	<span class="keyword">int</span> mid = (p-&gt;left + p-&gt;right) / <span class="number">2</span>;  <span class="comment">//二分</span></span><br><span class="line">	<span class="keyword">if</span> (y &lt;= mid)   <span class="comment">//如果区间在中值的左侧</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d=update(p-&gt;lson, x, y,k)+p-&gt;rson-&gt;d;  <span class="comment">//仅需更新左儿子的值，并更新父亲的值</span></span><br><span class="line">	<span class="keyword">if</span> (x &gt; mid) <span class="comment">//如果区间在中值的左侧</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d=p-&gt;lson-&gt;d+update(p-&gt;rson, x, y,k); <span class="comment">//同上</span></span><br><span class="line">	<span class="keyword">return</span> p-&gt;d=update(p-&gt;lson, x, mid,k) + update(p-&gt;rson, mid + <span class="number">1</span>, y,k); <span class="comment">//如果区间被中值分开</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-优化"><a href="#三-优化" class="headerlink" title="三.优化"></a>三.优化</h2><h3 id="（一）-Lazy-Tag懒标记"><a href="#（一）-Lazy-Tag懒标记" class="headerlink" title="（一）. Lazy-Tag懒标记"></a>（一）. Lazy-Tag懒标记</h3><p>&emsp;&emsp;我们考虑一下区间改值的过程：当更改某个区间的值的时候，子区间也跟着更改。显然，在大数据下，这样操作会导致TLE。<br>&emsp;&emsp;怎么办？<br>&emsp;&emsp;这时我们就引入一个优化方法，叫做Lazy-Tag懒标记。<br>&emsp;&emsp;何为懒标记呢？顾名思义，就是<del>用来偷懒的</del>减少修改时消耗时间的。即：<br>&emsp;&emsp;当我想要对某一区间的所有元素都+k时，在修改该区间节点时，对其打上标记lazy，并记lazy为k，修改该节点的值为+区间长度*k，立刻return，而不将该节点下面的所有子节点一一修改。</p>
+<h4 id="思想实现"><a href="#思想实现" class="headerlink" title="思想实现"></a>思想实现</h4><p>&emsp;&emsp;如图示：1~4的值分别为1，2，3，4<br><img src="https://img-blog.csdnimg.cn/20181120202017187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;我们选择对[1,2]区间进行修改，要求改区间所有值+2，则：在区间[1,2]，打上标记lazy=2，并修改其值为3+(2-1+1)<em>2，直接返回，并不对其子节点进行修改<br><img src="https://img-blog.csdnimg.cn/20181120202525174.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="纯手搓！！"><br>&emsp;&emsp;当我们再次对[1,2]区间修改时，并要求区间内所有的值+1，则：由于[1,2]有标记lazy=2，于是我们将lazy标记向其子节点传导，并修改其子节点的值。再在[1,2]区间打上lazy=1，修改值为(2-1+1)</em>1，返回。<br><img src="https://img-blog.csdnimg.cn/20181120202748582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="手搓大法好！！！"></p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="0-核心代码-pushdown"><a href="#0-核心代码-pushdown" class="headerlink" title="0.核心代码 pushdown"></a>0.核心代码 pushdown</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(Node p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lson != <span class="literal">NULL</span>) &#123;  <span class="comment">//如果该节点还有后续节点</span></span><br><span class="line">		p-&gt;lson-&gt;lazy += p-&gt;lazy;  <span class="comment">//令子节点lazy继承父节点lazy，下同</span></span><br><span class="line">		p-&gt;lson-&gt;d += (p-&gt;lson-&gt;right - p-&gt;lson-&gt;left + <span class="number">1</span>)*p-&gt;lazy;  <span class="comment">//修改子节点的值，下同</span></span><br><span class="line">		p-&gt;rson-&gt;lazy += p-&gt;lazy;</span><br><span class="line">		p-&gt;rson-&gt;d += (p-&gt;rson-&gt;right - p-&gt;rson-&gt;left + <span class="number">1</span>)*p-&gt;lazy;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;lazy = <span class="number">0</span>; <span class="comment">//令该节点的lazy清零</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-树本体"><a href="#1-树本体" class="headerlink" title="1.树本体"></a>1.树本体</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span>* <span class="title">Node</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> d,lazy;   <span class="comment">//仅仅多了一个lazy标记</span></span><br><span class="line">	<span class="keyword">int</span> left, right;</span><br><span class="line">	Node lson, rson;</span><br><span class="line">&#125;*root;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-建树"><a href="#2-建树" class="headerlink" title="2.建树"></a>2.建树</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node <span class="title">built</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node p = <span class="keyword">new</span>(Segment_Tree);</span><br><span class="line">	p-&gt;left = left;</span><br><span class="line">	p-&gt;right = right;</span><br><span class="line">	p-&gt;lazy = <span class="number">0</span>;  <span class="comment">//只是对lazy标记进行初始化</span></span><br><span class="line">	<span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">		p-&gt;d = a[left];</span><br><span class="line">		p-&gt;lson = <span class="literal">NULL</span>;</span><br><span class="line">		p-&gt;rson = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">		p-&gt;lson = built(left, mid);</span><br><span class="line">		p-&gt;rson = built(mid + <span class="number">1</span>, right);</span><br><span class="line">		p-&gt;d = p-&gt;lson-&gt;d+p-&gt;rson-&gt;d;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">(Node p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		close(p-&gt;lson);</span><br><span class="line">		close(p-&gt;rson);</span><br><span class="line">		<span class="keyword">delete</span>(p); <span class="comment">//free(p);c用法</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-单点查询和单点修改无改变"><a href="#3-单点查询和单点修改无改变" class="headerlink" title="3.单点查询和单点修改无改变"></a>3.单点查询和单点修改无改变</h5><h5 id="4-区间查询-1"><a href="#4-区间查询-1" class="headerlink" title="4.区间查询"></a>4.区间查询</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">find</span><span class="params">(Node p, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>  <span class="comment">//区间查询</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lazy != <span class="number">0</span>)  <span class="comment">//解决一下历史遗留问题再查询</span></span><br><span class="line">		pushdown(p);</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;left == x &amp;&amp; p-&gt;right == y)  <span class="comment">//其他未变</span></span><br><span class="line">		<span class="keyword">return</span> p-&gt;d;</span><br><span class="line">	<span class="keyword">int</span> mid = (p-&gt;left + p-&gt;right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span> (y &lt;= mid)</span><br><span class="line">		<span class="keyword">return</span> find(p-&gt;lson, x, y);</span><br><span class="line">	<span class="keyword">if</span> (x &gt; mid)</span><br><span class="line">		<span class="keyword">return</span> find(p-&gt;rson, x, y);</span><br><span class="line">	<span class="keyword">return</span> find(p-&gt;lson, x, mid)+find(p-&gt;rson, mid + <span class="number">1</span>, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-区间修改-1"><a href="#5-区间修改-1" class="headerlink" title="5.区间修改"></a>5.区间修改</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">update</span><span class="params">(Node p, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> k)</span>  <span class="comment">//区间修改</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lazy!=<span class="number">0</span>)    <span class="comment">//如果该节点的lazy不为零，就处理一下</span></span><br><span class="line">			pushdown(p);</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;left == x &amp;&amp; p-&gt;right==y) &#123;   <span class="comment">//如果是要进行修改的节点，便让该节点的lazy为k，并修改值</span></span><br><span class="line">		p-&gt;lazy = k;</span><br><span class="line">		<span class="keyword">return</span> p-&gt;d += k*(y - x + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = (p-&gt;left + p-&gt;right) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span> (y &lt;= mid)</span><br><span class="line">		<span class="keyword">return</span> p-&gt;d = p-&gt;rson-&gt;d+update(p-&gt;lson, x, y, k);</span><br><span class="line">	<span class="keyword">if</span> (x &gt; mid)</span><br><span class="line">		<span class="keyword">return</span> p-&gt;d = p-&gt;lson-&gt;d+ update(p-&gt;rson, x, y, k);</span><br><span class="line">	<span class="keyword">return</span> p-&gt;d = update(p-&gt;lson, x, mid, k) + update(p-&gt;rson, mid + <span class="number">1</span>, y, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（二）-离散化"><a href="#（二）-离散化" class="headerlink" title="（二）. 离散化"></a>（二）. 离散化</h3><p>&emsp;&emsp;离散化是一个听起来很高大上的方法.<br>&emsp;&emsp;其实做起来很简单.<del>当然如果想高深的话,自然也拦不住</del><br>&emsp;&emsp;其实就是将一串数据储存到数组中,不将数据本身作为键值,而是选择使用数组的下标作为键值.<br>&emsp;&emsp;形象的,$1,2,3,10000000$这四个数,保存在数组$a[]$中,相对应的下标为$1,2,3,4$就可以减少空间的开支.</p>
+<h2 id="数组实现"><a href="#数组实现" class="headerlink" title="数组实现"></a>数组实现</h2>  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> null</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> null -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span> &#123;</span></span><br><span class="line">	ll d, lazy;</span><br><span class="line">	<span class="keyword">int</span> left, right;</span><br><span class="line">	<span class="keyword">int</span> lson, rson;</span><br><span class="line">&#125;root[<span class="number">4</span> * MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">built</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	root[p].left = left;</span><br><span class="line">	root[p].right = right;</span><br><span class="line">	root[p].lazy = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; root[p].d;</span><br><span class="line">		root[p].lson = root[p].rson = null;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		built(root[p].lson = (p &lt;&lt; <span class="number">1</span>), left, mid);</span><br><span class="line">		built(root[p].rson = (p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>), mid + <span class="number">1</span>, right);</span><br><span class="line">		root[p].d = root[root[p].lson].d + root[root[p].rson].d;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root[p].lson != null) &#123;</span><br><span class="line">		root[root[p].lson].lazy += root[p].lazy;</span><br><span class="line">		root[root[p].lson].d += (root[root[p].lson].right - root[root[p].lson].left + <span class="number">1</span>)*root[p].lazy;</span><br><span class="line">		root[root[p].rson].lazy += root[p].lazy;</span><br><span class="line">		root[root[p].rson].d += (root[root[p].rson].right - root[root[p].rson].left + <span class="number">1</span>)*root[p].lazy;</span><br><span class="line">	&#125;</span><br><span class="line">	root[p].lazy = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">find</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root[p].lazy != <span class="number">0</span>)</span><br><span class="line">		pushdown(p);</span><br><span class="line">	<span class="keyword">if</span> (root[p].left == x &amp;&amp; root[p].right == y)</span><br><span class="line">		<span class="keyword">return</span> root[p].d;</span><br><span class="line">	<span class="keyword">int</span> mid = (root[p].left + root[p].right) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (y &lt;= mid)</span><br><span class="line">		<span class="keyword">return</span> find(root[p].lson, x, y);</span><br><span class="line">	<span class="keyword">if</span> (x &gt; mid)</span><br><span class="line">		<span class="keyword">return</span> find(root[p].rson, x, y);</span><br><span class="line">	<span class="keyword">return</span> find(root[p].lson, x, mid) + find(root[p].rson, mid + <span class="number">1</span>, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> k)</span>  <span class="comment">//区间</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root[p].lazy != <span class="number">0</span>)</span><br><span class="line">		pushdown(p);</span><br><span class="line">	<span class="keyword">if</span> (root[p].left == x &amp;&amp; root[p].right == y) &#123;</span><br><span class="line">		root[p].lazy = k;</span><br><span class="line">		<span class="keyword">return</span> root[p].d += k * (y - x + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = (root[p].left + root[p].right) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (y &lt;= mid)</span><br><span class="line">		<span class="keyword">return</span> root[p].d = root[root[p].rson].d + update(root[p].lson, x, y, k);</span><br><span class="line">	<span class="keyword">if</span> (x &gt; mid)</span><br><span class="line">		<span class="keyword">return</span> root[p].d = root[root[p].lson].d + update(root[p].rson, x, y, k);</span><br><span class="line">	<span class="keyword">return</span> root[p].d = update(root[p].lson, x, mid, k) +update(root[p].rson, mid+<span class="number">1</span>, y, k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	built(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> t, x, y, k;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">		<span class="keyword">if</span> (t == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; k;</span><br><span class="line">			update(<span class="number">1</span>, x, y, k);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; find(<span class="number">1</span>, x, y) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习题目"><a href="#练习题目" class="headerlink" title="练习题目"></a>练习题目</h2><p><a href="https://www.luogu.org/problemnew/show/P2251" target="_blank" rel="noopener">洛谷P2251</a><br>裸的RMQ问题,数据量小.<br><a href="https://www.luogu.org/problemnew/show/P3372" target="_blank" rel="noopener">洛谷P3372</a><br><a href="https://www.luogu.org/problemnew/show/P3373" target="_blank" rel="noopener">洛谷P3373</a><br>洛谷线段树模板题</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/UOJ-3/" rel="next" title="UOJ #3.[NOI2014]魔法森林">
+                <i class="fa fa-chevron-left"></i> UOJ #3.[NOI2014]魔法森林
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/划分树/" rel="prev" title="数据结构-划分树模板">
+                数据结构-划分树模板 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.jpg" alt="HaiJeng">
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、基本概念"><span class="nav-number">1.</span> <span class="nav-text">一、基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、代码实现与基本操作"><span class="nav-number">2.</span> <span class="nav-text">二、代码实现与基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-基础数据结构"><span class="nav-number">2.1.</span> <span class="nav-text">0.基础数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-建树-built函数"><span class="nav-number">2.2.</span> <span class="nav-text">1.建树 built函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-单点查询"><span class="nav-number">2.3.</span> <span class="nav-text">2. 单点查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-单点修改"><span class="nav-number">2.4.</span> <span class="nav-text">3.单点修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-区间查询"><span class="nav-number">2.5.</span> <span class="nav-text">4.区间查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-区间修改"><span class="nav-number">2.6.</span> <span class="nav-text">5.区间修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-优化"><span class="nav-number">3.</span> <span class="nav-text">三.优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（一）-Lazy-Tag懒标记"><span class="nav-number">3.1.</span> <span class="nav-text">（一）. Lazy-Tag懒标记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想实现"><span class="nav-number">3.1.1.</span> <span class="nav-text">思想实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">3.1.2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#0-核心代码-pushdown"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">0.核心代码 pushdown</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-树本体"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">1.树本体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-建树"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">2.建树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-单点查询和单点修改无改变"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">3.单点查询和单点修改无改变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-区间查询-1"><span class="nav-number">3.1.2.5.</span> <span class="nav-text">4.区间查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-区间修改-1"><span class="nav-number">3.1.2.6.</span> <span class="nav-text">5.区间修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（二）-离散化"><span class="nav-number">3.2.</span> <span class="nav-text">（二）. 离散化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组实现"><span class="nav-number">4.</span> <span class="nav-text">数组实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习题目"><span class="nav-number">5.</span> <span class="nav-text">练习题目</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Kyon.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/08/07/线段树/';
+          this.page.identifier = '2019/08/07/线段树/';
+          this.page.title = '数据结构-线段树模板';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Kyon.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 
