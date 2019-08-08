@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[踩坑]]></title>
+    <title><![CDATA[那些年我搭博客所踩的坑]]></title>
     <url>%2F2019%2F08%2F08%2F%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置 将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 title 同名的文件夹，我们只需将图片放进此文件夹中，然后在文章中通过 Markdown 语法进行引用即可 例如，在资源文件夹（就是那个与 title 同名的文件夹）中添加图片 example.PNG，则可以在对应的文章中使用语句 ![示例图片](title/example.PNG &quot;示例图片&quot;) 添加图片 二.修改博客标题背景如果你使用的是pisces模式的话,可以参考下列教程在\blog\themes\next\source\css\_schemes\Pisces中的_brand.styl文件内.在.site-meta 下的background后面修改为url(图片链接); 三.插入音乐在网易云音乐生成外链后插入到你想放的地方即可.注意:不要打开”阻止第三方 Cookie”这个选项一旦打开,iframe就加载不出来,插入音乐那一块全白.网上也没有多少人经历过估计(逼着我学会了看F12…) 四.npm下载超慢的问题使用cnpm,这是国内的一个镜像,速度很快,但无法使用publish链接:https://npm.taobao.org/ 五.Algolia搜索搭建的问题next的使用文档已经比较全面了 这个地方要加一句 12345algolia: applicationID: 'applicationID' indexName: 'indexName' apiKey: 'Search-Only API Key' chunkSize: 5000 其次用export,最好不要用set 12export HEXO_ALGOLIA_INDEXING_KEY=你的Search-Only API Key$ hexo algolia 这些都选上 六.头像旋转以及点击头像回到主页 回到主页:在123456```html&lt;a href=&quot;/&quot;&gt; &lt;img class=&quot;site-author-image&quot; itemprop=&quot;image&quot; src=&quot;&#123;&#123; url_for( theme.avatar | default(theme.images + &apos;/avatar.gif&apos;) ) &#125;&#125;&quot; alt=&quot;&#123;&#123; theme.author &#125;&#125;&quot; /&gt;&lt;/a&gt; 就是在代码上下分别加了href1232. 旋转~~这个我也不懂~~```\themes\next\source\css\_common\components\sidebar\sidebar-author.styl 内添加: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960.site-author-image &#123; display: block; margin: 0 auto; padding: $site-author-image-padding; max-width: $site-author-image-width; height: $site-author-image-height; border: $site-author-image-border-width solid $site-author-image-border-color; /* 头像圆形 */ border-radius: 80px; -webkit-border-radius: 80px; -moz-border-radius: 80px; box-shadow: inset 0 -1px 0 #333sf; /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/ /* 鼠标经过头像旋转360度 */ -webkit-transition: -webkit-transform 1.0s ease-out; -moz-transition: -moz-transform 1.0s ease-out; transition: transform 1.0s ease-out;&#125;img:hover &#123; /* 鼠标经过停止头像旋转 -webkit-animation-play-state:paused; animation-play-state:paused;*/ /* 鼠标经过头像旋转360度 */ -webkit-transform: rotateZ(360deg); -moz-transform: rotateZ(360deg); transform: rotateZ(360deg);&#125;/* Z 轴旋转动画 */@-webkit-keyframes play &#123; 0% &#123; -webkit-transform: rotateZ(0deg); &#125; 100% &#123; -webkit-transform: rotateZ(-360deg); &#125;&#125;@-moz-keyframes play &#123; 0% &#123; -moz-transform: rotateZ(0deg); &#125; 100% &#123; -moz-transform: rotateZ(-360deg); &#125;&#125;@keyframes play &#123; 0% &#123; transform: rotateZ(0deg); &#125; 100% &#123; transform: rotateZ(-360deg); &#125;&#125; 先这些,持续更新]]></content>
+      <categories>
+        <category>杂文</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[KMP算法模板]]></title>

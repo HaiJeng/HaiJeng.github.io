@@ -59,7 +59,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="博客搭建,">
 
 
 
@@ -70,17 +70,20 @@
 
 
 
-<meta name="description" content="我想刷穿一个OJ">
+<meta name="description" content="一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置  将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 t">
+<meta name="keywords" content="博客搭建">
 <meta property="og:type" content="article">
-<meta property="og:title" content="踩坑">
+<meta property="og:title" content="那些年我搭博客所踩的坑">
 <meta property="og:url" content="http://yoursite.com/2019/08/08/博客踩坑/index.html">
 <meta property="og:site_name" content="rp++">
-<meta property="og:description" content="我想刷穿一个OJ">
+<meta property="og:description" content="一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置  将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 t">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-08-08T09:53:30.607Z">
+<meta property="og:image" content="http://yoursite.com/.com//%5C%E8%B8%A9%E5%9D%91%5C1.png">
+<meta property="og:updated_time" content="2019-08-08T10:55:21.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="踩坑">
-<meta name="twitter:description" content="我想刷穿一个OJ">
+<meta name="twitter:title" content="那些年我搭博客所踩的坑">
+<meta name="twitter:description" content="一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置  将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 t">
+<meta name="twitter:image" content="http://yoursite.com/.com//%5C%E8%B8%A9%E5%9D%91%5C1.png">
 
 
 
@@ -115,7 +118,7 @@
 
 
 
-   <title>踩坑 | rp++</title>   
+   <title>那些年我搭博客所踩的坑 | rp++</title>   
 
 
 
@@ -275,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">踩坑</h1>
+          <h1 class="post-title" itemprop="name headline">那些年我搭博客所踩的坑</h1>
         
 
         <div class="post-meta">
@@ -297,6 +300,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂文/" itemprop="url" rel="index">
+                    <span itemprop="name">杂文</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -335,7 +360,42 @@
       
 
       
-        
+        <h2 id="一-博文插入图片"><a href="#一-博文插入图片" class="headerlink" title="一.博文插入图片"></a>一.博文插入图片</h2><p>在 <code>Hexo</code>中 插入图片时，请按照以下的步骤进行设置</p>
+<ol>
+<li>将 站点配置文件 中的 <code>post_asset_folde</code> 选项的值设置为 <code>true</code></li>
+<li>在站点文件夹中打开 <code>git bash</code>，输入命令 <code>npm install hexo-asset-image --save</code> 安装插件</li>
+<li>这样，当使用 <code>hexo new title</code> 创建文章时，将同时在 <code>source/_post</code> 文件夹中生成一个与 <code>title</code> 同名的文件夹，我们只需将图片放进此文件夹中，然后在文章中通过 <code>Markdown</code> 语法进行引用即可</li>
+<li>例如，在资源文件夹（就是那个与 title 同名的文件夹）中添加图片 <code>example.PNG</code>，则可以在对应的文章中使用语句 <code>![示例图片](title/example.PNG &quot;示例图片&quot;)</code> 添加图片</li>
+</ol>
+<hr>
+<h2 id="二-修改博客标题背景"><a href="#二-修改博客标题背景" class="headerlink" title="二.修改博客标题背景"></a>二.修改博客标题背景</h2><p>如果你使用的是<code>pisces</code>模式的话,可以参考下列教程<br>在<code>\blog\themes\next\source\css\_schemes\Pisces</code>中的<code>_brand.styl</code>文件内.<br>在<code>.site-meta</code> 下的<code>background</code>后面修改为<code>url(图片链接);</code></p>
+<hr>
+<h2 id="三-插入音乐"><a href="#三-插入音乐" class="headerlink" title="三.插入音乐"></a>三.插入音乐</h2><p>在网易云音乐生成外链后插入到你想放的地方即可.<br>注意:<font color="blue">不要打开”阻止第三方 Cookie”这个选项</font><br>一旦打开,iframe就加载不出来,插入音乐那一块全白.<br>网上也没有多少人经历过估计(逼着我学会了看<code>F12</code>…)</p>
+<hr>
+<h2 id="四-npm下载超慢的问题"><a href="#四-npm下载超慢的问题" class="headerlink" title="四.npm下载超慢的问题"></a>四.npm下载超慢的问题</h2><p>使用cnpm,这是国内的一个镜像,速度很快,但无法使用<code>publish</code><br>链接:<a href="https://npm.taobao.org/" target="_blank" rel="noopener">https://npm.taobao.org/</a></p>
+<hr>
+<h2 id="五-Algolia搜索搭建的问题"><a href="#五-Algolia搜索搭建的问题" class="headerlink" title="五.Algolia搜索搭建的问题"></a>五.Algolia搜索搭建的问题</h2><p>next的使用文档已经比较全面了</p>
+<ol>
+<li><p>这个地方要加一句</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">algolia:</span><br><span class="line">  applicationID: 'applicationID'</span><br><span class="line">  indexName: 'indexName'</span><br><span class="line">  apiKey: 'Search-Only API Key'</span><br><span class="line">  chunkSize: <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其次用export,最好不要用set</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HEXO_ALGOLIA_INDEXING_KEY=你的Search-Only API Key</span><br><span class="line">$ hexo algolia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这些都选上<br><img src="/.com//%5C%E8%B8%A9%E5%9D%91%5C1.png" alt="1"></p>
+</li>
+</ol>
+<hr>
+<h2 id="六-头像旋转以及点击头像回到主页"><a href="#六-头像旋转以及点击头像回到主页" class="headerlink" title="六.头像旋转以及点击头像回到主页"></a>六.头像旋转以及点击头像回到主页</h2><ol>
+<li>回到主页:在<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```html</span><br><span class="line">&lt;a href=&quot;/&quot;&gt;</span><br><span class="line">    &lt;img class=&quot;site-author-image&quot; itemprop=&quot;image&quot;</span><br><span class="line">    src=&quot;&#123;&#123; url_for( theme.avatar | default(theme.images + &apos;/avatar.gif&apos;) ) &#125;&#125;&quot;</span><br><span class="line">    alt=&quot;&#123;&#123; theme.author &#125;&#125;&quot; /&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>就是在代码上下分别加了<figure class="highlight plain"><figcaption><span>href</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2. 旋转</span><br><span class="line">~~这个我也不懂~~</span><br><span class="line">```\themes\next\source\css\_common\components\sidebar\sidebar-author.styl</span><br></pre></td></tr></table></figure></p>
+<p>内添加:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line"></span><br><span class="line">  /* 头像圆形 */</span><br><span class="line">  border-radius: 80px;</span><br><span class="line">  -webkit-border-radius: 80px;</span><br><span class="line">  -moz-border-radius: 80px;</span><br><span class="line">  box-shadow: inset 0 -1px 0 #333sf;</span><br><span class="line"></span><br><span class="line">  /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 </span><br><span class="line">    (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transition: -webkit-transform 1.0s ease-out;</span><br><span class="line">  -moz-transition: -moz-transform 1.0s ease-out;</span><br><span class="line">  transition: transform 1.0s ease-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img:hover &#123;</span><br><span class="line">  /* 鼠标经过停止头像旋转 </span><br><span class="line">  -webkit-animation-play-state:paused;</span><br><span class="line">  animation-play-state:paused;*/</span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transform: rotateZ(360deg);</span><br><span class="line">  -moz-transform: rotateZ(360deg);</span><br><span class="line">  transform: rotateZ(360deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Z 轴旋转动画 */</span><br><span class="line">@-webkit-keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    -webkit-transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    -webkit-transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@-moz-keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    -moz-transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    -moz-transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>先这些,持续更新</p>
+
       
     </div>
     
@@ -349,6 +409,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博客搭建/" rel="tag"># 博客搭建</a>
+          
+        </div>
       
 
       
@@ -429,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -460,7 +535,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -471,7 +546,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -570,6 +645,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-博文插入图片"><span class="nav-number">1.</span> <span class="nav-text">一.博文插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-修改博客标题背景"><span class="nav-number">2.</span> <span class="nav-text">二.修改博客标题背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-插入音乐"><span class="nav-number">3.</span> <span class="nav-text">三.插入音乐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-npm下载超慢的问题"><span class="nav-number">4.</span> <span class="nav-text">四.npm下载超慢的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-Algolia搜索搭建的问题"><span class="nav-number">5.</span> <span class="nav-text">五.Algolia搜索搭建的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-头像旋转以及点击头像回到主页"><span class="nav-number">6.</span> <span class="nav-text">六.头像旋转以及点击头像回到主页</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
 
@@ -709,7 +800,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2019/08/08/博客踩坑/';
           this.page.identifier = '2019/08/08/博客踩坑/';
-          this.page.title = '踩坑';
+          this.page.title = '那些年我搭博客所踩的坑';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Kyon.disqus.com/embed.js';
