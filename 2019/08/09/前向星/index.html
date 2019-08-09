@@ -1,0 +1,923 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="llDFtYyLrr-5Vslfm6_4sfp1Zc2ZSF9s2RcY2mpvdjM">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,图论,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助 一.基本概念&amp;emsp;&amp;emsp;前向星是什么??&amp;emsp;&amp;emsp;前向星是一个边集数组.啥玩意啊,拽什么专业词汇啊.也就是说,与邻接矩阵相比,前向星更像是用vector储存的邻接链表,是储存边的数组.&amp;emsp;&amp;emsp;这个数组储存的是图里的每一条边.(下面上图)&amp;emsp;&amp;emsp;下面是一组图的数据&amp;emsp;&amp;emsp;">
+<meta name="keywords" content="数据结构,图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前向星">
+<meta property="og:url" content="https://haijeng.github.io/2019/08/09/前向星/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助 一.基本概念&amp;emsp;&amp;emsp;前向星是什么??&amp;emsp;&amp;emsp;前向星是一个边集数组.啥玩意啊,拽什么专业词汇啊.也就是说,与邻接矩阵相比,前向星更像是用vector储存的邻接链表,是储存边的数组.&amp;emsp;&amp;emsp;这个数组储存的是图里的每一条边.(下面上图)&amp;emsp;&amp;emsp;下面是一组图的数据&amp;emsp;&amp;emsp;">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181217195435354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181217203838598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181218123946874.gif">
+<meta property="og:updated_time" content="2019-08-09T16:15:04.595Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前向星">
+<meta name="twitter:description" content="欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助 一.基本概念&amp;emsp;&amp;emsp;前向星是什么??&amp;emsp;&amp;emsp;前向星是一个边集数组.啥玩意啊,拽什么专业词汇啊.也就是说,与邻接矩阵相比,前向星更像是用vector储存的邻接链表,是储存边的数组.&amp;emsp;&amp;emsp;这个数组储存的是图里的每一条边.(下面上图)&amp;emsp;&amp;emsp;下面是一组图的数据&amp;emsp;&amp;emsp;">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181217195435354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2UKE68KU1I',
+      apiKey: '0d37ee3aab78daa958579cbf7b9b4d12',
+      indexName: 'iSearch',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"少年你在找金斧子还是银斧子吖","hits_empty":"少年这个:\" ${query}\"是不是不对啊","hits_stats":"少年我只有这些了"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://haijeng.github.io/2019/08/09/前向星/">
+
+
+
+
+   <title>前向星 | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">         <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/09/前向星/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前向星</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T23:54:34+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/09/前向星/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/前向星/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><font color="blue">欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助</font></p>
+<h2 id="一-基本概念"><a href="#一-基本概念" class="headerlink" title="一.基本概念"></a>一.基本概念</h2><p>&emsp;&emsp;前向星是什么??<br>&emsp;&emsp;前向星是一个边集数组.<del>啥玩意啊,拽什么专业词汇啊</del>.也就是说,与邻接矩阵相比,前向星更像是用vector储存的邻接链表,是储存边的数组.<br>&emsp;&emsp;这个数组储存的是图里的每一条边.(下面上图)<br>&emsp;&emsp;下面是一组图的数据<br>&emsp;&emsp;$4$个顶点,$6$条边,起点,终点,这条边的长度<br>4 6<br>1 2 2<br>2 3 2<br>2 4 1<br>1 3 5<br>3 4 3<br>1 4 4</p>
+<p><img src="https://img-blog.csdnimg.cn/20181217195435354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="1"></p>
+<p>&emsp;&emsp;前向星储存什么呢,存的是</p>
+<table>
+    <tr>
+        <th>第i条边</th><th> 起点 </th><th> 终点 </th><th>长度</th>
+    </tr>
+    <tr>
+        <td> 1 </td><td> 1 </td><td> 2 </td><td> 2 </td>
+    </tr>
+    <tr>
+        <td> 2 </td><td> 2 </td><td> 3 </td><td> 2 </td>
+    </tr>
+    <tr>
+        <td> 3 </td><td> 2 </td><td> 4 </td><td> 1 </td>
+    </tr>
+    <tr>
+        <td> 4 </td><td> 1 </td><td> 3 </td><td> 5 </td>
+    </tr>
+    <tr>
+        <td> 5 </td><td> 3 </td><td> 4 </td><td> 3 </td>
+    </tr>
+    <tr>
+        <td> 6 </td><td> 1 </td><td> 4 </td><td> 4 </td>
+    </tr>
+</table>
+
+<h2 id="二-代码实现"><a href="#二-代码实现" class="headerlink" title="二.代码实现"></a>二.代码实现</h2><p>&emsp;&emsp;看了一下存储方式是不是感觉so~~easy,确实如此.<br>&emsp;&emsp;但是依然改变不了这是一个很优秀的数据结构(雾)</p>
+<h3 id="1-核心代码"><a href="#1-核心代码" class="headerlink" title="1.核心代码"></a>1.核心代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> star, end, cost;</span><br><span class="line">&#125;p[<span class="number">100000</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-保存和输出"><a href="#2-保存和输出" class="headerlink" title="2.保存和输出"></a>2.保存和输出</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(edge a, edge b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> a.star &lt; b.star;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i].star &gt;&gt; p[i].end&gt;&gt;p[i].cost;</span><br><span class="line">    sort(p, p + m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,p[i].star,p[i].end,p[i].cost);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;当一个巨大的图却只有几个边的时候,这种保存方式的优势就大大的体现了出来.但是储存后需要按照起点排序.才能进行搜索或者求最短路.<br>&emsp;&emsp;于是复杂度就要加上了排序的耗时.</p>
+<h2 id="三-优化–链式前向星"><a href="#三-优化–链式前向星" class="headerlink" title="三.优化–链式前向星"></a>三.优化–链式前向星</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1.基本概念"></a>1.基本概念</h3><p>&emsp;&emsp;没错,就是优化,让我们来考虑如何去掉这个鬼畜的排序$呢^呢$??<br>&emsp;&emsp;只需要稍微改变一点点储存方式,再加入一个next就可以了.于是就像是从一个点发出去的链子一样.所以称为链式前向星(雾).<br>&emsp;&emsp;怎么弄呢?<br>&emsp;&emsp;$head[i]$保存的是第i个点的始边的位置,edge保存的是第i点的一条边的终点与长度,以及第i个点的下一条边的位置.分别用$end$,$cost$,$next$表示.<br>&emsp;&emsp;于是就这样子了<br>&emsp;&emsp;还是这个数据,会变成什么样子呢??</p>
+<table>
+    <tr>
+        <th>第i条边</th><th> 起点 </th><th> 终点 </th><th>长度</th>
+    </tr>
+    <tr>
+        <td> 1 </td><td> 1 </td><td> 2 </td><td> 2 </td>
+    </tr>
+    <tr>
+        <td> 2 </td><td> 2 </td><td> 3 </td><td> 2 </td>
+    </tr>
+    <tr>
+        <td> 3 </td><td> 2 </td><td> 4 </td><td> 1 </td>
+    </tr>
+    <tr>
+        <td> 4 </td><td> 1 </td><td> 3 </td><td> 5 </td>
+    </tr>
+    <tr>
+        <td> 5 </td><td> 3 </td><td> 4 </td><td> 3 </td>
+    </tr>
+    <tr>
+        <td> 6 </td><td> 1 </td><td> 4 </td><td> 4 </td>
+    </tr>
+</table>
+&emsp;&emsp;使$next=0$表示木有出边
+<img src="https://img-blog.csdnimg.cn/20181217203838598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" width="100%">
+为什么边序号是倒着的??(这里先卖个关子,后面会说)
+
+<h3 id="2-代码实现-边的储存以及输出"><a href="#2-代码实现-边的储存以及输出" class="headerlink" title="2.代码实现(边的储存以及输出)"></a>2.代码实现(边的储存以及输出)</h3><h4 id="1-数组实现"><a href="#1-数组实现" class="headerlink" title="(1).数组实现"></a>(1).数组实现</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> end, cost,next;</span><br><span class="line">&#125;p[<span class="number">500001</span>];</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">10001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> s,e, c;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; s &gt;&gt; e &gt;&gt; c;</span><br><span class="line">        p[i].end = e, p[i].cost = c;</span><br><span class="line">        p[i].next=head[s];</span><br><span class="line">        head[s] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> f = head[i];</span><br><span class="line">        <span class="keyword">while</span> (f) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, i, p[f].end, p[f].cost);</span><br><span class="line">            f = p[f].next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;为什么边的位置是倒着的,木措,就是因为这两行,保存方式为下图演示.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p[i].next=head[s];</span><br><span class="line">head[s] = i;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;让$head[i]$储存输入的边的位置,再让这条边的指向变为$head[i]$储存的位置.那么就意味着,越晚输入的边,它越靠近$head[i]$.<br><img src="https://img-blog.csdnimg.cn/20181218123946874.gif" alt="杂色不知道为什么"></p>
+<h4 id="2-指针实现"><a href="#2-指针实现" class="headerlink" title="(2).指针实现"></a>(2).指针实现</h4><p>&emsp;&emsp;作为一个忠于指针写数据结构的人,怎么可能不用指针写一下这个家伙呢(雾).<br>&emsp;&emsp;看懂上面的,这个应该没什么问题吧(逃)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">edge</span>* <span class="title">nd</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> end, cost;</span><br><span class="line">    nd next;</span><br><span class="line">&#125;;</span><br><span class="line">nd head[<span class="number">10001</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        nd p = head[i];</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            nd f = p-&gt;next;</span><br><span class="line">            <span class="keyword">delete</span>(p);  <span class="comment">//free(p);</span></span><br><span class="line">            p = f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="literal">NULL</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> s, e, c;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; s &gt;&gt; e &gt;&gt; c;</span><br><span class="line">        nd p = <span class="keyword">new</span>(edge);    <span class="comment">//nd p=(nd) malloc(sizeof(edge));</span></span><br><span class="line">        p-&gt;end = e, p-&gt;cost = c;</span><br><span class="line">        p-&gt;next = head[s];</span><br><span class="line">        head[s] = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        nd f = head[i];</span><br><span class="line">        <span class="keyword">while</span> (f!=<span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, i, f-&gt;end, f-&gt;cost);</span><br><span class="line">            f = f-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    close(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/线性基/" rel="next" title="线性基">
+                <i class="fa fa-chevron-left"></i> 线性基
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/touxiang.gif" alt="HaiJeng">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HaiJeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/UnKfrozen" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-link"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+
+          
+          
+
+          <div id="image">
+            <a href="https://sm.ms/image/6MSlReUsdXCj5n3" target="_blank"><img src="https://i.loli.net/2019/08/08/6MSlReUsdXCj5n3.gif"></a>
+          </div>
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                链接着异世界的大门
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/MMMinoz/" title="Minoz" target="_blank">Minoz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/violet-acmer/" title="Hyacinth" target="_blank">Hyacinth</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/curry___" title="curry___" target="_blank">curry___</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/tykws8/" title="因维因" target="_blank">因维因</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://duny31030.top/" title="Duny" target="_blank">Duny</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/aee253d4632c" title="Liukai" target="_blank">Liukai</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baccano.fun/" title="Baccano!" target="_blank">Baccano!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shawnzhou.xyz/" title="Shawn Zhou" target="_blank">Shawn Zhou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://liangyj_blog.gitee.io/" title="Liang YJ" target="_blank">Liang YJ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://kangyupl.oschina.io/LiushaoRui" title="康宇" target="_blank">康宇</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          
+          <div id="music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
+          </div>
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=484992531&auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-基本概念"><span class="nav-number">1.</span> <span class="nav-text">一.基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-代码实现"><span class="nav-number">2.</span> <span class="nav-text">二.代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-核心代码"><span class="nav-number">2.1.</span> <span class="nav-text">1.核心代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-保存和输出"><span class="nav-number">2.2.</span> <span class="nav-text">2.保存和输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-优化–链式前向星"><span class="nav-number">3.</span> <span class="nav-text">三.优化–链式前向星</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">3.1.</span> <span class="nav-text">1.基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-代码实现-边的储存以及输出"><span class="nav-number">3.2.</span> <span class="nav-text">2.代码实现(边的储存以及输出)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-数组实现"><span class="nav-number">3.2.1.</span> <span class="nav-text">(1).数组实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-指针实现"><span class="nav-number">3.2.2.</span> <span class="nav-text">(2).指针实现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UEUJxgtUhAVvU8XXrPnJzP2F-MdYXbMMI',
+        appKey: 'uXeOlS8acwGeTmbMf19bV7OF',
+        placeholder: '来啊,快活啊o(*￣▽￣*)ブ',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+   
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 

@@ -1,0 +1,863 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="llDFtYyLrr-5Vslfm6_4sfp1Zc2ZSF9s2RcY2mpvdjM">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="二分图,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参拜大佬%%% 二分图定义&amp;emsp;&amp;emsp;严格的定义请参加百度百科什么的.这里简单讲一下我的理解.就是给你一个图,有n个点.你可以按照边的关系,将这n个点分成两部分,而且这两部分之间有边相连.但是每一部分里面的点互不相连.&amp;emsp;&amp;emsp;如图1,左右两部分的点随意相连,但是每部分里的每一个点互不相连. 匹配&amp;emsp;&amp;emsp;首先是极大匹配(Maximal Matching),">
+<meta name="keywords" content="二分图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="匈牙利算法">
+<meta property="og:url" content="https://haijeng.github.io/2019/08/09/匈牙利算法/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="参拜大佬%%% 二分图定义&amp;emsp;&amp;emsp;严格的定义请参加百度百科什么的.这里简单讲一下我的理解.就是给你一个图,有n个点.你可以按照边的关系,将这n个点分成两部分,而且这两部分之间有边相连.但是每一部分里面的点互不相连.&amp;emsp;&amp;emsp;如图1,左右两部分的点随意相连,但是每部分里的每一个点互不相连. 匹配&amp;emsp;&amp;emsp;首先是极大匹配(Maximal Matching),">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190131151809862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190131152715249.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190131153007258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190131153149566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-09T15:52:50.617Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="匈牙利算法">
+<meta name="twitter:description" content="参拜大佬%%% 二分图定义&amp;emsp;&amp;emsp;严格的定义请参加百度百科什么的.这里简单讲一下我的理解.就是给你一个图,有n个点.你可以按照边的关系,将这n个点分成两部分,而且这两部分之间有边相连.但是每一部分里面的点互不相连.&amp;emsp;&amp;emsp;如图1,左右两部分的点随意相连,但是每部分里的每一个点互不相连. 匹配&amp;emsp;&amp;emsp;首先是极大匹配(Maximal Matching),">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190131151809862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2UKE68KU1I',
+      apiKey: '0d37ee3aab78daa958579cbf7b9b4d12',
+      indexName: 'iSearch',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"少年你在找金斧子还是银斧子吖","hits_empty":"少年这个:\" ${query}\"是不是不对啊","hits_stats":"少年我只有这些了"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://haijeng.github.io/2019/08/09/匈牙利算法/">
+
+
+
+
+   <title>匈牙利算法 | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">         <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/09/匈牙利算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">匈牙利算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T23:47:12+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/09/匈牙利算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/匈牙利算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>参拜大佬<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">%%%</a></strong></p>
+<h2 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&emsp;&emsp;严格的定义请参加百度百科什么的.这里简单讲一下我的理解.就是给你一个图,有n个点.你可以按照边的关系,将这n个点分成两部分,而且这两部分之间有边相连.但是每一部分里面的点互不相连.<br>&emsp;&emsp;如图1,左右两部分的点随意相连,但是每部分里的每一个点互不相连.<br><img src="https://img-blog.csdnimg.cn/20190131151809862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="1"></p>
+<h3 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h3><p>&emsp;&emsp;首先是极大匹配(Maximal Matching),是指在当前已完成的匹配下,无法再通过增加未完成匹配的边的方式来增加匹配的边数。<br>&emsp;&emsp;而最大匹配(maximum matching)是所有极大匹配当中边数最大的一个匹配。选择这样的边数最大的子集称为图的最大匹配问题。<br>&emsp;&emsp;如果一个匹配中，图中的每个顶点都和图中某条边相关联，则称此匹配为完全匹配，也称作完备匹配。<br>&emsp;&emsp;求二分图匹配可以用最大流(Maximal Flow)或者匈牙利算法(Hungarian Algorithm).<br>&emsp;&emsp;<del>当然本蒟蒻还没有学最大流</del></p>
+<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>&emsp;&emsp;我们来看图二,可以知道了这个二分图各点之间的联系.那么该算法如何实现最大匹配呢.<br><img src="https://img-blog.csdnimg.cn/20190131152715249.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="2"><br>&emsp;&emsp;根据字典序,显然易见,我们可以知道,A-&gt;E.<br>&emsp;&emsp;随后,我们看B点,它要连E,但是E被占用了,我们该怎么办?我们把A-&gt;E之间的边暂时去掉,变成黄色,然后让B-&gt;E链接,但是A不能没有,于是这里从A再走,E不行,但是有个F.所以A-&gt;F.<br><img src="https://img-blog.csdnimg.cn/20190131153007258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="3"><br><img src="https://img-blog.csdnimg.cn/20190131153149566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="4"><br>&emsp;&emsp;于是C-&gt;G也按此法加上,轮到D,我们发现G已经被连了.怎么办?将C-&gt;G的边暂时去掉.再从C走,看是否可以找别的边.但是我们发现,C只有到G的一条边.所以C-&gt;G保留,D只能孤立一人,我们无能为力.</p>
+<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= ny; i++)</span><br><span class="line">        <span class="keyword">if</span> (!used[i] &amp;&amp; m[x][i]) &#123;    <span class="comment">//used[]指的是,这个点是否被处理过.m[][]是指两者之间是否相连</span></span><br><span class="line">            used[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (!y[i] || find(y[i]))  <span class="comment">//如果这个点没有被链接,或者可以调整</span></span><br><span class="line">                <span class="keyword">return</span> y[i] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> m[maxn][maxn], used[maxn],y[maxn],nx, ny;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= ny; i++)</span><br><span class="line">        <span class="keyword">if</span> (!used[i] &amp;&amp; m[x][i]) &#123;</span><br><span class="line">            used[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (!y[i] || find(y[i]))</span><br><span class="line">                <span class="keyword">return</span> y[i] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>,d;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; nx &gt;&gt; ny&gt;&gt;d;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        m[x][y] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nx; i++) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(used, <span class="number">0</span>, <span class="keyword">sizeof</span>(used));</span><br><span class="line">        <span class="keyword">if</span> (find(i))</span><br><span class="line">            ans++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= ny; i++)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; y[i] &lt;&lt; <span class="string">':'</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/二分图/" rel="tag"># 二分图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/字典树/" rel="next" title="字典树">
+                <i class="fa fa-chevron-left"></i> 字典树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/09/线性基/" rel="prev" title="线性基">
+                线性基 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/touxiang.gif" alt="HaiJeng">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HaiJeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/UnKfrozen" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-link"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+
+          
+          
+
+          <div id="image">
+            <a href="https://sm.ms/image/6MSlReUsdXCj5n3" target="_blank"><img src="https://i.loli.net/2019/08/08/6MSlReUsdXCj5n3.gif"></a>
+          </div>
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                链接着异世界的大门
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/MMMinoz/" title="Minoz" target="_blank">Minoz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/violet-acmer/" title="Hyacinth" target="_blank">Hyacinth</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/curry___" title="curry___" target="_blank">curry___</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/tykws8/" title="因维因" target="_blank">因维因</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://duny31030.top/" title="Duny" target="_blank">Duny</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/aee253d4632c" title="Liukai" target="_blank">Liukai</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baccano.fun/" title="Baccano!" target="_blank">Baccano!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shawnzhou.xyz/" title="Shawn Zhou" target="_blank">Shawn Zhou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://liangyj_blog.gitee.io/" title="Liang YJ" target="_blank">Liang YJ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://kangyupl.oschina.io/LiushaoRui" title="康宇" target="_blank">康宇</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          
+          <div id="music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
+          </div>
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=484992531&auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分图"><span class="nav-number">1.</span> <span class="nav-text">二分图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配"><span class="nav-number">1.2.</span> <span class="nav-text">匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匈牙利算法"><span class="nav-number">2.</span> <span class="nav-text">匈牙利算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心代码"><span class="nav-number">2.1.</span> <span class="nav-text">核心代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">3.</span> <span class="nav-text">完整代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UEUJxgtUhAVvU8XXrPnJzP2F-MdYXbMMI',
+        appKey: 'uXeOlS8acwGeTmbMf19bV7OF',
+        placeholder: '来啊,快活啊o(*￣▽￣*)ブ',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+   
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 

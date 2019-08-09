@@ -1,0 +1,887 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="llDFtYyLrr-5Vslfm6_4sfp1Zc2ZSF9s2RcY2mpvdjM">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="二进制,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="定义即使线性代数课结束,依然逃不过线性代数线性基,类似于线代里面的矩阵求最大线性无关组.看一下大佬的说法:锵锵,传送门%%%%  首先来看一个问题： 给出N个数,要从中选出一个最大的子集,使得子集中的任意个元素异或值不为0.这个和极大线性无关组有些类似。异或可以看出是模2域下的加法运算,如果把一个数转化为二进制,对应成一个由01构成的向量,所有这些向量就构成了一个线性空间。 原问题就转化为求这个向">
+<meta name="keywords" content="二进制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性基">
+<meta property="og:url" content="https://haijeng.github.io/2019/08/09/线性基/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="定义即使线性代数课结束,依然逃不过线性代数线性基,类似于线代里面的矩阵求最大线性无关组.看一下大佬的说法:锵锵,传送门%%%%  首先来看一个问题： 给出N个数,要从中选出一个最大的子集,使得子集中的任意个元素异或值不为0.这个和极大线性无关组有些类似。异或可以看出是模2域下的加法运算,如果把一个数转化为二进制,对应成一个由01构成的向量,所有这些向量就构成了一个线性空间。 原问题就转化为求这个向">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190123135437550.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190123135810942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190123141111674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-09T16:18:45.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线性基">
+<meta name="twitter:description" content="定义即使线性代数课结束,依然逃不过线性代数线性基,类似于线代里面的矩阵求最大线性无关组.看一下大佬的说法:锵锵,传送门%%%%  首先来看一个问题： 给出N个数,要从中选出一个最大的子集,使得子集中的任意个元素异或值不为0.这个和极大线性无关组有些类似。异或可以看出是模2域下的加法运算,如果把一个数转化为二进制,对应成一个由01构成的向量,所有这些向量就构成了一个线性空间。 原问题就转化为求这个向">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190123135437550.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2UKE68KU1I',
+      apiKey: '0d37ee3aab78daa958579cbf7b9b4d12',
+      indexName: 'iSearch',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"少年你在找金斧子还是银斧子吖","hits_empty":"少年这个:\" ${query}\"是不是不对啊","hits_stats":"少年我只有这些了"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://haijeng.github.io/2019/08/09/线性基/">
+
+
+
+
+   <title>线性基 | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">         <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/09/线性基/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线性基</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T23:48:33+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/09/线性基/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/线性基/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><del>即使线性代数课结束,依然逃不过线性代数</del><br>线性基,类似于线代里面的矩阵求最大线性无关组.<br>看一下大佬的说法:锵锵,传送门<a href="https://www.cnblogs.com/vb4896/p/6149022.html" target="_blank" rel="noopener">%%%%</a></p>
+<blockquote>
+<p>首先来看一个问题： 给出N个数,要从中选出一个最大的子集,使得子集中的任意个元素异或值不为0.<br>这个和极大线性无关组有些类似。异或可以看出是模2域下的加法运算,如果把一个数转化为二进制,对应成一个由01构成的向量,<br>所有这些向量就构成了一个线性空间。 原问题就转化为求这个向量组的极大线性无关组,把这样一个极大线性无关组成为线性基。<br>可以用$O(60*60*n)$的高斯消元来解决。 但是还有更加快速的构造线性基的方法： 复杂度是$O(60*n)$</p>
+</blockquote>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>&emsp;&emsp;可以这么看,我们有n多个数.这些数x相互xor(异或)得到的一些数y,我们称y是他们x的值域.但是n多个数可能都太大,不好维护或者储存.于是我们想用尽量小的数,假使有k个比较小的数,相互xor同样能求出值域y.而这些k个数,我们就称之为线性基.<br>又有xor是在(0,1)为基底的空间里的运算.所以我们要把n多个数,解成二进制.举个栗子:<br>我们有集合{x}={2,9,10,17}他们相互异或可以得到值域{y}.但是这4个数,太大了<del>夸张一下</del>.我们就要想办法缩小x得到集合{k}.<br><img src="https://img-blog.csdnimg.cn/20190123135437550.png" alt="1"><br>于是,我们把这四个数写成矩阵,就成了矩阵A.<br><img src="https://img-blog.csdnimg.cn/20190123135810942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="2"><br>.我们考虑把这个变成上三角形,那么可以r3-r2+r4,然后r3和r4互换.<br>就可以得到一个行阶梯型的矩阵.<br>于是集合{x}-&gt;{k}={1,2,10,17}.嗯,没错,{k}就是我们要求得的线性基.<del>当然,我们也可以处理掉10,保留9</del><br><img src="https://img-blog.csdnimg.cn/20190123141111674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="3"><br>如果计算一下的话,会发现,得到的值域{y}是相同的.于是,我们就可以称{k}为线性基.</p>
+<h2 id="求解线性筛"><a href="#求解线性筛" class="headerlink" title="求解线性筛"></a>求解线性筛</h2><p>由图3,很明显我们知道了一个求线性基的方法,是高斯消元.但是太麻烦,繁琐,耗时.常用的是另一种.<br>一句话介绍就是:</p>
+<blockquote>
+<p>将x转换为二进制,从高位向低位扫,如果第一个1是第p位,如果$k_p=0$,就令$k_p=x$;如果$k_p!=0$,就令$x$XOR$k_p$后,重复上述阶段.</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = Bit ; i &gt;= <span class="number">0</span> ; i-- )   <span class="comment">//Bit是二进制的位数,常见题目大多为62.</span></span><br><span class="line">    <span class="keyword">if</span>( <span class="number">1</span> &lt;&lt; i &amp; Num )</span><br><span class="line">        <span class="keyword">if</span>( !Base[i] ) &#123;</span><br><span class="line">            Base[i] = Num ;</span><br><span class="line">            <span class="keyword">break</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            Num ^= Base[i] ;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="一-查询最值"><a href="#一-查询最值" class="headerlink" title="一.查询最值"></a>一.查询最值</h3><p>贪心,从高位向低位贪心,可知,从高到底,后面的无法改变高位,只要高位变为最大的即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">62</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    ans = max(ans, ans^p[i]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="二-查询最小值"><a href="#二-查询最小值" class="headerlink" title="二.查询最小值"></a>二.查询最小值</h3><p>贪心,从高位向低位贪心,可知,从高到底,后面的无法改变高位,只要高位变为最小的即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">62</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    ans = min(ans, ans^p[i]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见题目"><a href="#常见题目" class="headerlink" title="常见题目"></a>常见题目</h2><h3 id="一-P3812-【模板】线性基"><a href="#一-P3812-【模板】线性基" class="headerlink" title="一.P3812 【模板】线性基"></a>一.<a href="https://www.luogu.org/problemnew/show/P3812" target="_blank" rel="noopener">P3812 【模板】线性基</a></h3><p>这是一道模板题。</p>
+<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定n个整数（数字可能重复），求在这些数中选取任意个，使得他们的异或和最大。</p>
+<h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><p><strong>输入格式:</strong><br>第一行一个数n，表示元素个数<br>接下来一行n个数<br><strong>输出格式：</strong><br>仅一行，表示答案。</p>
+<h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p><strong>输入样例#1:</strong><br>2<br>1 1<br><strong>输出样例#1:</strong><br>1</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>$1≤n≤50,0≤S_i≤2^{50}$</p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>模板题目</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line">ll a[maxn], p[maxn], dp[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;n ; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">62</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1l</span>l &lt;&lt; j &amp; a[i])</span><br><span class="line">                <span class="keyword">if</span> (!p[j]) &#123;</span><br><span class="line">                    p[j] = a[i];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    a[i] ^= p[j];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">62</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        ans = max(ans, ans^p[i]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二-小a与星际探索"><a href="#二-小a与星际探索" class="headerlink" title="二.小a与星际探索"></a>二.小a与星际探索</h3><pre><code>链接：https://ac.nowcoder.com/acm/contest/317/C
+来源：牛客网</code></pre><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>&emsp;&emsp;小a正在玩一款星际探索游戏，小a需要驾驶着飞船从1号星球出发前往n号星球。其中每个星球有一个能量指数p。星球i能到达星球j当且仅当$p_i&gt;p_j$。<br>&emsp;&emsp;同时小a的飞船还有一个耐久度t，初始时为1号点的能量指数，若小a前往星球j，那么飞船的耐久度会变为$t$⊕$p_j$(即$t$异或$p_j$，关于其定义请自行百度)<br>&emsp;&emsp;小a想知道到达n号星球时耐久度最大为多少.<br>注意：对于每个位置来说，从它出发可以到达的位置仅与两者的p有关，与下标无关</p>
+<h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h4><p>&emsp;&emsp;第一行一个整数n，表示星球数<br>&emsp;&emsp;接下来一行有n个整数，第i个整数表示pi</p>
+<h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h4><p>&emsp;&emsp;一个整数表示到达n号星球时最大的耐久度<br>&emsp;&emsp;若不能到达n号星球或到达时的最大耐久度为0则输出−1</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p><strong>输入</strong><br>3<br>457 456 23<br><strong>输出</strong><br>478<br><strong>说明</strong><br>&emsp;&emsp;小a有两种方法到达3号星球<br>&emsp;&emsp;第一种：1→2→3，最终耐久度为457⊕456⊕23=22<br>&emsp;&emsp;第二种：1→3，最终耐久度为457⊕23=478<br><strong>输入</strong><br>4<br>2 4 4 2<br><strong>输出</strong><br>-1<br><strong>输入</strong><br>5<br>234 233 123 2333 23<br><strong>输出</strong><br>253<br><strong>备注:1⩽n,∀pi⩽3000</strong></p>
+<h4 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h4><p>&emsp;&emsp;求从$p_1$到$p_n$的异或和最大值,套板子….然后注意的是$p_i$到$p_j$的话需要$p_i&gt;p_j$.所以不符合的数直接扔掉就可以了.<br>&emsp;&emsp;最后再判断一下$p_1$和$p_n$之间的大小关系就好了.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn], p[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;n ; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">12</span>; j &gt;= <span class="number">0</span>; j--) </span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1l</span>l &lt;&lt; j &amp; p[i]&amp;&amp;p[<span class="number">0</span>]&gt;p[i]&amp;&amp;p[i]&gt;p[n])</span><br><span class="line">                <span class="keyword">if</span> (!a[j]) &#123;</span><br><span class="line">                    a[j] = p[i];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    p[i] ^= a[j];</span><br><span class="line">    <span class="keyword">int</span> ans = p[<span class="number">0</span>] ^ p[n - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">12</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        ans = max(ans, ans^a[i]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (p[<span class="number">0</span>]&gt;p[n<span class="number">-1</span>]?ans:<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/二进制/" rel="tag"># 二进制</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/匈牙利算法/" rel="next" title="匈牙利算法">
+                <i class="fa fa-chevron-left"></i> 匈牙利算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/09/前向星/" rel="prev" title="前向星">
+                前向星 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/touxiang.gif" alt="HaiJeng">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HaiJeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/UnKfrozen" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-link"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+
+          
+          
+
+          <div id="image">
+            <a href="https://sm.ms/image/6MSlReUsdXCj5n3" target="_blank"><img src="https://i.loli.net/2019/08/08/6MSlReUsdXCj5n3.gif"></a>
+          </div>
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                链接着异世界的大门
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/MMMinoz/" title="Minoz" target="_blank">Minoz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/violet-acmer/" title="Hyacinth" target="_blank">Hyacinth</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/curry___" title="curry___" target="_blank">curry___</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/tykws8/" title="因维因" target="_blank">因维因</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://duny31030.top/" title="Duny" target="_blank">Duny</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/aee253d4632c" title="Liukai" target="_blank">Liukai</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baccano.fun/" title="Baccano!" target="_blank">Baccano!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shawnzhou.xyz/" title="Shawn Zhou" target="_blank">Shawn Zhou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://liangyj_blog.gitee.io/" title="Liang YJ" target="_blank">Liang YJ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://kangyupl.oschina.io/LiushaoRui" title="康宇" target="_blank">康宇</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          
+          <div id="music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
+          </div>
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=484992531&auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求解线性筛"><span class="nav-number">3.</span> <span class="nav-text">求解线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用操作"><span class="nav-number">4.</span> <span class="nav-text">常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-查询最值"><span class="nav-number">4.1.</span> <span class="nav-text">一.查询最值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-查询最小值"><span class="nav-number">4.2.</span> <span class="nav-text">二.查询最小值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见题目"><span class="nav-number">5.</span> <span class="nav-text">常见题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-P3812-【模板】线性基"><span class="nav-number">5.1.</span> <span class="nav-text">一.P3812 【模板】线性基</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述"><span class="nav-number">5.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出格式"><span class="nav-number">5.1.2.</span> <span class="nav-text">输入输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入输出样例"><span class="nav-number">5.1.3.</span> <span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明"><span class="nav-number">5.1.4.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解析"><span class="nav-number">5.1.5.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-小a与星际探索"><span class="nav-number">5.2.</span> <span class="nav-text">二.小a与星际探索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目描述-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述"><span class="nav-number">5.2.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出描述"><span class="nav-number">5.2.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">5.2.4.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解析-1"><span class="nav-number">5.2.5.</span> <span class="nav-text">解析</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UEUJxgtUhAVvU8XXrPnJzP2F-MdYXbMMI',
+        appKey: 'uXeOlS8acwGeTmbMf19bV7OF',
+        placeholder: '来啊,快活啊o(*￣▽￣*)ブ',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+   
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 
