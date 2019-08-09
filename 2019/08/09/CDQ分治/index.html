@@ -59,7 +59,7 @@
 
 
 
-  <meta name="keywords" content="UOJ,模拟,">
+  <meta name="keywords" content="CDQ分治,">
 
 
 
@@ -70,18 +70,18 @@
 
 
 
-<meta name="description" content="序这个题,难在阅读. 题目大意跳过!链接:🔗 解析 首先根据题目得到一个随机数列$\lbrace x_i=(a×x_{i−1}^2+b×x_{i−1}+c)$mod$d\rbrace$其中$i\in{1…n×m}$ 搞一个数列$T$,其中$T_i=i$,$i\in{1….n×m}$ 对每一项$T_i$,我们$swap(T_i,$$T_{x_imodi+1})$ 以上$3$步结束后,得到的就是棋盘">
-<meta name="keywords" content="UOJ,模拟">
+<meta name="description" content="不得不说&amp;emsp;&amp;emsp;本来标题想写分治,但是想了想发现自己分治能说的不多,主要的内容就是$CDQ$分治.便取了这个标题. 预备知识 关于什么是分治&amp;emsp;&amp;emsp;分治，字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。在计算机科学中，分治法就是运用分治思">
+<meta name="keywords" content="CDQ分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UOJ #6.[NOI2014]随机数生成器">
-<meta property="og:url" content="http://yoursite.com/2019/08/08/UOJ-6/index.html">
+<meta property="og:title" content="CDQ分治">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/CDQ分治/index.html">
 <meta property="og:site_name" content="rp++">
-<meta property="og:description" content="序这个题,难在阅读. 题目大意跳过!链接:🔗 解析 首先根据题目得到一个随机数列$\lbrace x_i=(a×x_{i−1}^2+b×x_{i−1}+c)$mod$d\rbrace$其中$i\in{1…n×m}$ 搞一个数列$T$,其中$T_i=i$,$i\in{1….n×m}$ 对每一项$T_i$,我们$swap(T_i,$$T_{x_imodi+1})$ 以上$3$步结束后,得到的就是棋盘">
+<meta property="og:description" content="不得不说&amp;emsp;&amp;emsp;本来标题想写分治,但是想了想发现自己分治能说的不多,主要的内容就是$CDQ$分治.便取了这个标题. 预备知识 关于什么是分治&amp;emsp;&amp;emsp;分治，字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。在计算机科学中，分治法就是运用分治思">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-08-08T14:02:03.551Z">
+<meta property="og:updated_time" content="2019-08-09T09:03:51.953Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UOJ #6.[NOI2014]随机数生成器">
-<meta name="twitter:description" content="序这个题,难在阅读. 题目大意跳过!链接:🔗 解析 首先根据题目得到一个随机数列$\lbrace x_i=(a×x_{i−1}^2+b×x_{i−1}+c)$mod$d\rbrace$其中$i\in{1…n×m}$ 搞一个数列$T$,其中$T_i=i$,$i\in{1….n×m}$ 对每一项$T_i$,我们$swap(T_i,$$T_{x_imodi+1})$ 以上$3$步结束后,得到的就是棋盘">
+<meta name="twitter:title" content="CDQ分治">
+<meta name="twitter:description" content="不得不说&amp;emsp;&amp;emsp;本来标题想写分治,但是想了想发现自己分治能说的不多,主要的内容就是$CDQ$分治.便取了这个标题. 预备知识 关于什么是分治&amp;emsp;&amp;emsp;分治，字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。在计算机科学中，分治法就是运用分治思">
 
 
 
@@ -111,12 +111,12 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/08/UOJ-6/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/CDQ分治/">
 
 
 
 
-   <title>UOJ #6.[NOI2014]随机数生成器 | rp++</title>   
+   <title>CDQ分治 | rp++</title>   
 
 
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/UOJ-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/CDQ分治/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaiJeng">
@@ -276,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UOJ #6.[NOI2014]随机数生成器</h1>
+          <h1 class="post-title" itemprop="name headline">CDQ分治</h1>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T20:53:54+08:00">
-                2019-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T16:51:51+08:00">
+                2019-08-09
               </time>
             
 
@@ -311,8 +311,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/UOJ练习记录/" itemprop="url" rel="index">
-                    <span itemprop="name">UOJ练习记录</span>
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
                   </a>
                 </span>
 
@@ -329,8 +329,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/08/UOJ-6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/08/UOJ-6/" itemprop="commentCount"></span>
+                <a href="/2019/08/09/CDQ分治/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/CDQ分治/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -358,33 +358,91 @@
       
 
       
-        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>这个题,难在阅读.</p>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>跳过!<br>链接:<a href="http://uoj.ac/problem/6" target="_blank" rel="noopener">🔗</a></p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ol>
-<li>首先根据题目得到一个随机数列$\lbrace x_i=(a×x_{i−1}^2+b×x_{i−1}+c)$mod$d\rbrace$其中$i\in{1…n×m}$</li>
-<li>搞一个数列$T$,其中$T_i=i$,$i\in{1….n×m}$</li>
-<li>对每一项$T_i$,我们$swap(T_i,$$T_{x_imodi+1})$</li>
-<li>以上$3$步结束后,得到的就是棋盘要填的数$T_i$</li>
+        <h2 id="不得不说"><a href="#不得不说" class="headerlink" title="不得不说"></a>不得不说</h2><p>&emsp;&emsp;本来标题想写分治,但是想了想发现自己分治能说的不多,主要的内容就是$CDQ$分治.便取了这个标题.</p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li><strong>关于什么是分治</strong><br>&emsp;&emsp;分治，字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。在计算机科学中，分治法就是运用分治思想的一种很重要的算法。分治法是很多高效算法的基础，如排序算法（快速排序，归并排序），傅立叶变换（快速傅立叶变换）等等。</li>
+<li><strong>一般步骤</strong> </li>
+</ul>
+<ol>
+<li>划分步：把输入的问题划分为$k$个子问题，并尽量使这$k$个子问题的规模大致相同。</li>
+<li>治理步：当问题的规模大于某个预定的阈值$n_0$时，治理步由$k$个递归调用组成。</li>
+<li>组合步：组合步把各个子问题的解组合起来，它对分治算法的实际性能至关重要，算法的有效性很大地依赖于组合步的实现。</li>
 </ol>
-<p>样例一数据生成的棋盘如下:</p>
-<table style="float:right">
-  <tr>
-    <td>12</td><td>9</td><td>1</td><td>7</td>
-  </tr>
-  <tr>
-    <td>5</td><td>11</td><td>6</td><td>2</td>
-  </tr>
-  <tr>
-    <td>4</td><td>10</td><td>3</td><td>8</td>
-  </tr>
-</table>
+<ul>
+<li><strong>时间复杂度</strong> <ul>
+<li>直观估计 <ul>
+<li>分治由以上三部分构成，整体时间复杂度则由这三部分的时间复杂度之和构成.</li>
+<li>由于递归，最终的子问题变得极为简单，以至于其时间复杂度在整个分治策略上的比重微乎其微.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>经典例题</strong><ul>
+<li>归并排序,快排等</li>
+<li>求逆序对等<h3 id="经典例题"><a href="#经典例题" class="headerlink" title="经典例题"></a>经典例题</h3>$Atcoder\ A\ -\ Colorful\ Subsequence$<br><a href="https://atcoder.jp/contests/agc031/tasks/agc031_a" target="_blank" rel="noopener">https://atcoder.jp/contests/agc031/tasks/agc031_a</a></li>
+</ul>
+</li>
+<li>题目简析:<ul>
+<li>问多少种子序列,子序列中的字母不同.</li>
+<li>列如$baa$,包括:$b,a,a,$两个不同位置$a$的$ba$,总计$5$个,$baa$排除是因为$a$是重复的.</li>
+</ul>
+</li>
+<li>解法<ul>
+<li>先将每个字母的个数统计下来,然后分治计算,一个字母的时候,答案是该字母出现的次数.</li>
+<li>只有两个字母的时候,如$ab$,包含的排列有$a,b,ab$,相当于’$a$的个数,$b$的个数,$a$和$b$组合个数’的加和,而$a$和$b$组合个数,则是$a$的个数$\times b$的个数</li>
+<li>同理可得,$ans$即为$ansL+ansR+ansL\times ansR$.<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> null</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> null -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[INF];</span><br><span class="line"><span class="keyword">int</span> num[<span class="number">27</span>];</span><br><span class="line"><span class="built_in">string</span> s1=<span class="string">"0"</span>;</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (L == R)</span><br><span class="line">		<span class="keyword">return</span> num[s1[L] - <span class="string">'a'</span>];</span><br><span class="line">	<span class="keyword">int</span> mid = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	ll nL = solve(L, mid), nR = solve(mid + <span class="number">1</span>, R);</span><br><span class="line">	<span class="keyword">return</span> (nL%MOD + nR%MOD + (nL%MOD * nR%MOD)%MOD)%MOD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; s;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!num[s[i] - <span class="string">'a'</span>])</span><br><span class="line">			s1 = s1 + s[i];</span><br><span class="line">		num[s[i] - <span class="string">'a'</span>]++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; solve(<span class="number">1</span>, s1.length() - <span class="number">1</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;路线便是$12-&gt;9-&gt;1-&gt;6-&gt;2-&gt;8$<br>&emsp;&emsp;一个有技巧的贪心来选数.<br>&emsp;&emsp;首先,$map[1][1]$必定选.<br>&emsp;&emsp;如果我们不考虑棋盘顺序,若要序列最小,显然是选最小数的放进去,那么我们便从$1$这个数开始贪心.<br>那么,这个数我们什么时候才取它呢?<br>&emsp;&emsp;根据题目要求,我们从左上角到右下角,只能向右或者向下走,只要选过的数在要选的数左上方或右下方的时候,这个数才是可选的,或者说是可到达的.<br>&emsp;&emsp;假设当我们要选$9$时,我们已经选了$1,2,6,8,12$,我们看$9$能否到达呢?<br>&emsp;&emsp;显然,左侧离它最近的数要$\ge$它的行,右侧离它最近的数要$\leq$它的行.这样我们就可以选它.<br>&emsp;&emsp;当然,选完后更新$L[],R[]$.</p>
-<p>即代码:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//x为行,y为列</span></span><br><span class="line"><span class="comment">//n行,m列</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">     L[i] = <span class="number">1</span> ,R[i] = m;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n * m; i++)&#123;</span><br><span class="line">    L[x] &lt;= y &amp;&amp; y &lt;= R[x]</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; x; j++)</span><br><span class="line">         R[j] = min(R[j], y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = n; j &gt; x; j--)</span><br><span class="line">        L[j] = max(L[j], y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;理解了这个贪心,题目就很水了.<br>&emsp;&emsp;据说要注意空间,时间…..全程<code>cin</code>好像没啥事.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">5e3</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T[MAXN * MAXN], l[MAXN * MAXN], R[MAXN], L[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b, c, d;</span><br><span class="line">    <span class="keyword">int</span> n, m, q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; l[<span class="number">0</span>] &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; n &gt;&gt; m &gt;&gt; q;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m * n; i++)</span><br><span class="line">        T[i] = i, l[i] = (<span class="number">1L</span>L * a * l[i - <span class="number">1</span>] * l[i - <span class="number">1</span>] + <span class="number">1L</span>L * b * l[i - <span class="number">1</span>] + c) % d;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n * m; i++)</span><br><span class="line">        swap(T[i], T[l[i] % i + <span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        swap(T[x], T[y]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n * m; i++)</span><br><span class="line">        l[T[i]] = i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        R[i] = m, L[i] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, sum = <span class="number">0</span>; i &lt;= n * m; i++) &#123;</span><br><span class="line">        x = (l[i] - <span class="number">1</span>) / m + <span class="number">1</span>, y = l[i] % m ? l[i] % m : m;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (L[x] &lt;= y &amp;&amp; y &lt;= R[x]) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            sum++;</span><br><span class="line">            <span class="keyword">if</span> (sum == n * m - <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; x; j++)</span><br><span class="line">                R[j] = min(R[j], y);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = n; j &gt; x; j--)</span><br><span class="line">                L[j] = max(L[j], y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CDQ分治"><a href="#CDQ分治" class="headerlink" title="CDQ分治"></a>CDQ分治</h2><p>前面絮絮叨叨的简单介绍了下分治,想必各位对分治有了一定认识.<br>下面是重头戏:$CDQ$分治.<br>这个算法,是由<strong>陈丹琦大牛</strong>在论文中提出的%%%.<br><strong>首先,我们需要知道一些事情:</strong></p>
+<ul>
+<li>优势在于可以顶替复杂的高级数据结构，而且常数比较小</li>
+<li>缺点在于必须离线操作</li>
+</ul>
+<hr>
+<p><strong>用来解决什么问题呢?</strong></p>
+<ul>
+<li>首先,分治问题2333</li>
+<li>分治后的答案,不仅单单考虑子问题${L,mid}$和子问题${mid+1,R}$.</li>
+<li>还需要考虑子问题${L,mid}$对子问题${mid+1,R}$的影响$/$联系产生的答案.</li>
+</ul>
+<p><strong>列如:</strong></p>
+<ul>
+<li>二维偏序问题<ul>
+<li>给定一个二元组${x,y}$,要求问有多少对${x_i,y_i},{x_j,y_j}$满足$x_i&gt;x_j$<kbd>&&</kbd>$y_i&gt;y_j$</li>
+<li>解法为:<ul>
+<li>先将二元组按照$x$的大小排列.</li>
+<li>分治后,我们分别知道${L,mid}$区间和${mid+1,R}$区间内的解</li>
+<li>再计算跨过$mid$的两对点,对${L,mid}$和${mid+1,R}$中的二元组按照$y$的大小排序</li>
+<li>由于先前分组便已经对$x$进行排序,所以,只需要二分便可以求得左区间相对于右区间的点的个数.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三维偏序问题<ul>
+<li>和二维偏序问题类似,但有一定不同</li>
+<li>给定一个三元组${x,y,z}$,要求问有多少对${x_i,y_i,z_i},{x_j,y_j,z_j}$满足$x_i&gt;x_j$<kbd>&&</kbd>$y_i&gt;y_j$<kbd>&&</kbd>$z_i&gt;z_j$</li>
+<li>解法为:<ul>
+<li>先将三元组按照$x$的大小排列.</li>
+<li>分治后,我们分别知道${L,mid}$区间和${mid+1,R}$区间内的解</li>
+<li>再计算跨过$mid$的两对点,对${L,mid}$和${mid+1,R}$中的三元组按照$y$的大小排序</li>
+<li>由于先前分组便已经对$x$进行排序,所以,只需要二分便可以求得满足$y$条件的点.</li>
+<li>再建立一个权值树状数组$/$线段树,再将上面符合的${x,y,z}$对应中满足不等式的$z$的点求出.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>例题</strong></p>
+<ul>
+<li><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3262" target="_blank" rel="noopener">BZOJ3262: 陌上花开</a></li>
+<li><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4237" target="_blank" rel="noopener">BZOJ4237: 稻草人</a>或者这个<a href="https://loj.ac/problem/2880" target="_blank" rel="noopener">LibreOJ稻草人</a></li>
+</ul>
+<hr>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdq</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(left==right)</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">int</span> mid=(left+right)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	cdq(left,mid),cdq(mid+<span class="number">1</span>,right);</span><br><span class="line">	sort(a+l,a+mid+<span class="number">1</span>,cmp);</span><br><span class="line">	sort(a+mid+<span class="number">1</span>,a+right+<span class="number">1</span>,cmp);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	*处理左区间对于右区间影响的代码</span></span><br><span class="line"><span class="comment">	*/</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -401,9 +459,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UOJ/" rel="tag"># UOJ</a>
-          
-            <a href="/tags/模拟/" rel="tag"># 模拟</a>
+            <a href="/tags/CDQ分治/" rel="tag"># CDQ分治</a>
           
         </div>
       
@@ -416,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/08/那些年我搭博客所踩的坑/" rel="next" title="那些年我搭博客所踩的坑">
-                <i class="fa fa-chevron-left"></i> 那些年我搭博客所踩的坑
+              <a href="/2019/08/09/高精度/" rel="next" title="高精度">
+                <i class="fa fa-chevron-left"></i> 高精度
               </a>
             
           </div>
@@ -425,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/09/分块1-9-未完/" rel="prev" title="分块1-9(未完)">
-                分块1-9(未完) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -643,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大意"><span class="nav-number">2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析"><span class="nav-number">3.</span> <span class="nav-text">解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不得不说"><span class="nav-number">1.</span> <span class="nav-text">不得不说</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">2.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典例题"><span class="nav-number">2.1.</span> <span class="nav-text">经典例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CDQ分治"><span class="nav-number">3.</span> <span class="nav-text">CDQ分治</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪代码"><span class="nav-number">4.</span> <span class="nav-text">伪代码</span></a></li></ol></div>
             
 
           </div>

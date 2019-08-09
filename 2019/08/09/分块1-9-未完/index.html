@@ -1,0 +1,889 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="分块,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="序感谢@hzwer大佬出的练习题题目链接LOJ本蒟过弱,实在不知道怎么压缩代码量了-&amp;gt;_-&amp;gt; 数列分块入门 1给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，单点查值。  将$n$个数,按照每$\sqrt{n}$为一个块标记. 123belong[x]:元素x所在的块的编号，样例代码中为bl[x];start[x]:编号为x的块的最左边的点，样例代码中为st[x]">
+<meta name="keywords" content="分块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分块1-9(未完)">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/分块1-9-未完/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="序感谢@hzwer大佬出的练习题题目链接LOJ本蒟过弱,实在不知道怎么压缩代码量了-&amp;gt;_-&amp;gt; 数列分块入门 1给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，单点查值。  将$n$个数,按照每$\sqrt{n}$为一个块标记. 123belong[x]:元素x所在的块的编号，样例代码中为bl[x];start[x]:编号为x的块的最左边的点，样例代码中为st[x]">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-08-09T09:18:02.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分块1-9(未完)">
+<meta name="twitter:description" content="序感谢@hzwer大佬出的练习题题目链接LOJ本蒟过弱,实在不知道怎么压缩代码量了-&amp;gt;_-&amp;gt; 数列分块入门 1给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，单点查值。  将$n$个数,按照每$\sqrt{n}$为一个块标记. 123belong[x]:元素x所在的块的编号，样例代码中为bl[x];start[x]:编号为x的块的最左边的点，样例代码中为st[x]">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2UKE68KU1I',
+      apiKey: '0d37ee3aab78daa958579cbf7b9b4d12',
+      indexName: 'iSearch',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"少年你在找金斧子还是银斧子吖","hits_empty":"少年这个:\" ${query}\"是不是不对啊","hits_stats":"少年我只有这些了"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/分块1-9-未完/">
+
+
+
+
+   <title>分块1-9(未完) | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">         <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/分块1-9-未完/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分块1-9(未完)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T16:42:40+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/09/分块1-9-未完/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/分块1-9-未完/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>感谢<a href="http://hzwer.com/8053.html" target="_blank" rel="noopener">@hzwer</a>大佬出的练习题<br>题目链接<a href="https://loj.ac/problems/search?keyword=%E5%88%86%E5%9D%97" target="_blank" rel="noopener">LOJ</a><br>本蒟过弱,实在不知道怎么压缩代码量了-&gt;_-&gt;</p>
+<h2 id="数列分块入门-1"><a href="#数列分块入门-1" class="headerlink" title="数列分块入门 1"></a>数列分块入门 1</h2><p>给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，单点查值。</p>
+<hr>
+<p>将$n$个数,按照每$\sqrt{n}$为一个块标记.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">belong[x]:元素x所在的块的编号，样例代码中为bl[x];</span><br><span class="line">start[x]:编号为x的块的最左边的点，样例代码中为st[x];</span><br><span class="line">end[x]:编号为x的块的最右边的点，样例代码中为ed[x];</span><br></pre></td></tr></table></figure>
+
+<p>每次对所给的$[l,r]$区间进行讨论,分为”单蹦”和”块”,对于不满块的数,直接暴力修改.<br>对于满足块的数,直接打一个标记,当访问的时候再进行修改即可,类似于线段树$lazy$.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">belong[x]:元素x所在的块的编号，样例代码中为bl[x];</span></span><br><span class="line"><span class="comment">start[x]:编号为x的块的最左边的点，样例代码中为st[x];</span></span><br><span class="line"><span class="comment">end[x]:编号为x的块的最右边的点，样例代码中为ed[x];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> belong[MAXN], tot = <span class="number">1</span>, a[MAXN], n, cnt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> lazy;</span><br><span class="line">    <span class="keyword">int</span> start, end;</span><br><span class="line">&#125; p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    cnt = <span class="built_in">sqrt</span>(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);  <span class="comment">// cin &gt;&gt; a[i];</span></span><br><span class="line">        belong[i] = tot;</span><br><span class="line">        <span class="keyword">if</span> (i % cnt == <span class="number">1</span>)</span><br><span class="line">            p[tot].start = i;</span><br><span class="line">        <span class="keyword">if</span> (i % cnt == <span class="number">0</span>)</span><br><span class="line">            p[tot++].end = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n % cnt) &#123;</span><br><span class="line">        p[tot].start = p[tot - <span class="number">1</span>].end + <span class="number">1</span>;</span><br><span class="line">        p[tot++].end = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> opt, l, r, c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>, &amp;opt, &amp;l, &amp;r, &amp;c);  <span class="comment">// cin &gt;&gt; opt&gt;&gt; l &gt;&gt; r &gt;&gt; c;</span></span><br><span class="line">        <span class="keyword">if</span> (opt)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; p[belong[r]].lazy + a[r] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">                    p[belong[l]].lazy += c;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++) </span><br><span class="line">                    	a[j] += c;</span><br><span class="line">                <span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">                    p[belong[r]].lazy += c;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++) </span><br><span class="line">                    	a[j] += c;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++) </span><br><span class="line">                	p[j].lazy += c;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">                p[belong[l]].lazy += c;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++) </span><br><span class="line">                	a[j] += c;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数列分块入门-2"><a href="#数列分块入门-2" class="headerlink" title="数列分块入门 2"></a>数列分块入门 2</h2><p>给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，询问区间内小于某个值 $x$ 的元素个数。</p>
+<hr>
+<p>区间加法仿照$1$即可.<br>对于每一个块内的数据,为了方便查询,我们分便对每一个块内的数据进行排序.<br>对于不满足块的数据,我们暴力处理,再将这个块内的数据排序,<br>满足块的区间,我们依然是打标记即可.<br>查询的时候,二分查找即可.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">belong[x]:元素x所在的块的编号，样例代码中为bl[x];</span></span><br><span class="line"><span class="comment">start[x]:编号为x的块的最左边的点，样例代码中为st[x];</span></span><br><span class="line"><span class="comment">end[x]:编号为x的块的最右边的点，样例代码中为ed[x];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> belong[MAXN], tot = <span class="number">1</span>, n, cnt, a[MAXN],b[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> lazy;</span><br><span class="line">	<span class="keyword">int</span> start, end;</span><br><span class="line">&#125; p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rechange</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= r; i++)</span><br><span class="line">		b[i] = a[i];</span><br><span class="line">	sort(b + l, b + r + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowerbound</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>, <span class="keyword">int</span> size, <span class="keyword">int</span> key, <span class="keyword">int</span> lazy)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> first = <span class="number">0</span>, middle;</span><br><span class="line">	<span class="keyword">int</span> half, len;</span><br><span class="line">	len = size;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		half = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		middle = first + half;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">array</span>[middle] + lazy &lt; key) &#123;</span><br><span class="line">			first = middle + <span class="number">1</span>;</span><br><span class="line">			len = len - half - <span class="number">1</span>;  <span class="comment">//在右边子序列中查找</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			len = half;  <span class="comment">//在左边子序列（包含middle）中查找</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	cnt = <span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">		b[i]=a[i];</span><br><span class="line">		belong[i] = tot;</span><br><span class="line">		<span class="keyword">if</span> (i % cnt == <span class="number">1</span>)</span><br><span class="line">			p[tot].start = i;</span><br><span class="line">		<span class="keyword">if</span> (i % cnt == <span class="number">0</span>)</span><br><span class="line">			p[tot++].end = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n % cnt) &#123;</span><br><span class="line">		p[tot].start = p[tot - <span class="number">1</span>].end + <span class="number">1</span>;</span><br><span class="line">		p[tot++].end = n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; tot; i++) </span><br><span class="line">		sort(b + p[i].start, b + p[i].end + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> opt, l, r, c;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>, &amp;opt, &amp;l, &amp;r, &amp;c);</span><br><span class="line">		<span class="keyword">if</span> (opt) &#123;</span><br><span class="line">			<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">			c *= c;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">					ans += lowerbound(b + l, p[belong[l]].end - l + <span class="number">1</span>, c, p[belong[l]].lazy);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++)</span><br><span class="line">						<span class="keyword">if</span> (a[j] + p[belong[j]].lazy &lt; c)</span><br><span class="line">							ans++;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">					ans += lowerbound(b + p[belong[r]].start, r - p[belong[r]].start + <span class="number">1</span>, c, p[belong[r]].lazy);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++)</span><br><span class="line">						<span class="keyword">if</span> (a[j] + p[belong[j]].lazy &lt; c)</span><br><span class="line">							ans++;</span><br><span class="line"></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++)</span><br><span class="line">					ans += lowerbound(b + p[j].start, p[j].end - p[j].start + <span class="number">1</span>, c, p[j].lazy);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">				ans += lowerbound(b + l, r - l + <span class="number">1</span>, c, p[belong[l]].lazy);</span><br><span class="line">			<span class="keyword">else</span> </span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++)</span><br><span class="line">					<span class="keyword">if</span> (a[j] + p[belong[j]].lazy &lt; c)</span><br><span class="line">						ans++;</span><br><span class="line"></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">					p[belong[l]].lazy += c;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++)</span><br><span class="line">						a[j] += c;</span><br><span class="line">					rechange(p[belong[l]].start, p[belong[l]].end);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">					p[belong[r]].lazy += c;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++)</span><br><span class="line">						a[j] += c;</span><br><span class="line">					rechange(p[belong[r]].start, p[belong[r]].end);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++)</span><br><span class="line">					p[j].lazy += c;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">				p[belong[l]].lazy += c;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++)</span><br><span class="line">					a[j] += c;</span><br><span class="line">				rechange(p[belong[l]].start, p[belong[l]].end);</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数列分块入门-3"><a href="#数列分块入门-3" class="headerlink" title="数列分块入门 3"></a>数列分块入门 3</h2><p>给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，询问区间内小于某个值 $x$ 的前驱（比其小的最大元素）。</p>
+<hr>
+<p>和$2$类似.</p>
+<blockquote>
+<p>出题人的想法:<br>可以在块内维护其它结构使其更具有拓展性，比如放一个 set ，这样如果还有插入、删除元素的操作，会更加的方便。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">belong[x]:元素x所在的块的编号，样例代码中为bl[x];</span></span><br><span class="line"><span class="comment">start[x]:编号为x的块的最左边的点，样例代码中为st[x];</span></span><br><span class="line"><span class="comment">end[x]:编号为x的块的最右边的点，样例代码中为ed[x];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> belong[MAXN], tot = <span class="number">1</span>, n, cnt, a[MAXN], b[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> lazy;</span><br><span class="line">	<span class="keyword">int</span> start, end;</span><br><span class="line">&#125; p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rechange</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++)</span><br><span class="line">		b[i] = a[i];</span><br><span class="line">	sort(b + l, b + r + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowerbound</span><span class="params">(<span class="keyword">int</span> *<span class="built_in">array</span>, <span class="keyword">int</span> size, <span class="keyword">int</span> key, <span class="keyword">int</span> lazy)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> first = <span class="number">0</span>, middle;</span><br><span class="line">	<span class="keyword">int</span> half, len;</span><br><span class="line">	len = size;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		half = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		middle = first + half;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">array</span>[middle] + lazy &lt; key) &#123;</span><br><span class="line">			first = middle + <span class="number">1</span>;</span><br><span class="line">			len = len - half - <span class="number">1</span>;  <span class="comment">//在右边子序列中查找</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			len = half;  <span class="comment">//在左边子序列（包含middle）中查找</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	cnt = <span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">		b[i] = a[i];	<span class="comment">//cin &gt;&gt; a[i];//scanf("%d", &amp;a[i]);</span></span><br><span class="line">		belong[i] = tot;</span><br><span class="line">		<span class="keyword">if</span> (i % cnt == <span class="number">1</span>)</span><br><span class="line">			p[tot].start = i;</span><br><span class="line">		<span class="keyword">if</span> (i % cnt == <span class="number">0</span>)</span><br><span class="line">			p[tot++].end = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n % cnt) &#123;</span><br><span class="line">		p[tot].start = p[tot - <span class="number">1</span>].end + <span class="number">1</span>;</span><br><span class="line">		p[tot++].end = n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; tot; i++)</span><br><span class="line">		sort(b + p[i].start, b + p[i].end + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> opt, l, r, c;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; opt &gt;&gt; l &gt;&gt; r &gt;&gt; c;<span class="comment">// scanf("%d %d %d %d", &amp;opt, &amp;l, &amp;r, &amp;c);</span></span><br><span class="line">		<span class="keyword">if</span> (opt) &#123;</span><br><span class="line">			<span class="keyword">int</span> ans = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[l]].start == l) &#123;</span><br><span class="line">					<span class="keyword">int</span> t = lowerbound(b + l, p[belong[l]].end - l + <span class="number">1</span>, c, p[belong[l]].lazy);</span><br><span class="line">					<span class="keyword">if</span> (t)</span><br><span class="line">						ans = max(ans, b[p[belong[l]].start+t<span class="number">-1</span>] + p[belong[l]].lazy);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++)</span><br><span class="line">						<span class="keyword">if</span> (a[j] + p[belong[j]].lazy &lt; c)</span><br><span class="line">							ans = max(ans, a[j] + p[belong[j]].lazy);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (p[belong[r]].end == r) &#123;</span><br><span class="line">					<span class="keyword">int</span> t = lowerbound(b + p[belong[r]].start, r - p[belong[r]].start + <span class="number">1</span>, c, p[belong[r]].lazy);</span><br><span class="line">					<span class="keyword">if</span> (t)</span><br><span class="line">						ans = max(ans, b[p[belong[r]].start + t - <span class="number">1</span>] + p[belong[r]].lazy);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++)</span><br><span class="line">						<span class="keyword">if</span> (a[j] + p[belong[j]].lazy &lt; c)</span><br><span class="line">							ans = max(ans, a[j] + p[belong[j]].lazy);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++) &#123;</span><br><span class="line">					<span class="keyword">int</span> t = lowerbound(b + p[j].start, p[j].end- p[j].start + <span class="number">1</span>, c, p[j].lazy);</span><br><span class="line">					<span class="keyword">if</span> (t)</span><br><span class="line">						ans = max(ans, b[p[j].start + t - <span class="number">1</span>] + p[j].lazy);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r) &#123;</span><br><span class="line">				<span class="keyword">int</span> t = lowerbound(b + l, r - l + <span class="number">1</span>, c, p[belong[l]].lazy);</span><br><span class="line">				<span class="keyword">if</span> (t)</span><br><span class="line">					ans = max(ans, b[l + t - <span class="number">1</span>] + p[belong[l]].lazy);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++)</span><br><span class="line">					<span class="keyword">if</span> (a[j] + p[belong[j]].lazy &lt; c)</span><br><span class="line">						ans = max(ans, a[j] + p[belong[j]].lazy);</span><br><span class="line"></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">					p[belong[l]].lazy += c;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++)</span><br><span class="line">						a[j] += c;</span><br><span class="line">					rechange(p[belong[l]].start, p[belong[l]].end);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">					p[belong[r]].lazy += c;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++)</span><br><span class="line">						a[j] += c;</span><br><span class="line">					rechange(p[belong[r]].start, p[belong[r]].end);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++)</span><br><span class="line">					p[j].lazy += c;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">				p[belong[l]].lazy += c;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++)</span><br><span class="line">					a[j] += c;</span><br><span class="line">				rechange(p[belong[l]].start, p[belong[l]].end);</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数列分块入门-4"><a href="#数列分块入门-4" class="headerlink" title="数列分块入门 4"></a>数列分块入门 4</h2><p>给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及区间加法，区间求和。</p>
+<hr>
+<p>求和预处理一下就阔以了,打标记的时候是长度$*$加法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">belong[x]:元素x所在的块的编号，样例代码中为bl[x];</span></span><br><span class="line"><span class="comment">start[x]:编号为x的块的最左边的点，样例代码中为st[x];</span></span><br><span class="line"><span class="comment">end[x]:编号为x的块的最右边的点，样例代码中为ed[x];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">ll cnt, a[MAXN];</span><br><span class="line"><span class="keyword">int</span> belong[MAXN], tot = <span class="number">1</span>, n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> &#123;</span></span><br><span class="line">	ll lazy;</span><br><span class="line">	ll sum;</span><br><span class="line">	<span class="keyword">int</span> start, end;</span><br><span class="line">&#125; p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	cnt = <span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a[i];	<span class="comment">//scanf("%d", &amp;a[i]);</span></span><br><span class="line">		belong[i] = tot;</span><br><span class="line">		p[tot].sum += a[i];</span><br><span class="line">		<span class="keyword">if</span> (i % cnt == <span class="number">1</span>)</span><br><span class="line">			p[tot].start = i;</span><br><span class="line">		<span class="keyword">if</span> (i % cnt == <span class="number">0</span>)</span><br><span class="line">			p[tot++].end = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n % cnt) &#123;</span><br><span class="line">		p[tot].start = p[tot - <span class="number">1</span>].end + <span class="number">1</span>;</span><br><span class="line">		p[tot++].end = n;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> opt, l, r;</span><br><span class="line">		ll c;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; opt &gt;&gt; l &gt;&gt; r &gt;&gt; c;<span class="comment">// scanf("%d %d %d %d", &amp;opt, &amp;l, &amp;r, &amp;c);</span></span><br><span class="line">		<span class="keyword">if</span> (opt) &#123;</span><br><span class="line">			ll ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">					ans = (ans + (p[belong[l]].lazy*(p[belong[l]].end - p[belong[l]].start + <span class="number">1</span>)) % (c + <span class="number">1</span>) + p[belong[l]].sum % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++)</span><br><span class="line">						ans = (ans + a[j] % (c + <span class="number">1</span>) + p[belong[j]].lazy % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">					ans = (ans + (p[belong[r]].lazy*(p[belong[r]].end - p[belong[r]].start + <span class="number">1</span>)) % (c + <span class="number">1</span>) + p[belong[r]].sum % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++)</span><br><span class="line">						ans = (ans + a[j] % (c + <span class="number">1</span>) + p[belong[j]].lazy % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++)</span><br><span class="line">					ans = (ans + (p[j].lazy*(p[j].end - p[j].start + <span class="number">1</span>)) % (c + <span class="number">1</span>) + p[j].sum % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">				ans = (ans + (p[belong[l]].lazy*(p[belong[l]].end - p[belong[l]].start + <span class="number">1</span>)) % (c + <span class="number">1</span>) + p[belong[l]].sum % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++)</span><br><span class="line">					ans = (ans + a[j] % (c + <span class="number">1</span>) + p[belong[j]].lazy % (c + <span class="number">1</span>)) % (c + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">					p[belong[l]].lazy += c;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= p[belong[l]].end; j++) &#123;</span><br><span class="line">						a[j] += c;</span><br><span class="line">						p[belong[l]].sum += c;</span><br><span class="line">					&#125;</span><br><span class="line">				<span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">					p[belong[r]].lazy += c;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> j = p[belong[r]].start; j &lt;= r; j++) &#123;</span><br><span class="line">						p[belong[r]].sum += c;</span><br><span class="line">						a[j] += c;</span><br><span class="line">					&#125;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = belong[l] + <span class="number">1</span>; j &lt; belong[r]; j++)</span><br><span class="line">					p[j].lazy += c;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">				p[belong[l]].lazy += c;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = l; j &lt;= r; j++) &#123;</span><br><span class="line">					a[j] += c;</span><br><span class="line">					p[belong[l]].sum += c;</span><br><span class="line">				&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数列分块入门-5"><a href="#数列分块入门-5" class="headerlink" title="数列分块入门 5"></a>数列分块入门 5</h2><p>给出一个长为 $n$ 的数列 ，以及 $n$ 个操作，操作涉及区间开方，区间求和。</p>
+<hr>
+<p>这个题目其实比较搞人==<br>对于一个数,其属于${-2^{31},2^{31}-1}$,最多开方不超过$4$次.<br>还是和之前一样,单个暴力,整块标记.<br>对于一个块,如果开方次数超过$4$次,或者整个块只有$1$或$0$,我们就可以认为不需要对其处理了,只记下和即可.<br><font color="blue">自己代码实现的时候,注意细节.</font></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">   belong[x]:元素x所在的块的编号，样例代码中为bl[x];</span></span><br><span class="line"><span class="comment">   start[x]:编号为x的块的最左边的点，样例代码中为st[x];</span></span><br><span class="line"><span class="comment">   end[x]:编号为x的块的最右边的点，样例代码中为ed[x]; */</span></span><br><span class="line"><span class="keyword">int</span> cnt, a[MAXN];</span><br><span class="line"><span class="keyword">int</span> belong[MAXN], tot = <span class="number">1</span>, n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">block</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> lazy;</span><br><span class="line">  ll sum;</span><br><span class="line">  <span class="keyword">int</span> start, end;</span><br><span class="line">  <span class="keyword">bool</span> f;</span><br><span class="line">    block() &#123;</span><br><span class="line">    lazy = start = end = sum = <span class="number">0</span>;</span><br><span class="line">    f = <span class="literal">false</span>;</span><br><span class="line">&#125;&#125; p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">built</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  cnt = <span class="built_in">sqrt</span>(n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a[i];                <span class="comment">// scanf("%d", &amp;a[i]);</span></span><br><span class="line">    belong[i] = tot;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a[i] != <span class="number">0</span>)</span><br><span class="line">      p[tot].sum++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (i % cnt == <span class="number">1</span>)</span><br><span class="line">      p[tot].start = i;</span><br><span class="line">    <span class="keyword">if</span> (i % cnt == <span class="number">0</span>)</span><br><span class="line">      p[tot++].end = i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (n % cnt) &#123;</span><br><span class="line">    p[tot].start = p[tot - <span class="number">1</span>].end + <span class="number">1</span>;</span><br><span class="line">    p[tot++].end = n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  ll ans = <span class="number">0</span>, c;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">    <span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">      <span class="keyword">if</span> (p[belong[l]].lazy &gt; <span class="number">4</span> || p[belong[l]].f)</span><br><span class="line">        ans += p[belong[l]].sum;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        p[belong[l]].f = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = p[belong[l]].start; i &lt;= p[belong[l]].end; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> lazy = p[belong[l]].lazy, x = a[i];</span><br><span class="line">          <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">            lazy--;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (x != <span class="number">1</span> &amp;&amp; x != <span class="number">0</span>)</span><br><span class="line">            p[belong[l]].f = <span class="literal">false</span>;</span><br><span class="line">          ans += x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= p[belong[l]].end; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> lazy = p[belong[l]].lazy, x = a[i];</span><br><span class="line">        <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">          <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">          lazy--;</span><br><span class="line">        &#125;</span><br><span class="line">        ans += x;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">      <span class="keyword">if</span> (p[belong[r]].lazy &gt; <span class="number">4</span> || p[belong[r]].f)</span><br><span class="line">        ans += p[belong[r]].sum;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        p[belong[r]].f = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = p[belong[r]].start; i &lt;= p[belong[r]].end; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> lazy = p[belong[r]].lazy, x = a[i];</span><br><span class="line">          <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">            lazy--;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (x != <span class="number">1</span> &amp;&amp; x != <span class="number">0</span>)</span><br><span class="line">            p[belong[r]].f = <span class="literal">false</span>;</span><br><span class="line">          ans += x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = p[belong[r]].start; i &lt;= r; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> lazy = p[belong[r]].lazy, x = a[i];</span><br><span class="line">        <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">          <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">          lazy--;</span><br><span class="line">        &#125;</span><br><span class="line">        ans += x;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = belong[l] + <span class="number">1</span>; i &lt; belong[r]; i++)</span><br><span class="line">      <span class="keyword">if</span> (p[i].lazy &gt; <span class="number">4</span> || p[i].f)</span><br><span class="line">        ans += p[i].sum;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        p[i].f = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = p[i].start; j &lt;= p[i].end; j++) &#123;</span><br><span class="line">          <span class="keyword">int</span> lazy = p[i].lazy, x = a[j];</span><br><span class="line">          <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">            lazy--;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (x != <span class="number">1</span> &amp;&amp; x != <span class="number">0</span>)</span><br><span class="line">            p[i].f = <span class="literal">false</span>;</span><br><span class="line">          ans += x;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">    <span class="keyword">if</span> (p[belong[l]].lazy &gt; <span class="number">4</span> || p[belong[l]].f)</span><br><span class="line">      ans += p[belong[l]].sum;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      p[belong[l]].f = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = p[belong[l]].start; i &lt;= p[belong[l]].end; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> lazy = p[belong[r]].lazy, x = a[i];</span><br><span class="line">        <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">          <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">          lazy--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (x != <span class="number">1</span> &amp;&amp; x != <span class="number">0</span>)</span><br><span class="line">          p[belong[l]].f = <span class="literal">false</span>;</span><br><span class="line">        ans += x;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++) &#123;</span><br><span class="line">      <span class="keyword">int</span> lazy = p[belong[l]].lazy, x = a[i];</span><br><span class="line">      <span class="keyword">while</span> (lazy) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">0</span> || x == <span class="number">1</span>)</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        x = <span class="built_in">sqrt</span>(x);</span><br><span class="line">        lazy--;</span><br><span class="line">      &#125;</span><br><span class="line">      ans += x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  ll c;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line">  <span class="keyword">if</span> (belong[l] != belong[r]) &#123;</span><br><span class="line">    <span class="keyword">if</span> (p[belong[l]].start == l)</span><br><span class="line">      p[belong[l]].lazy++;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= p[belong[l]].end; i++)</span><br><span class="line">        a[i] = <span class="built_in">sqrt</span>(a[i]);</span><br><span class="line">    <span class="keyword">if</span> (p[belong[r]].end == r)</span><br><span class="line">      p[belong[r]].lazy++;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = p[belong[r]].start; i &lt;= r; i++)</span><br><span class="line">        a[i] = <span class="built_in">sqrt</span>(a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = belong[l] + <span class="number">1</span>; i &lt; belong[r]; i++)</span><br><span class="line">      p[i].lazy++;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p[belong[l]].start == l &amp;&amp; p[belong[r]].end == r)</span><br><span class="line">    p[belong[l]].lazy++;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; i++)</span><br><span class="line">      a[i] = <span class="built_in">sqrt</span>(a[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  built();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> opt, l, r;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; opt &gt;&gt; l &gt;&gt; r;       <span class="comment">// scanf("%d %d %d %d",</span></span><br><span class="line">    <span class="comment">// &amp;opt,</span></span><br><span class="line">    <span class="comment">// &amp;l, &amp;r, &amp;c);</span></span><br><span class="line">    <span class="keyword">if</span> (opt)</span><br><span class="line">      print(l, r);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      update(l, r);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数列分块入门-6"><a href="#数列分块入门-6" class="headerlink" title="数列分块入门 6"></a>数列分块入门 6</h2><p>给出一个长为 $n$ 的数列，以及 $n$ 个操作，操作涉及单点插入，单点询问，数据随机生成.</p>
+<hr>
+<p>到了喜闻乐见的动态分块了$23333$.<br>$c++$的$vector$大法好,<del>我是不会用指针写链表的,拒绝</del><br>每次插入一个数,就找到对应的块,扔进去就行.<br>将插入的次数记下来,当次数超过$\sqrt n$的时候就进行重构,也就是重新分块.<br>然后就没有然后了.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e8</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ans = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[MAXN];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;p[MAXN];</span><br><span class="line"><span class="keyword">int</span> n, tot = <span class="number">0</span>, m, optt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tot; i++) &#123;</span><br><span class="line">		num += p[i].size();</span><br><span class="line">		<span class="keyword">if</span> (num &gt;= k) &#123;</span><br><span class="line">			num -= p[i].size();</span><br><span class="line">			k = k - num - <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; p[i][k] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rebuild</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tot; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; p[i].size(); j++)</span><br><span class="line">			a[++num] = p[i][j];</span><br><span class="line">		p[i].clear();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	n = num, m = <span class="built_in">sqrt</span>(n), tot = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		p[tot].push_back(a[i]);</span><br><span class="line">		<span class="keyword">if</span> (i%m == <span class="number">0</span>)</span><br><span class="line">			tot++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n%m != <span class="number">0</span>)</span><br><span class="line">		tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tot; i++) &#123;</span><br><span class="line">		num += p[i].size();</span><br><span class="line">		<span class="keyword">if</span> (num &gt;= k) &#123;</span><br><span class="line">			num -= p[i].size();</span><br><span class="line">			k = k - num - <span class="number">1</span>;</span><br><span class="line">			p[i].insert(p[i].begin() + k, x);</span><br><span class="line">			optt++;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (optt == m) &#123;</span><br><span class="line">		rebuild();</span><br><span class="line">		optt = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	m = <span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">		p[tot].push_back(x);</span><br><span class="line">		<span class="keyword">if</span> (i%m == <span class="number">0</span>)</span><br><span class="line">			tot++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n%m != <span class="number">0</span>)</span><br><span class="line">		tot++;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> opt, l, r, c, q = n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= q; i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;opt,&amp;l,&amp;r,&amp;c);</span><br><span class="line">		<span class="keyword">if</span> (opt)</span><br><span class="line">			find(r);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			insert(l, r);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>未完待续</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分块/" rel="tag"># 分块</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/08/UOJ-6/" rel="next" title="UOJ #6.[NOI2014]随机数生成器">
+                <i class="fa fa-chevron-left"></i> UOJ #6.[NOI2014]随机数生成器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/09/高精度/" rel="prev" title="高精度">
+                高精度 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/touxiang.gif" alt="HaiJeng">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HaiJeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/UnKfrozen" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-link"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+
+          
+          
+
+          <div id="image">
+            <a href="https://sm.ms/image/6MSlReUsdXCj5n3" target="_blank"><img src="https://i.loli.net/2019/08/08/6MSlReUsdXCj5n3.gif"></a>
+          </div>
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                链接着异世界的大门
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/MMMinoz/" title="Minoz" target="_blank">Minoz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/violet-acmer/" title="Hyacinth" target="_blank">Hyacinth</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/curry___" title="curry___" target="_blank">curry___</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/tykws8/" title="因维因" target="_blank">因维因</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://duny31030.top/" title="Duny" target="_blank">Duny</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/aee253d4632c" title="Liukai" target="_blank">Liukai</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baccano.fun/" title="Baccano!" target="_blank">Baccano!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shawnzhou.xyz/" title="Shawn Zhou" target="_blank">Shawn Zhou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://liangyj_blog.gitee.io/" title="Liang YJ" target="_blank">Liang YJ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://kangyupl.oschina.io/LiushaoRui" title="康宇" target="_blank">康宇</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          
+          <div id="music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
+          </div>
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=484992531&auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数列分块入门-1"><span class="nav-number">2.</span> <span class="nav-text">数列分块入门 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数列分块入门-2"><span class="nav-number">3.</span> <span class="nav-text">数列分块入门 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数列分块入门-3"><span class="nav-number">4.</span> <span class="nav-text">数列分块入门 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数列分块入门-4"><span class="nav-number">5.</span> <span class="nav-text">数列分块入门 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数列分块入门-5"><span class="nav-number">6.</span> <span class="nav-text">数列分块入门 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数列分块入门-6"><span class="nav-number">7.</span> <span class="nav-text">数列分块入门 6</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UEUJxgtUhAVvU8XXrPnJzP2F-MdYXbMMI',
+        appKey: 'uXeOlS8acwGeTmbMf19bV7OF',
+        placeholder: '来啊,快活啊o(*￣▽￣*)ブ',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+   
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 
