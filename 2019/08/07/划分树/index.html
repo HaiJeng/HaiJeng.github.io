@@ -75,15 +75,15 @@
 <meta name="description" content="引如题:POJ2014给定一$n$个元素的数组,每次查询$[l,r]$区间内从小到大第k个数.朴素解法为将数组$[l,r]$内的数排序,然后选择第$k$个即可.最坏情况$O(m*n)$.这个时候,就需要更好的数据结构,划分树/归并树. 定义原数组为${4,2,5,7,1,8,3,6}$,在每次划分左右子树时的中值,都用红色表明.小于中值的进入左子树,大于中值的进入右子树.观察我们发现,每一层都是数">
 <meta name="keywords" content="RMQ,数据结构,划分树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构-划分树模板">
+<meta property="og:title" content="划分树">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/07/划分树/index.html">
 <meta property="og:site_name" content="rp++">
 <meta property="og:description" content="引如题:POJ2014给定一$n$个元素的数组,每次查询$[l,r]$区间内从小到大第k个数.朴素解法为将数组$[l,r]$内的数排序,然后选择第$k$个即可.最坏情况$O(m*n)$.这个时候,就需要更好的数据结构,划分树/归并树. 定义原数组为${4,2,5,7,1,8,3,6}$,在每次划分左右子树时的中值,都用红色表明.小于中值的进入左子树,大于中值的进入右子树.观察我们发现,每一层都是数">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190514164522572.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-08-09T15:53:13.041Z">
+<meta property="og:updated_time" content="2019-08-09T16:28:49.464Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构-划分树模板">
+<meta name="twitter:title" content="划分树">
 <meta name="twitter:description" content="引如题:POJ2014给定一$n$个元素的数组,每次查询$[l,r]$区间内从小到大第k个数.朴素解法为将数组$[l,r]$内的数排序,然后选择第$k$个即可.最坏情况$O(m*n)$.这个时候,就需要更好的数据结构,划分树/归并树. 定义原数组为${4,2,5,7,1,8,3,6}$,在每次划分左右子树时的中值,都用红色表明.小于中值的进入左子树,大于中值的进入右子树.观察我们发现,每一层都是数">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190514164522572.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
 
@@ -120,7 +120,7 @@
 
 
 
-   <title>数据结构-划分树模板 | rp++</title>   
+   <title>划分树 | rp++</title>   
 
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构-划分树模板</h1>
+          <h1 class="post-title" itemprop="name headline">划分树</h1>
         
 
         <div class="post-meta">
