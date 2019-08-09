@@ -59,7 +59,7 @@
 
 
 
-  <meta name="keywords" content="博客搭建,">
+  <meta name="keywords" content="ST表,RMQ,">
 
 
 
@@ -70,20 +70,20 @@
 
 
 
-<meta name="description" content="一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置  将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 t">
-<meta name="keywords" content="博客搭建">
+<meta name="description" content="引例洛谷P3865$RMQ$的中文翻译为:静态区间最值查询.英文我不知道所以不写给你$n$个数,$m$次查询,查询的内容为区间$[l,r]$中的最大值.$RMQ$有解法蛮多的,$st$表,线段树,树状数组,划分树都可以做.$st$表的复杂度为预处理$O(n*{\log_2} n)$+查询$O(m)$而线段树则需要预处理$O(n*{\log_2} n)$+查询$O(m*{\log_2} n)$树状数">
+<meta name="keywords" content="ST表,RMQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="那些年我搭博客所踩的坑">
-<meta property="og:url" content="http://yoursite.com/2019/08/08/那些年我搭博客所踩的坑/index.html">
+<meta property="og:title" content="ST表">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/ST表/index.html">
 <meta property="og:site_name" content="rp++">
-<meta property="og:description" content="一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置  将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 t">
+<meta property="og:description" content="引例洛谷P3865$RMQ$的中文翻译为:静态区间最值查询.英文我不知道所以不写给你$n$个数,$m$次查询,查询的内容为区间$[l,r]$中的最大值.$RMQ$有解法蛮多的,$st$表,线段树,树状数组,划分树都可以做.$st$表的复杂度为预处理$O(n*{\log_2} n)$+查询$O(m)$而线段树则需要预处理$O(n*{\log_2} n)$+查询$O(m*{\log_2} n)$树状数">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://i.loli.net/2019/08/08/lsdGHzUPh9gqfKQ.png">
-<meta property="og:updated_time" content="2019-08-08T14:52:07.105Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190515203051714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-08-09T09:33:09.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="那些年我搭博客所踩的坑">
-<meta name="twitter:description" content="一.博文插入图片在 Hexo中 插入图片时，请按照以下的步骤进行设置  将 站点配置文件 中的 post_asset_folde 选项的值设置为 true 在站点文件夹中打开 git bash，输入命令 npm install hexo-asset-image --save 安装插件 这样，当使用 hexo new title 创建文章时，将同时在 source/_post 文件夹中生成一个与 t">
-<meta name="twitter:image" content="https://i.loli.net/2019/08/08/lsdGHzUPh9gqfKQ.png">
+<meta name="twitter:title" content="ST表">
+<meta name="twitter:description" content="引例洛谷P3865$RMQ$的中文翻译为:静态区间最值查询.英文我不知道所以不写给你$n$个数,$m$次查询,查询的内容为区间$[l,r]$中的最大值.$RMQ$有解法蛮多的,$st$表,线段树,树状数组,划分树都可以做.$st$表的复杂度为预处理$O(n*{\log_2} n)$+查询$O(m)$而线段树则需要预处理$O(n*{\log_2} n)$+查询$O(m*{\log_2} n)$树状数">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190515203051714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -113,12 +113,12 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/08/那些年我搭博客所踩的坑/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/ST表/">
 
 
 
 
-   <title>那些年我搭博客所踩的坑 | rp++</title>   
+   <title>ST表 | rp++</title>   
 
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/那些年我搭博客所踩的坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/ST表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaiJeng">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">那些年我搭博客所踩的坑</h1>
+          <h1 class="post-title" itemprop="name headline">ST表</h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T17:53:30+08:00">
-                2019-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T17:26:29+08:00">
+                2019-08-09
               </time>
             
 
@@ -313,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂文/" itemprop="url" rel="index">
-                    <span itemprop="name">杂文</span>
+                  <a href="/categories/模板/" itemprop="url" rel="index">
+                    <span itemprop="name">模板</span>
                   </a>
                 </span>
 
@@ -331,8 +331,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/08/那些年我搭博客所踩的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/08/那些年我搭博客所踩的坑/" itemprop="commentCount"></span>
+                <a href="/2019/08/09/ST表/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/ST表/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -360,68 +360,13 @@
       
 
       
-        <h2 id="一-博文插入图片"><a href="#一-博文插入图片" class="headerlink" title="一.博文插入图片"></a>一.博文插入图片</h2><p>在 <code>Hexo</code>中 插入图片时，请按照以下的步骤进行设置</p>
-<ol>
-<li>将 站点配置文件 中的 <code>post_asset_folde</code> 选项的值设置为 <code>true</code></li>
-<li>在站点文件夹中打开 <code>git bash</code>，输入命令 <code>npm install hexo-asset-image --save</code> 安装插件</li>
-<li>这样，当使用 <code>hexo new title</code> 创建文章时，将同时在 <code>source/_post</code> 文件夹中生成一个与 <code>title</code> 同名的文件夹，我们只需将图片放进此文件夹中，然后在文章中通过 <code>Markdown</code> 语法进行引用即可</li>
-<li>例如，在资源文件夹（就是那个与 title 同名的文件夹）中添加图片 <code>example.PNG</code>，则可以在对应的文章中使用语句 <code>![示例图片](title/example.PNG &quot;示例图片&quot;)</code> 添加图片</li>
-</ol>
-<hr>
-<h2 id="二-修改博客标题背景"><a href="#二-修改博客标题背景" class="headerlink" title="二.修改博客标题背景"></a>二.修改博客标题背景</h2><p>如果你使用的是<code>pisces</code>模式的话,可以参考下列教程<br>在<code>\blog\themes\next\source\css\_schemes\Pisces</code>中的<code>_brand.styl</code>文件内.<br>在<code>.site-meta</code> 下的<code>background</code>后面修改为<code>url(图片链接);</code></p>
-<hr>
-<h2 id="三-插入音乐"><a href="#三-插入音乐" class="headerlink" title="三.插入音乐"></a>三.插入音乐</h2><p>在网易云音乐生成外链后插入到你想放的地方即可.<br>注意:<font color="blue">不要打开”阻止第三方 Cookie”这个选项</font><br>一旦打开,iframe就加载不出来,插入音乐那一块全白.<br>网上也没有多少人经历过估计(逼着我学会了看<code>F12</code>…)</p>
-<hr>
-<h2 id="四-npm下载超慢的问题"><a href="#四-npm下载超慢的问题" class="headerlink" title="四.npm下载超慢的问题"></a>四.npm下载超慢的问题</h2><p>使用cnpm,这是国内的一个镜像,速度很快,但无法使用<code>publish</code><br>链接:<a href="https://npm.taobao.org/" target="_blank" rel="noopener">https://npm.taobao.org/</a></p>
-<hr>
-<h2 id="五-Algolia搜索搭建的问题"><a href="#五-Algolia搜索搭建的问题" class="headerlink" title="五.Algolia搜索搭建的问题"></a>五.Algolia搜索搭建的问题</h2><p>next的使用文档已经比较全面了</p>
-<ol>
-<li><p>这个地方要加一句</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">algolia:</span><br><span class="line">  applicationID: 'applicationID'</span><br><span class="line">  indexName: 'indexName'</span><br><span class="line">  apiKey: 'Search-Only API Key'</span><br><span class="line">  chunkSize: <span class="number">5000</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其次用export,最好不要用set</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HEXO_ALGOLIA_INDEXING_KEY=你的Search-Only API Key</span><br><span class="line">$ hexo algolia</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这些都选上<br><a href="https://sm.ms/image/lsdGHzUPh9gqfKQ" target="_blank"><img src="https://i.loli.net/2019/08/08/lsdGHzUPh9gqfKQ.png"></a></p>
-</li>
-</ol>
-<hr>
-<h2 id="六-头像旋转以及点击头像回到主页"><a href="#六-头像旋转以及点击头像回到主页" class="headerlink" title="六.头像旋转以及点击头像回到主页"></a>六.头像旋转以及点击头像回到主页</h2><ol>
-<li>回到主页:在<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```html</span><br><span class="line">&lt;a href=&quot;/&quot;&gt;</span><br><span class="line">    &lt;img class=&quot;site-author-image&quot; itemprop=&quot;image&quot;</span><br><span class="line">    src=&quot;&#123;&#123; url_for( theme.avatar | default(theme.images + &apos;/avatar.gif&apos;) ) &#125;&#125;&quot;</span><br><span class="line">    alt=&quot;&#123;&#123; theme.author &#125;&#125;&quot; /&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>就是在代码上下分别加了<figure class="highlight plain"><figcaption><span>href</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2. 旋转</span><br><span class="line">~~这个我也不懂~~</span><br><span class="line">```\themes\next\source\css\_common\components\sidebar\sidebar-author.styl</span><br></pre></td></tr></table></figure></p>
-<p>内添加:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line"></span><br><span class="line">  /* 头像圆形 */</span><br><span class="line">  border-radius: 80px;</span><br><span class="line">  -webkit-border-radius: 80px;</span><br><span class="line">  -moz-border-radius: 80px;</span><br><span class="line">  box-shadow: inset 0 -1px 0 #333sf;</span><br><span class="line"></span><br><span class="line">  /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 </span><br><span class="line">    (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transition: -webkit-transform 1.0s ease-out;</span><br><span class="line">  -moz-transition: -moz-transform 1.0s ease-out;</span><br><span class="line">  transition: transform 1.0s ease-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img:hover &#123;</span><br><span class="line">  /* 鼠标经过停止头像旋转 </span><br><span class="line">  -webkit-animation-play-state:paused;</span><br><span class="line">  animation-play-state:paused;*/</span><br><span class="line"></span><br><span class="line">  /* 鼠标经过头像旋转360度 */</span><br><span class="line">  -webkit-transform: rotateZ(360deg);</span><br><span class="line">  -moz-transform: rotateZ(360deg);</span><br><span class="line">  transform: rotateZ(360deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Z 轴旋转动画 */</span><br><span class="line">@-webkit-keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    -webkit-transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    -webkit-transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@-moz-keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    -moz-transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    -moz-transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes play &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    transform: rotateZ(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    transform: rotateZ(-360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="搭建评论区"><a href="#搭建评论区" class="headerlink" title="搭建评论区"></a>搭建评论区</h2><ul>
-<li><del>多说</del></li>
-<li><del>网易云跟帖</del></li>
-<li><del>畅言</del></li>
-<li><del>来必力（LiveRe）</del></li>
-<li><del>Disqus</del></li>
-<li><del>Hypercomments</del></li>
-<li>valine<br>valine YES!( •̀ ω •́ )y<br>虽然国内版需要备案,但是我们可以使用国际版的<a href="https://leancloud.app/" target="_blank" rel="noopener">🔗</a></li>
-</ul>
-<ol>
-<li><p>注册</p>
-</li>
-<li><p>验证邮箱和手机号</p>
-</li>
-<li><p>创建一个应用，名字可以随便起</p>
-</li>
-<li><p>进入应用-&gt;设置-&gt;应用$key$</p>
-</li>
-<li><p>复制 $appid$ 和 $appkey$</p>
-</li>
-<li><p>进入<font color="people">主题配置文件</font>搜索 $valine$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: 由<span class="literal">false</span>改成<span class="literal">true</span></span><br><span class="line">  app_id: 要填</span><br><span class="line">  app_key: 要填</span><br><span class="line">  notify: <span class="literal">false</span> <span class="meta"># mail notifier , https:<span class="comment">//github.com/xCss/Valine/wiki</span></span></span><br><span class="line">  verify: <span class="literal">false</span> # Verification code</span><br><span class="line">  placeholder: 可改</span><br><span class="line">  avatar: mm <span class="meta"># gravatar style</span></span><br><span class="line">  guest_info: nick,mail,link <span class="meta"># custom comment header</span></span><br><span class="line">  pageSize: <span class="number">10</span> <span class="meta"># pagination size</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去<br>$d$一下完成.</p>
-</li>
-</ol>
-<hr>
-<p>先这些,持续更新</p>
+        <h2 id="引例"><a href="#引例" class="headerlink" title="引例"></a>引例</h2><p><a href="https://www.luogu.org/problemnew/show/P3865" target="_blank" rel="noopener">洛谷P3865</a><br>$RMQ$的中文翻译为:静态区间最值查询.<del>英文我不知道所以不写</del>给你$n$个数,$m$次查询,查询的内容为区间$[l,r]$中的最大值.<br>$RMQ$有解法蛮多的,$st$表,线段树,树状数组,划分树都可以做.<br>$st$表的复杂度为预处理$O(n*{\log_2} n)$+查询$O(m)$<br>而线段树则需要预处理$O(n*{\log_2} n)$+查询$O(m*{\log_2} n)$<br><del>树状数组没学,不清楚</del><br>线段树可以看我之前的博客.</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>这个算法就是基于$DP$和位运算符，我们用$dp[i][j]$表示从第 $i$ 位开始，到第 $i + 2^j -1$ 位的最大值或者最小值。</p>
+<p>那么我求$dp[i][j]$的时候可以把它分成两部分，第一部分从 $i$ 到 $i + 2 ^{(j-1)} - 1$ ，第二部分从 $i + 2 ^{(j-1)}$ 到$i + 2^j- 1$,那么可以得到<br>$$dp[i][j]=max(dp[i][j-1],dp[i+(1&lt;&lt;(j-1))][j-1])$$<br>当$j=0$时,求的是长度为1的区间的最小值,<br>$j=1$时,求的是长度为2的区间最小值<br>$j=2$时,求的是长度为4的区间最小值<br>以此类推,故可在$O(n\log_2 n)$的复杂度处理完.<br>如图所示<br><img src="https://img-blog.csdnimg.cn/20190515203051714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="1"><br>查询的话,只需要反过来就阔以了.</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>这里<kbd>mm[i] = mm[i - 1] +((i&(i - 1)) == 0);</kbd><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">```cpp</span><br><span class="line">const int MAXN = 1e5 + 10;</span><br><span class="line"></span><br><span class="line">int dp[MAXN][31],a[MAXN],mm[MAXN];</span><br><span class="line"></span><br><span class="line">void initRMQ(int n)</span><br><span class="line">&#123;</span><br><span class="line">	mm[0] = -1;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		mm[i] = mm[i - 1] +((i&amp;(i - 1)) == 0);</span><br><span class="line">		dp[i][0] = a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	for (int j = 1; j &lt;= mm[n]; j++)</span><br><span class="line">		for (int i = 1; i + (1 &lt;&lt; j) - 1 &lt;= n; i++)</span><br><span class="line">			dp[i][j] = max(dp[i][j - 1], dp[i + (1 &lt;&lt; (j - 1))][j - 1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int rmq(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">	int k = mm[y - x + 1];</span><br><span class="line">	return max(dp[x][k], dp[y - (1 &lt;&lt; k) + 1][k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n,m;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;//scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++)</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line"></span><br><span class="line">	initRMQ(n);</span><br><span class="line"></span><br><span class="line">	while (m--) &#123;</span><br><span class="line">		int x, y;</span><br><span class="line">		cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		cout &lt;&lt; rmq(x, y) &lt;&lt; &apos;\n&apos;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二维st表"><a href="#二维st表" class="headerlink" title="二维st表"></a>二维st表</h2><p>暂存<br><a href="https://blog.csdn.net/VictoryCzt/article/details/83684082" target="_blank" rel="noopener">https://blog.csdn.net/VictoryCzt/article/details/83684082</a></p>
+<h2 id="约束RMQ"><a href="#约束RMQ" class="headerlink" title="约束RMQ"></a>约束RMQ</h2><p><a href="https://www.cnblogs.com/ghostcai/p/9280720.html" target="_blank" rel="noopener">https://www.cnblogs.com/ghostcai/p/9280720.html</a><br><a href="https://blog.csdn.net/VictoryCzt/article/details/83348579" target="_blank" rel="noopener">https://blog.csdn.net/VictoryCzt/article/details/83348579</a></p>
+<h2 id="练习题目"><a href="#练习题目" class="headerlink" title="练习题目"></a>练习题目</h2><p><a href="https://www.luogu.org/problemnew/show/P2251" target="_blank" rel="noopener">洛谷P2251</a><br>裸的$RMQ$问题<br><a href="https://www.luogu.org/problemnew/show/P3865" target="_blank" rel="noopener">洛谷P3865</a><br>$st$表模板题目<br><a href="https://www.luogu.org/problemnew/show/P2048" target="_blank" rel="noopener">洛谷P2048</a><br>$st$表+前缀和+贪心+堆优化</p>
 
       
     </div>
@@ -439,7 +384,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/博客搭建/" rel="tag"># 博客搭建</a>
+            <a href="/tags/ST表/" rel="tag"># ST表</a>
+          
+            <a href="/tags/RMQ/" rel="tag"># RMQ</a>
           
         </div>
       
@@ -452,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/划分树/" rel="next" title="数据结构-划分树模板">
-                <i class="fa fa-chevron-left"></i> 数据结构-划分树模板
+              <a href="/2019/08/09/CDQ分治/" rel="next" title="CDQ分治">
+                <i class="fa fa-chevron-left"></i> CDQ分治
               </a>
             
           </div>
@@ -461,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/08/UOJ-6/" rel="prev" title="UOJ #6.[NOI2014]随机数生成器">
-                UOJ #6.[NOI2014]随机数生成器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -679,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-博文插入图片"><span class="nav-number">1.</span> <span class="nav-text">一.博文插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-修改博客标题背景"><span class="nav-number">2.</span> <span class="nav-text">二.修改博客标题背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-插入音乐"><span class="nav-number">3.</span> <span class="nav-text">三.插入音乐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-npm下载超慢的问题"><span class="nav-number">4.</span> <span class="nav-text">四.npm下载超慢的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-Algolia搜索搭建的问题"><span class="nav-number">5.</span> <span class="nav-text">五.Algolia搜索搭建的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-头像旋转以及点击头像回到主页"><span class="nav-number">6.</span> <span class="nav-text">六.头像旋转以及点击头像回到主页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建评论区"><span class="nav-number">7.</span> <span class="nav-text">搭建评论区</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引例"><span class="nav-number">1.</span> <span class="nav-text">引例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">3.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维st表"><span class="nav-number">4.</span> <span class="nav-text">二维st表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#约束RMQ"><span class="nav-number">5.</span> <span class="nav-text">约束RMQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习题目"><span class="nav-number">6.</span> <span class="nav-text">练习题目</span></a></li></ol></div>
             
 
           </div>
