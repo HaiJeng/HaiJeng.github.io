@@ -1,0 +1,850 @@
+<!DOCTYPE html>         <html class="theme-next pisces use-motion" lang="zh-cn"> <head><meta name="generator" content="Hexo 3.9.0">   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="llDFtYyLrr-5Vslfm6_4sfp1Zc2ZSF9s2RcY2mpvdjM">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一.序强烈安利&amp;lt;数据结构与算法分析-c语言描述&amp;gt;这本书!!!更好的讲解可阅读该书.或者看这位大佬的博客%% 二.用处这个左式堆啊~直接当作可以合并的二叉堆来理解,这是再最好不过的了,其他和堆没啥区别. 三.基本概念 零路径长（$null\ pathength$）$Npl(X)$：结点$X$到一个没有两个儿子的结点的最短路径的长度。这里我们定义没有两个儿子的结点的$Npl(x)=1$；$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="左偏堆">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/左偏堆/index.html">
+<meta property="og:site_name" content="rp++">
+<meta property="og:description" content="一.序强烈安利&amp;lt;数据结构与算法分析-c语言描述&amp;gt;这本书!!!更好的讲解可阅读该书.或者看这位大佬的博客%% 二.用处这个左式堆啊~直接当作可以合并的二叉堆来理解,这是再最好不过的了,其他和堆没啥区别. 三.基本概念 零路径长（$null\ pathength$）$Npl(X)$：结点$X$到一个没有两个儿子的结点的最短路径的长度。这里我们定义没有两个儿子的结点的$Npl(x)=1$；$">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019041820015775.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190418201921583.png">
+<meta property="og:updated_time" content="2019-08-09T11:12:58.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="左偏堆">
+<meta name="twitter:description" content="一.序强烈安利&amp;lt;数据结构与算法分析-c语言描述&amp;gt;这本书!!!更好的讲解可阅读该书.或者看这位大佬的博客%% 二.用处这个左式堆啊~直接当作可以合并的二叉堆来理解,这是再最好不过的了,其他和堆没啥区别. 三.基本概念 零路径长（$null\ pathength$）$Npl(X)$：结点$X$到一个没有两个儿子的结点的最短路径的长度。这里我们定义没有两个儿子的结点的$Npl(x)=1$；$">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019041820015775.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2UKE68KU1I',
+      apiKey: '0d37ee3aab78daa958579cbf7b9b4d12',
+      indexName: 'iSearch',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"少年你在找金斧子还是银斧子吖","hits_empty":"少年这个:\" ${query}\"是不是不对啊","hits_stats":"少年我只有这些了"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/左偏堆/">
+
+
+
+
+   <title>左偏堆 | rp++</title>   
+
+
+
+
+
+
+
+ </head>  <body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">                   <div class="container sidebar-position-right page-post-detail">         <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">       <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rp++</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/左偏堆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaiJeng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rp++">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">左偏堆</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T19:01:44+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/09/左偏堆/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/左偏堆/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一-序"><a href="#一-序" class="headerlink" title="一.序"></a>一.序</h2><p>强烈安利&lt;数据结构与算法分析-c语言描述&gt;这本书!!!<br>更好的讲解可阅读该书.或者看这位大佬的博客<a href="https://blog.csdn.net/changyuanchn/article/details/14647297" target="_blank" rel="noopener">%%</a></p>
+<h2 id="二-用处"><a href="#二-用处" class="headerlink" title="二.用处"></a>二.用处</h2><p>这个左式堆啊~直接当作可以合并的二叉堆来理解,这是再最好不过的了,其他和堆没啥区别.</p>
+<h2 id="三-基本概念"><a href="#三-基本概念" class="headerlink" title="三.基本概念"></a>三.基本概念</h2><blockquote>
+<p>零路径长（$null\ pathength$）<br>$Npl(X)$：<br>结点$X$到一个没有两个儿子的结点的最短路径的长度。<br>这里我们定义没有两个儿子的结点的$Npl(x)=1$；$Npl(NULL) = 0$。</p>
+</blockquote>
+<p>左堆和堆一样，也具有结构性质和堆序性质。左堆的结构性质是指：对于堆中的每一个结点$X$，它的左儿子的零路径长要不小于其右儿子的零路径长。<br>堆序信息与堆的一样，即：最小的结点应该是根节点，鉴于我们希望子树也是堆，那么每个子树的根节点也应该是最小的<br>这一性质必然会导致左堆是一个极其不平衡的树。<br><del>书上原话</del></p>
+<h2 id="四-合并"><a href="#四-合并" class="headerlink" title="四.合并"></a>四.合并</h2><p>每次合并都从右子树开始合并.这图我也看不大懂,大致理解就好了.<del>反正代码写出来,感觉和图的方法没大关系</del><br><img src="https://img-blog.csdnimg.cn/2019041820015775.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70" alt="1"></p>
+<h2 id="五-代码实现"><a href="#五-代码实现" class="headerlink" title="五.代码实现"></a>五.代码实现</h2><h3 id="一-结构"><a href="#一-结构" class="headerlink" title="(一).结构"></a>(一).结构</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">heap</span>* <span class="title">nd</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">heap</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> d, npl;</span><br><span class="line">	nd lson, rson;</span><br><span class="line">&#125;*root;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">### (二).合并</span><br><span class="line">```cpp</span><br><span class="line">nd merge(nd p, nd ip)</span><br><span class="line">&#123;</span><br><span class="line">	if (p == NULL)</span><br><span class="line">		return ip;</span><br><span class="line">	if (ip == NULL)</span><br><span class="line">		return p;</span><br><span class="line">	if (ip-&gt;d &gt; p-&gt;d)		//堆,小根&lt;,大根&gt;</span><br><span class="line">		swap(p, ip);</span><br><span class="line">	if (p-&gt;lson == NULL)</span><br><span class="line">		p-&gt;lson = ip;</span><br><span class="line">	else &#123;</span><br><span class="line">		p-&gt;rson = merge(p-&gt;rson, ip);</span><br><span class="line">		if (p-&gt;lson-&gt;npl &lt; p-&gt;rson-&gt;npl)	//保证性质不变</span><br><span class="line">			swap(p-&gt;lson, p-&gt;rson);</span><br><span class="line">		p-&gt;npl = p-&gt;rson-&gt;npl + 1;	//合并后,根节点的npl距离取右儿子的距离+1</span><br><span class="line">	&#125;</span><br><span class="line">	return p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三-插入"><a href="#三-插入" class="headerlink" title="(三).插入"></a>(三).插入</h3><p>插入这个命令,可以理解为,一个单个数的堆,与大堆合并.<br>即把要插入的数当作一个堆,与要插入的堆合并即可.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">nd <span class="title">insert</span><span class="params">(nd p, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	nd ip = (nd)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct heap));</span><br><span class="line">	<span class="keyword">if</span> (ip == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"error insert"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">65530</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	ip-&gt;lson = ip-&gt;rson = <span class="literal">NULL</span>;</span><br><span class="line">	ip-&gt;npl = <span class="number">0</span>, ip-&gt;d = x;</span><br><span class="line">	<span class="keyword">return</span> p = merge(p, ip);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四-删除"><a href="#四-删除" class="headerlink" title="(四).删除"></a>(四).删除</h3><p>删除堆首的值,可以理解为,将堆根节点的左右儿子分成两个堆,然后再合并成一个新的堆.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">nd <span class="title">pop</span><span class="params">(nd p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"error pop"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">65530</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	nd lp = p-&gt;lson, rp = p-&gt;rson;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> merge(lp, rp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五-样例代码"><a href="#五-样例代码" class="headerlink" title="(五).样例代码"></a>(五).样例代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">heap</span>* <span class="title">nd</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">heap</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> d, npl;</span><br><span class="line">	nd lson, rson;</span><br><span class="line">&#125;*root;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">(nd p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	close(p-&gt;lson),close(p-&gt;rson);</span><br><span class="line">	<span class="keyword">delete</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">nd <span class="title">merge</span><span class="params">(nd p, nd ip)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> ip;</span><br><span class="line">	<span class="keyword">if</span> (ip == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	<span class="keyword">if</span> (ip-&gt;d &gt; p-&gt;d)		<span class="comment">//堆的小根&lt;,大根&gt;</span></span><br><span class="line">		swap(p, ip);</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lson == <span class="literal">NULL</span>)</span><br><span class="line">		p-&gt;lson = ip;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		p-&gt;rson = merge(p-&gt;rson, ip);</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;lson-&gt;npl &lt; p-&gt;rson-&gt;npl)</span><br><span class="line">			swap(p-&gt;lson, p-&gt;rson);</span><br><span class="line">		p-&gt;npl = p-&gt;rson-&gt;npl + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">nd <span class="title">pop</span><span class="params">(nd p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"error pop"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">65530</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	nd lp = p-&gt;lson, rp = p-&gt;rson;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> merge(lp, rp);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">nd <span class="title">insert</span><span class="params">(nd p, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	nd ip = (nd)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct heap));</span><br><span class="line">	<span class="keyword">if</span> (ip == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"error insert"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">65530</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	ip-&gt;lson = ip-&gt;rson = <span class="literal">NULL</span>;</span><br><span class="line">	ip-&gt;npl = <span class="number">0</span>, ip-&gt;d = x;</span><br><span class="line">	<span class="keyword">return</span> p = merge(p, ip);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="hdu-1512-Monkey-King"><a href="#hdu-1512-Monkey-King" class="headerlink" title="(hdu 1512) Monkey King"></a>(hdu 1512) Monkey King</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1512" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=1512</a></p>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>Once in a forest, there lived $N$ aggressive monkeys. At the beginning, they each does things in its own way and none of them knows each other. But monkeys can’t avoid quarrelling, and it only happens between two monkeys who does not know each other. And when it happens, both the two monkeys will invite the strongest friend of them, and duel. Of course, after the duel, the two monkeys and all of there friends knows each other, and the quarrel above will no longer happens between these monkeys even if they have ever conflicted.<br>Assume that every money has a strongness value, which will be reduced to only half of the original after a duel(that is, $10$ will be reduced to $5$ and $5$ will be reduced to $2$).<br>And we also assume that every monkey knows himself. That is, when he is the strongest one in all of his friends, he himself will go to duel.</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>There are several test cases, and each case consists of two parts.<br>First part: The first line contains an integer $N$($N\leq100000$), which indicates the number of monkeys. And then $N$ lines follows. There is one number on each line, indicating the strongness value of ith monkey($\leq32768$).<br>Second part: The first line contains an integer $M$($M\leq100000$), which indicates there are $M$ conflicts happened. And then $M$ lines follows, each line of which contains two integers $x$ and $y$, indicating that there is a conflict between the $X_{th}$ monkey and $Y_{th}$.</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>For each of the conflict, output $-1$ if the two monkeys know each other, otherwise output the strongness value of the strongest monkey in all friends of them after the duel.<br> <strong>Sample Input</strong><br>5<br>20<br>16<br>10<br>10<br>4<br>5<br>2 3<br>3 4<br>3 5<br>4 5<br>1 5<br><strong>Sample Output</strong><br>8<br>5<br>5<br>-1<br>10<br><strong>Author</strong><br>JIANG, Yanyan<br><strong>Source</strong><br>ZOJ 3rd Anniversary Contest<br><strong>Recommend</strong><br>linle</p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><blockquote>
+<p>一开始有$n$只孤独的猴子，然后他们要打$m$次架，每次打架呢，都会拉上自己朋友最牛叉的出来跟别人打，打完之后战斗力就会减半，每次打完架就会成为朋友（正所谓不打不相识o(∩_∩)o）。问每次打完架之后那俩猴子最牛叉的朋友战斗力还有多少，若朋友打架就输出$-1$.</p>
+</blockquote>
+<p>并查集+可并堆<br>每次猴子和猴子打架做朋友,就并在一起.<br>每次要打架就查一下是不是在一起的朋友,不是就打架,是就输出$-1$.</p>
+<p>在经历了无数次$re$和$mle$后,我把$close$函数删了==,遗留的指针遗留就遗留吧.就$ac$了…….$wtf$<br><img src="https://img-blog.csdnimg.cn/20190418201921583.png" alt="在这里插入图片描述"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NULL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">heap</span>* <span class="title">nd</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">heap</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> d, npl;</span><br><span class="line">	nd lson, rson;</span><br><span class="line">&#125;*root;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">vec</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> d,fa;</span><br><span class="line">	nd p;</span><br><span class="line">	vec() &#123;</span><br><span class="line">		d = <span class="number">0</span>, p = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;a[<span class="number">101000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">(nd p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	close(p-&gt;lson);</span><br><span class="line">	close(p-&gt;rson);</span><br><span class="line">	<span class="keyword">delete</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">nd <span class="title">merge</span><span class="params">(nd p, nd ip)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> ip;</span><br><span class="line">	<span class="keyword">if</span> (ip == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	<span class="keyword">if</span> (ip-&gt;d &gt; p-&gt;d)		<span class="comment">//堆的小根&lt;,大根&gt;</span></span><br><span class="line">		swap(p, ip);</span><br><span class="line">	<span class="keyword">if</span> (p-&gt;lson == <span class="literal">NULL</span>)</span><br><span class="line">		p-&gt;lson = ip;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		p-&gt;rson = merge(p-&gt;rson, ip);</span><br><span class="line">		<span class="keyword">if</span> (p-&gt;lson-&gt;npl &lt; p-&gt;rson-&gt;npl)</span><br><span class="line">			swap(p-&gt;lson, p-&gt;rson);</span><br><span class="line">		p-&gt;npl = p-&gt;rson-&gt;npl + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">nd <span class="title">pop</span><span class="params">(nd p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"error pop"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">65530</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	nd lp = p-&gt;lson, rp = p-&gt;rson;</span><br><span class="line">	<span class="built_in">free</span>(p);</span><br><span class="line">	<span class="keyword">return</span> merge(lp, rp);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">nd <span class="title">insert</span><span class="params">(nd p, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	nd ip = (nd)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct heap));</span><br><span class="line">	<span class="keyword">if</span> (ip == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"error insert"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">65530</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	ip-&gt;lson = ip-&gt;rson = <span class="literal">NULL</span>;</span><br><span class="line">	ip-&gt;npl = <span class="number">0</span>, ip-&gt;d = x;</span><br><span class="line">	<span class="keyword">return</span> p = merge(p, ip);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">(nd p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> p-&gt;d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ffa</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x == a[x].fa)</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> a[x].fa=ffa(a[x].fa);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>; <span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span> (c&lt;<span class="string">'0'</span> || c&gt;<span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (c == <span class="string">'-'</span>)</span><br><span class="line">			f = <span class="number">-1</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (c &gt;= <span class="string">'0'</span>&amp;&amp;c &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		x = x * <span class="number">10</span> + c - <span class="string">'0'</span>;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x * f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			a[i].d=read();</span><br><span class="line">			a[i].fa = i;</span><br><span class="line">			a[i].p = insert(a[i].p, a[i].d);</span><br><span class="line">		&#125;</span><br><span class="line">		m=read();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> x, y, fx, fy;</span><br><span class="line">			x=read(),y=read();</span><br><span class="line">			fx = ffa(x), fy = ffa(y);</span><br><span class="line">			<span class="keyword">if</span> (fx != fy) &#123;</span><br><span class="line">				a[fy].fa = fx;</span><br><span class="line">				<span class="keyword">int</span> num1 = top(a[fx].p) / <span class="number">2</span>, num2 = top(a[fy].p) / <span class="number">2</span>;</span><br><span class="line">				a[fx].p = pop(a[fx].p);</span><br><span class="line">				a[fy].p = pop(a[fy].p);</span><br><span class="line">				a[fx].p = a[fy].p = merge(a[fx].p, a[fy].p);</span><br><span class="line">				a[fx].p = a[fy].p = insert(a[fx].p, num1);</span><br><span class="line">				a[fx].p = a[fy].p = insert(a[fx].p, num2);</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; top(a[fx].p) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) </span><br><span class="line">			a[i].p = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/ST表/" rel="next" title="ST表">
+                <i class="fa fa-chevron-left"></i> ST表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+           </div>           
+
+           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+         </div>                    
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/touxiang.gif" alt="HaiJeng">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">HaiJeng</p>
+              <p class="site-description motion-element" itemprop="description">我想刷穿一个OJ</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HaiJeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/UnKfrozen" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-link"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+
+          
+          
+
+          <div id="image">
+            <a href="https://sm.ms/image/6MSlReUsdXCj5n3" target="_blank"><img src="https://i.loli.net/2019/08/08/6MSlReUsdXCj5n3.gif"></a>
+          </div>
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                链接着异世界的大门
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/MMMinoz/" title="Minoz" target="_blank">Minoz</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/violet-acmer/" title="Hyacinth" target="_blank">Hyacinth</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/curry___" title="curry___" target="_blank">curry___</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/tykws8/" title="因维因" target="_blank">因维因</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://duny31030.top/" title="Duny" target="_blank">Duny</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jianshu.com/u/aee253d4632c" title="Liukai" target="_blank">Liukai</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baccano.fun/" title="Baccano!" target="_blank">Baccano!</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shawnzhou.xyz/" title="Shawn Zhou" target="_blank">Shawn Zhou</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://liangyj_blog.gitee.io/" title="Liang YJ" target="_blank">Liang YJ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://kangyupl.oschina.io/LiushaoRui" title="康宇" target="_blank">康宇</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          
+          <div id="music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
+          </div>
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=484992531&auto=0&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-序"><span class="nav-number">1.</span> <span class="nav-text">一.序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-用处"><span class="nav-number">2.</span> <span class="nav-text">二.用处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-基本概念"><span class="nav-number">3.</span> <span class="nav-text">三.基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-合并"><span class="nav-number">4.</span> <span class="nav-text">四.合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-代码实现"><span class="nav-number">5.</span> <span class="nav-text">五.代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-结构"><span class="nav-number">5.1.</span> <span class="nav-text">(一).结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-插入"><span class="nav-number">5.2.</span> <span class="nav-text">(三).插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-删除"><span class="nav-number">5.3.</span> <span class="nav-text">(四).删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-样例代码"><span class="nav-number">5.4.</span> <span class="nav-text">(五).样例代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">6.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hdu-1512-Monkey-King"><span class="nav-number">6.1.</span> <span class="nav-text">(hdu 1512) Monkey King</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-Description"><span class="nav-number">6.1.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Input"><span class="nav-number">6.1.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output"><span class="nav-number">6.1.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解析"><span class="nav-number">6.1.4.</span> <span class="nav-text">解析</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+      
+
+
+    </div>
+  </aside>
+
+                </div>     </main>      <footer id="footer" class="footer">       <div class="footer-inner">         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaiJeng</span>
+
+  
+</div>
+
+
+ <a class="theme-link" target="_blank" href="https://github.com/HaiJeng">风太大我听不清</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+         
+
+
+
+
+
+
+                </footer></div>                  <div class="back-to-top">         <i class="fa fa-arrow-up"></i>                </div>                   
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+   
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+       
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UEUJxgtUhAVvU8XXrPnJzP2F-MdYXbMMI',
+        appKey: 'uXeOlS8acwGeTmbMf19bV7OF',
+        placeholder: '来啊,快活啊o(*￣▽￣*)ブ',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+   
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+   
+   
+   
+      
+   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+   
+   
+ </body> </html> 
