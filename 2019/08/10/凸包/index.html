@@ -87,9 +87,10 @@
 <meta property="og:image" content="https://i.loli.net/2019/08/12/bO2wZ6Lsi8y7QkH.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/12/OE27JzWA6MYadQg.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/12/V3Ap1XEbxsMYJyi.gif">
+<meta property="og:image" content="https://i.loli.net/2019/08/12/LTC9qvoOfEl7Imh.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/12/bhfEeDyGActY2rN.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/12/KbRWQIzTlF37uda.gif">
-<meta property="og:updated_time" content="2019-08-11T18:11:05.616Z">
+<meta property="og:updated_time" content="2019-08-11T18:59:51.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凸包的几种求法">
 <meta name="twitter:description" content="前置知识凸包 不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边形，它能包含点集中所有的点。  列如下图:用红色的直线,将黑色的点包裹起来. 向量旋转定义两个同一起点的向量:分别为向量$\overrightarrow{ab}$和向量$\overrightarrow{ac}$定义向量旋转,$\overrightarrow{ab}$旋转为$\overrightarrow{a">
@@ -468,6 +469,19 @@
 </li>
 <li><p><img src="https://i.loli.net/2019/08/12/V3Ap1XEbxsMYJyi.gif" alt="9.gif"></p>
 </li>
+<li><p>我们来进一步理解这个算法</p>
+<ul>
+<li>看图<img src="https://i.loli.net/2019/08/12/LTC9qvoOfEl7Imh.png" alt="11.png"></li>
+<li>因为所给的点是有序的,那么点只能落在$I,II,III$这三个位置.<ul>
+<li>在这里,我们的$q[head]$和$q[tail]$都是$3$.</li>
+<li>加入点$4$便判断,在$I$,那么$head++$,然后压入$4$</li>
+<li>若在$III$,那么$tail–$,压入$4$.</li>
+<li>若在$II$,则$head++,tail–$,再分别压入$4$.</li>
+<li>重复上述步骤,直到所有点遍历结束.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -534,6 +548,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/计算几何相关知识/" rel="prev" title="计算几何相关知识">
+                计算几何相关知识 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -617,7 +635,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
