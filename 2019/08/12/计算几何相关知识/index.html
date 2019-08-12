@@ -72,18 +72,18 @@
 
 
 
-<meta name="description" content="向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.于是我们令$cosβ=x,sinβ=y$则旋转后的$x’=cos(α+β),y’=sin(α+β)$拆开后:$x’=cosα*cosβ-sinα*sinβ$$y’=">
+<meta name="description" content="向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.我们可以知道,这个向量的起点为$(0,0)$,终点在$r=\sqrt{x^2+y^2}$为半径得圆上.那么,根据$x=r\cdot cosβ,y=r\cdot si">
 <meta name="keywords" content="计算几何">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算几何相关知识">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/12/计算几何相关知识/index.html">
 <meta property="og:site_name" content="rp++">
-<meta property="og:description" content="向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.于是我们令$cosβ=x,sinβ=y$则旋转后的$x’=cos(α+β),y’=sin(α+β)$拆开后:$x’=cosα*cosβ-sinα*sinβ$$y’=">
+<meta property="og:description" content="向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.我们可以知道,这个向量的起点为$(0,0)$,终点在$r=\sqrt{x^2+y^2}$为半径得圆上.那么,根据$x=r\cdot cosβ,y=r\cdot si">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-08-11T19:17:01.617Z">
+<meta property="og:updated_time" content="2019-08-12T12:01:36.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算几何相关知识">
-<meta name="twitter:description" content="向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.于是我们令$cosβ=x,sinβ=y$则旋转后的$x’=cos(α+β),y’=sin(α+β)$拆开后:$x’=cosα*cosβ-sinα*sinβ$$y’=">
+<meta name="twitter:description" content="向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.我们可以知道,这个向量的起点为$(0,0)$,终点在$r=\sqrt{x^2+y^2}$为半径得圆上.那么,根据$x=r\cdot cosβ,y=r\cdot si">
 
 
 
@@ -360,7 +360,7 @@
       
 
       
-        <h2 id="向量旋转其一"><a href="#向量旋转其一" class="headerlink" title="向量旋转其一"></a>向量旋转其一</h2><p>给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$<br>问终点的位置.<br>我们定义逆时针为正向.<br>假设,向量$\overrightarrow{A}$终点为$(x,y)$<br>旋转后为$(x’,y’)$.<br>于是我们令$cosβ=x,sinβ=y$<br>则旋转后的$x’=cos(α+β),y’=sin(α+β)$<br>拆开后:<br>$x’=cosα*cosβ-sinα*sinβ$<br>$y’=sinα*cosβ+cosα*sinβ$<br>再将$x$和$y$回代得:<br>$x’=cosα*x-sinα*y$<br>$y’=sinα*x+cosα*y$</p>
+        <h2 id="向量旋转其一"><a href="#向量旋转其一" class="headerlink" title="向量旋转其一"></a>向量旋转其一</h2><p>给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$<br>问终点的位置.<br>我们定义逆时针为正向.<br>假设,向量$\overrightarrow{A}$终点为$(x,y)$<br>旋转后为$(x’,y’)$.<br>我们可以知道,这个向量的起点为$(0,0)$,终点在$r=\sqrt{x^2+y^2}$为半径得圆上.<br>那么,根据$x=r\cdot cosβ,y=r\cdot sinβ$<br>则旋转后的$x’=r\cdot cos(α+β)$,$y’=r\cdot sin(α+β)$<br>拆开后:<br>$x’=r\cdot cosα\cdot cosβ-r\cdot sinα\cdot sinβ$<br>$y’=r\cdot sinα\cdot cosβ+r\cdot cosα\cdot sinβ$<br>再将$x$和$y$回代得:<br>$x’=cosα\cdot x-sinα\cdot y$<br>$y’=sinα\cdot x+cosα\cdot y$</p>
 
       
     </div>

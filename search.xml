@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[计算几何相关知识]]></title>
     <url>%2F2019%2F08%2F12%2F%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%2F</url>
-    <content type="text"><![CDATA[向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.于是我们令$cosβ=x,sinβ=y$则旋转后的$x’=cos(α+β),y’=sin(α+β)$拆开后:$x’=cosα*cosβ-sinα*sinβ$$y’=sinα*cosβ+cosα*sinβ$再将$x$和$y$回代得:$x’=cosα*x-sinα*y$$y’=sinα*x+cosα*y$]]></content>
+    <content type="text"><![CDATA[向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.我们可以知道,这个向量的起点为$(0,0)$,终点在$r=\sqrt{x^2+y^2}$为半径得圆上.那么,根据$x=r\cdot cosβ,y=r\cdot sinβ$则旋转后的$x’=r\cdot cos(α+β)$,$y’=r\cdot sin(α+β)$拆开后:$x’=r\cdot cosα\cdot cosβ-r\cdot sinα\cdot sinβ$$y’=r\cdot sinα\cdot cosβ+r\cdot cosα\cdot sinβ$再将$x$和$y$回代得:$x’=cosα\cdot x-sinα\cdot y$$y’=sinα\cdot x+cosα\cdot y$]]></content>
       <categories>
         <category>知识点</category>
       </categories>
