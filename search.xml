@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[acm2014-I.The Queen’s Super-circular Patio]]></title>
+    <url>%2F2019%2F08%2F13%2Facm2014-I%2F</url>
+    <content type="text"><![CDATA[I: The Queen’s Super-circular Patio题目描述The queen wishes to build a patio paved with of a circular center stone surrounded by circular rings of circular stones. All the stones in a ring will be the same size with the same number of stones in each ring. The stones in the innermost ring will be placed touching (tangent to) the adjacent stones in the ring and the central stone. The stones in the other rings will touch the two adjacent stones in the next inner ring and their neighbors in the same ring. The figures below depict a patio with one ring of three stones and a patio with $5$ rings of $11$ stones. The patio is to be surrounded by a fence that goes around the outermost stones and straight between them (the heavier line in the figures).The queen does not yet know how many stones there will be in each circle nor how many circles of stones there will be. To be prepared for whatever she decides, write a program to calculate the sizes of the stones in each circle and the length of the surrounding fence. The radius of the central stone is to be one queenly foot. 输入The first line of input contains a single integer $P$, ($1 ≤ P ≤ 1000$), which is the number of data sets that follow. Each data set should be processed identically and independently.Each data set consists of a single line of input. It contains the data set number, $K$, the number, $N$ ($3 ≤ N ≤ 20$), of stones in each circle and the number, $M$ ($1 ≤ M ≤ 15$), of circles of stones around the central stone. 输出For each data set there is a single line of output. It contains the data set number, $K$, followed by a single space which is then followed by the radius (in queenly feet) of the stones in the outermost ring (to $3$ decimal places) which is followed by a single space which is then followed by the length (in queenly feet) of the fence (to $3$ decimal places). 样例输入31 3 12 7 33 11 5 样例输出1 6.464 79.4002 3.834 77.7603 2.916 82.481 解析$t$组数据,第一个是编号,第二个是一层有几个,第三个是有几层.问你最外层的圆的半径$r$和围栏长度$l$.首先,最外围的围栏长度$l$必定是最外围$1$个圆的周长$+n\times 2\times$最外围圆的半径$r$.那么问题变为如何求最外围圆的半径$r$.对于第一个图,很明显,最外层,即第一层的半径为$\frac{\sin\theta}{(1.0 - \sin\theta)}$,这里$\theta=\frac{\pi}{n}$就像这样,理解一下.我们改一下图,让第二个图只有两层那么问题变为如何求$r_2$.我们连接两球的圆心,外切圆和外切圆的外切圆 由$r_1=R_1\times\sin\theta,r_2=R_2\times\sin\theta$我们可以得到一个公式:一系列化简得到 $$r_2=R_2*\sin\theta$$ 之后每个$R_i=f(i-1)$递推求得. 12345678910111213141516171819202122232425int main()&#123; int t; cin &gt;&gt; t; while (t--) &#123; int opt, n, k; cin &gt;&gt; opt &gt;&gt; n &gt;&gt; k; double alpha = pi / (double)n; double si=sin(alpha),ci=cos(alpha),ti=tan(alpha); double r1 = si / (1.0 - si); double R1=1.0+r1,R2,r2; for (int i = 2; i &lt;= k; i++) &#123; R2=R1*ci+r1*si+sqrt(r1*r1+2*r1*R1*ci*si); R2=R2/(ci*ci); r2=R2*si; R1=R2; r1=r2; &#125; double r=r1; double ans=2.0*r*(pi+(double)(n)); printf("%d %.3f %.3f\n", opt, r, ans); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>练习题</category>
+      </categories>
+      <tags>
+        <tag>计算几何</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[计算几何相关知识]]></title>
     <url>%2F2019%2F08%2F12%2F%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%2F</url>
     <content type="text"><![CDATA[向量旋转其一给定点向量$\overrightarrow{A}$,令其按起点旋转一个角度$\alpha$问终点的位置.我们定义逆时针为正向.假设,向量$\overrightarrow{A}$终点为$(x,y)$旋转后为$(x’,y’)$.我们可以知道,这个向量的起点为$(0,0)$,终点在$r=\sqrt{x^2+y^2}$为半径得圆上.那么,根据$x=r\cdot cosβ,y=r\cdot sinβ$则旋转后的$x’=r\cdot cos(α+β)$,$y’=r\cdot sin(α+β)$拆开后:$x’=r\cdot cosα\cdot cosβ-r\cdot sinα\cdot sinβ$$y’=r\cdot sinα\cdot cosβ+r\cdot cosα\cdot sinβ$再将$x$和$y$回代得:$x’=cosα\cdot x-sinα\cdot y$$y’=sinα\cdot x+cosα\cdot y$]]></content>
@@ -195,8 +206,8 @@
         <category>UOJ练习记录</category>
       </categories>
       <tags>
-        <tag>UOJ</tag>
         <tag>KMP</tag>
+        <tag>UOJ</tag>
       </tags>
   </entry>
   <entry>
