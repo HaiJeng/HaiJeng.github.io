@@ -1647,7 +1647,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/07/划分树/">
+    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/07/KMP算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kyon">
@@ -1666,7 +1666,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/07/划分树/" itemprop="url">划分树</a></h1>
+                <a class="post-title-link" href="/2019/08/07/KMP算法/" itemprop="url">KMP算法模板</a></h1>
         
 
         <div class="post-meta">
@@ -1719,8 +1719,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/07/划分树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/划分树/" itemprop="commentCount"></span>
+                <a href="/2019/08/07/KMP算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/KMP算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1728,7 +1728,7 @@
 
           
           
-             <span id="/2019/08/07/划分树/" class="leancloud_visitors" data-flag-title="划分树">
+             <span id="/2019/08/07/KMP算法/" class="leancloud_visitors" data-flag-title="KMP算法模板">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1761,12 +1761,12 @@
       
         
           
-          引如题:POJ2014给定一$n$个元素的数组,每次查询$[l,r]$区间内从小到大第k个数.朴素解法为将数组$[l,r]$内的数排序,然后选择第$k$个即可.最坏情况$O(m*n)$.这个时候,就需要更好的数据结构,划分树/归并树.
-定义原数组为${4,2,5,7,1,8,3,6}$,在每次划分左
+          蒟蒻学识浅陋,欢迎各位大牛指正
+KMP从入门到放弃请观左神为什么想要杀人%%%%njb7着重听1h12m20s$KMP$分为两个部分,一部分为两个字符串间的比较,另一部分为自己与自己的比较.简单的划分为下面两个图,详细理解请见左神不稳定情绪讲解.不过我$jiao$的在$1:21:04$时,将例子换为
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/08/07/划分树/#more" rel="contents">
+            <a class="btn" href="/2019/08/07/KMP算法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1817,7 +1817,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/07/线段树/">
+    <link itemprop="mainEntityOfPage" href="https://haijeng.github.io/2019/08/07/UOJ-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kyon">
@@ -1836,7 +1836,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/07/线段树/" itemprop="url">线段树</a></h1>
+                <a class="post-title-link" href="/2019/08/07/UOJ-5/" itemprop="url">UOJ #5.[NOI2014]动物园</a></h1>
         
 
         <div class="post-meta">
@@ -1871,8 +1871,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/模板/" itemprop="url" rel="index">
-                    <span itemprop="name">模板</span>
+                  <a href="/categories/UOJ练习记录/" itemprop="url" rel="index">
+                    <span itemprop="name">UOJ练习记录</span>
                   </a>
                 </span>
 
@@ -1889,8 +1889,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/07/线段树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/线段树/" itemprop="commentCount"></span>
+                <a href="/2019/08/07/UOJ-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/UOJ-5/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1898,7 +1898,7 @@
 
           
           
-             <span id="/2019/08/07/线段树/" class="leancloud_visitors" data-flag-title="线段树">
+             <span id="/2019/08/07/UOJ-5/" class="leancloud_visitors" data-flag-title="UOJ #5.[NOI2014]动物园">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1931,17 +1931,13 @@
       
         
           
-          欢迎各大佬，大牛对本文指正，也希望本文能对各位有所帮助
-本篇很多地方借鉴英雄哪里出来的博客%%%
-一、基本概念
-线段树是一棵二叉搜索树，它储存的是一个区间的信息。
-每个节点以结构体的方式存储，结构体包含以下几个信息：每个节点以结构体的方式存储，结构体包含以下几个信息：
-(1). 区间左端点、右端点
-
+          序言&emsp;&emsp;这个题写的我好迷啊==
+题目简述&emsp;&emsp;园长想让你求一个字符串的”不互相重叠的公共前后缀个数”然后再乘起来.一大骡子的字,总结一下就是这个意思.
+解析&emsp;&emsp;如果你不会$KMP$….那我也没办法(笑)&emsp;&emsp;我们知道,$ne
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/08/07/线段树/#more" rel="contents">
+            <a class="btn" href="/2019/08/07/UOJ-5/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2798,4 +2794,4 @@
 
    
    
- <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body> </html> 
+ <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":200,"height":350},"mobile":{"show":true},"log":false});</script></body> </html> 
