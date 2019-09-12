@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="代码丑,常数大" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
 
 
 
@@ -79,7 +79,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Coin Slider">
 <meta property="og:url" content="https://haijeng.github.io/2019/09/01/Coin-Slider/index.html">
-<meta property="og:site_name" content="代码丑,常数大">
+<meta property="og:site_name" content="Kyon&#39;Blog">
 <meta property="og:description" content="题目大意膜拜一位霓虹大佬%%%%平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,每">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2019-09-09T12:53:13.972Z">
@@ -120,7 +120,7 @@
 
 
 
-   <title>Coin Slider | 代码丑,常数大</title>   
+   <title>Coin Slider | Kyon'Blog</title>   
 
 
 
@@ -154,7 +154,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">代码丑,常数大</span>
+        <span class="site-title">Kyon'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -285,7 +285,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码丑,常数大">
+      <meta itemprop="name" content="Kyon'Blog">
     </span>
 
     
@@ -643,16 +643,41 @@
 
           
           
-
-
-          <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+          
           <div id="music">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
-          </div> 
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
+</div> 
+<!-- none-select-br -->
 
-          
-          
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
 
           </div>
 

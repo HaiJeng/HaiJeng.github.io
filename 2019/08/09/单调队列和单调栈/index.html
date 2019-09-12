@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="代码丑,常数大" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
 
 
 
@@ -79,7 +79,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="单调队列和单调栈">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/09/单调队列和单调栈/index.html">
-<meta property="og:site_name" content="代码丑,常数大">
+<meta property="og:site_name" content="Kyon&#39;Blog">
 <meta property="og:description" content="一.概念目的是:维持数据结构内的一组线性数据并保证其按照单调递减或单调递增.单调队列/栈的实现很简单,只用一个数组即可,多用于与其他算法等搭配,产生非常好的效果. 二.实现123456789101112int q[MAX],head,tail;    //队列或者栈,头,尾void built(int &amp;amp;head,int &amp;amp;tail,int *q)    //初始化&amp;#123;">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190421093458106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
@@ -122,7 +122,7 @@
 
 
 
-   <title>单调队列和单调栈 | 代码丑,常数大</title>   
+   <title>单调队列和单调栈 | Kyon'Blog</title>   
 
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">代码丑,常数大</span>
+        <span class="site-title">Kyon'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -287,7 +287,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="代码丑,常数大">
+      <meta itemprop="name" content="Kyon'Blog">
     </span>
 
     
@@ -701,16 +701,41 @@
 
           
           
-
-
-          <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+          
           <div id="music">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426833176&auto=0&height=66"></iframe>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
-          </div> 
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
+</div> 
+<!-- none-select-br -->
 
-          
-          
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
 
           </div>
 
