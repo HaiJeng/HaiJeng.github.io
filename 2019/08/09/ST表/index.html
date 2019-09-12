@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyons'Blog" type="application/atom+xml">
 
 
 
@@ -79,7 +79,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ST表">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/09/ST表/index.html">
-<meta property="og:site_name" content="Kyon&#39;Blog">
+<meta property="og:site_name" content="Kyons&#39;Blog">
 <meta property="og:description" content="引例洛谷P3865$RMQ$的中文翻译为:静态区间最值查询.英文我不知道所以不写给你$n$个数,$m$次查询,查询的内容为区间$[l,r]$中的最大值.$RMQ$有解法蛮多的,$st$表,线段树,树状数组,划分树都可以做.$st$表的复杂度为预处理$O(n*{\log_2} n)$+查询$O(m)$而线段树则需要预处理$O(n*{\log_2} n)$+查询$O(m*{\log_2} n)$树状数">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190515203051714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
@@ -122,7 +122,7 @@
 
 
 
-   <title>ST表 | Kyon'Blog</title>   
+   <title>ST表 | Kyons'Blog</title>   
 
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kyon'Blog</span>
+        <span class="site-title">Kyons'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -261,7 +261,37 @@
 </nav>
 
 
+<!-- none-select-br -->
 
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
  </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
 
   <div id="posts" class="posts-expand">
@@ -287,8 +317,13 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kyon'Blog">
+      <meta itemprop="name" content="Kyons'Blog">
     </span>
+
+    
+    
+    
+    
 
     
       <header class="post-header">
@@ -647,44 +682,10 @@
               </ul>
             </div>
           
-
-          
-          
           
           <div id="music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
 </div> 
-<!-- none-select-br -->
-
-<p></p>
-
-<!-- hitokoto -->
-
-<div class="hitokoto-title">
-	<i class="fa fa-paragraph"></i>
-	<b>一言</b>
-</div>
-
-<div id="hitokoto">:D 获取中...</div>
-<i id="hitofrom">:D 获取中...</i>
-
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
-      var hitofrom = document.getElementById('hitofrom');
-      hitofrom.innerText = "——" + data.from + '\xa0'; 
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
 
           </div>
 

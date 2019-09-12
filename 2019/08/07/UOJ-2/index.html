@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyons'Blog" type="application/atom+xml">
 
 
 
@@ -79,7 +79,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="UOJ #2.[NOI2014]起床困难综合症">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/07/UOJ-2/index.html">
-<meta property="og:site_name" content="Kyon&#39;Blog">
+<meta property="og:site_name" content="Kyons&#39;Blog">
 <meta property="og:description" content="描述 链接:http://uoj.ac/problem/2 21 世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm 一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因：在深邃的太平洋海底中，出现了一条名为 drd 的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。正是由于 drd 的活动，起床困难综合症愈演">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2019-08-09T15:52:46.703Z">
@@ -120,7 +120,7 @@
 
 
 
-   <title>UOJ #2.[NOI2014]起床困难综合症 | Kyon'Blog</title>   
+   <title>UOJ #2.[NOI2014]起床困难综合症 | Kyons'Blog</title>   
 
 
 
@@ -154,7 +154,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kyon'Blog</span>
+        <span class="site-title">Kyons'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -259,7 +259,37 @@
 </nav>
 
 
+<!-- none-select-br -->
 
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
  </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
 
   <div id="posts" class="posts-expand">
@@ -285,8 +315,13 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kyon'Blog">
+      <meta itemprop="name" content="Kyons'Blog">
     </span>
+
+    
+    
+    
+    
 
     
       <header class="post-header">
@@ -657,44 +692,10 @@
               </ul>
             </div>
           
-
-          
-          
           
           <div id="music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
 </div> 
-<!-- none-select-br -->
-
-<p></p>
-
-<!-- hitokoto -->
-
-<div class="hitokoto-title">
-	<i class="fa fa-paragraph"></i>
-	<b>一言</b>
-</div>
-
-<div id="hitokoto">:D 获取中...</div>
-<i id="hitofrom">:D 获取中...</i>
-
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
-      var hitofrom = document.getElementById('hitofrom');
-      hitofrom.innerText = "——" + data.from + '\xa0'; 
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
 
           </div>
 

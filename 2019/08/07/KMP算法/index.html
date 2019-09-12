@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyons'Blog" type="application/atom+xml">
 
 
 
@@ -79,7 +79,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="KMP算法模板">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/07/KMP算法/index.html">
-<meta property="og:site_name" content="Kyon&#39;Blog">
+<meta property="og:site_name" content="Kyons&#39;Blog">
 <meta property="og:description" content="蒟蒻学识浅陋,欢迎各位大牛指正 KMP从入门到放弃请观左神为什么想要杀人%%%%njb7着重听1h12m20s$KMP$分为两个部分,一部分为两个字符串间的比较,另一部分为自己与自己的比较.简单的划分为下面两个图,详细理解请见左神不稳定情绪讲解.不过我$jiao$的在$1:21:04$时,将例子换为$”ababcababak”$更好理解 代码1234567891011121314151617181">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190305202708250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuS2Zyb3plbg==,size_16,color_FFFFFF,t_70">
@@ -124,7 +124,7 @@
 
 
 
-   <title>KMP算法模板 | Kyon'Blog</title>   
+   <title>KMP算法模板 | Kyons'Blog</title>   
 
 
 
@@ -158,7 +158,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kyon'Blog</span>
+        <span class="site-title">Kyons'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -263,7 +263,37 @@
 </nav>
 
 
+<!-- none-select-br -->
 
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
  </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
 
   <div id="posts" class="posts-expand">
@@ -289,8 +319,13 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kyon'Blog">
+      <meta itemprop="name" content="Kyons'Blog">
     </span>
+
+    
+    
+    
+    
 
     
       <header class="post-header">
@@ -651,44 +686,10 @@
               </ul>
             </div>
           
-
-          
-          
           
           <div id="music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
 </div> 
-<!-- none-select-br -->
-
-<p></p>
-
-<!-- hitokoto -->
-
-<div class="hitokoto-title">
-	<i class="fa fa-paragraph"></i>
-	<b>一言</b>
-</div>
-
-<div id="hitokoto">:D 获取中...</div>
-<i id="hitofrom">:D 获取中...</i>
-
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
-      var hitofrom = document.getElementById('hitofrom');
-      hitofrom.innerText = "——" + data.from + '\xa0'; 
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
 
           </div>
 

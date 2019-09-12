@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyons'Blog" type="application/atom+xml">
 
 
 
@@ -76,13 +76,13 @@
 
 <meta name="description" content="自闭在校大学生一枚,欢迎交流.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kyon&#39;Blog">
+<meta property="og:title" content="Kyons&#39;Blog">
 <meta property="og:url" content="https://haijeng.github.io/archives/2019/08/index.html">
-<meta property="og:site_name" content="Kyon&#39;Blog">
+<meta property="og:site_name" content="Kyons&#39;Blog">
 <meta property="og:description" content="自闭在校大学生一枚,欢迎交流.">
 <meta property="og:locale" content="zh-cn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kyon&#39;Blog">
+<meta name="twitter:title" content="Kyons&#39;Blog">
 <meta name="twitter:description" content="自闭在校大学生一枚,欢迎交流.">
 
 
@@ -118,7 +118,7 @@
 
 
 
-   <title>归档 | Kyon'Blog</title>   
+   <title>归档 | Kyons'Blog</title>   
 
 
 
@@ -152,7 +152,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kyon'Blog</span>
+        <span class="site-title">Kyons'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -257,7 +257,37 @@
 </nav>
 
 
+<!-- none-select-br -->
 
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
  </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
 
   
@@ -810,44 +840,10 @@
               </ul>
             </div>
           
-
-          
-          
           
           <div id="music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
 </div> 
-<!-- none-select-br -->
-
-<p></p>
-
-<!-- hitokoto -->
-
-<div class="hitokoto-title">
-	<i class="fa fa-paragraph"></i>
-	<b>一言</b>
-</div>
-
-<div id="hitokoto">:D 获取中...</div>
-<i id="hitofrom">:D 获取中...</i>
-
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
-      var hitofrom = document.getElementById('hitofrom');
-      hitofrom.innerText = "——" + data.from + '\xa0'; 
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
 
           </div>
 

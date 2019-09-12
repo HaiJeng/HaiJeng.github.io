@@ -67,7 +67,7 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyons'Blog" type="application/atom+xml">
 
 
 
@@ -79,7 +79,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="UOJ #6.[NOI2014]随机数生成器">
 <meta property="og:url" content="https://haijeng.github.io/2019/08/08/UOJ-6/index.html">
-<meta property="og:site_name" content="Kyon&#39;Blog">
+<meta property="og:site_name" content="Kyons&#39;Blog">
 <meta property="og:description" content="序这个题,难在阅读. 题目大意跳过!链接:🔗 解析 首先根据题目得到一个随机数列$\lbrace x_i=(a×x_{i−1}^2+b×x_{i−1}+c)$mod$d\rbrace$其中$i\in{1…n×m}$ 搞一个数列$T$,其中$T_i=i$,$i\in{1….n×m}$ 对每一项$T_i$,我们$swap(T_i,$$T_{x_imodi+1})$ 以上$3$步结束后,得到的就是棋盘">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:updated_time" content="2019-08-09T15:53:52.836Z">
@@ -120,7 +120,7 @@
 
 
 
-   <title>UOJ #6.[NOI2014]随机数生成器 | Kyon'Blog</title>   
+   <title>UOJ #6.[NOI2014]随机数生成器 | Kyons'Blog</title>   
 
 
 
@@ -154,7 +154,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kyon'Blog</span>
+        <span class="site-title">Kyons'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -259,7 +259,37 @@
 </nav>
 
 
+<!-- none-select-br -->
 
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
  </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
 
   <div id="posts" class="posts-expand">
@@ -285,8 +315,13 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kyon'Blog">
+      <meta itemprop="name" content="Kyons'Blog">
     </span>
+
+    
+    
+    
+    
 
     
       <header class="post-header">
@@ -664,44 +699,10 @@
               </ul>
             </div>
           
-
-          
-          
           
           <div id="music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
 </div> 
-<!-- none-select-br -->
-
-<p></p>
-
-<!-- hitokoto -->
-
-<div class="hitokoto-title">
-	<i class="fa fa-paragraph"></i>
-	<b>一言</b>
-</div>
-
-<div id="hitokoto">:D 获取中...</div>
-<i id="hitofrom">:D 获取中...</i>
-
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
-      var hitofrom = document.getElementById('hitofrom');
-      hitofrom.innerText = "——" + data.from + '\xa0'; 
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
 
           </div>
 

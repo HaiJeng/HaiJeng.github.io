@@ -67,25 +67,25 @@
 
 
 
-  <link rel="alternate" href="/rss2.xml" title="Kyon'Blog" type="application/atom+xml">
+  <link rel="alternate" href="/rss2.xml" title="Kyons'Blog" type="application/atom+xml">
 
 
 
 
 
 
-<meta name="description" content="题目大意膜拜一位霓虹大佬%%%%平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,每">
+<meta name="description" content="题目大意膜拜一位霓虹大佬%%%% 平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,">
 <meta name="keywords" content="计算几何,状压dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Coin Slider">
 <meta property="og:url" content="https://haijeng.github.io/2019/09/01/Coin-Slider/index.html">
-<meta property="og:site_name" content="Kyon&#39;Blog">
-<meta property="og:description" content="题目大意膜拜一位霓虹大佬%%%%平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,每">
+<meta property="og:site_name" content="Kyons&#39;Blog">
+<meta property="og:description" content="题目大意膜拜一位霓虹大佬%%%% 平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-09-09T12:53:13.972Z">
+<meta property="og:updated_time" content="2019-09-12T16:28:23.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coin Slider">
-<meta name="twitter:description" content="题目大意膜拜一位霓虹大佬%%%%平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,每">
+<meta name="twitter:description" content="题目大意膜拜一位霓虹大佬%%%% 平面上有一堆不重叠的硬币.给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞. 解析状压$dp$+计算几何一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.即$distance(L,O_j)&amp;lt;r_j+r_i$将每一个硬币是否移动过压缩为$0$和$1$,">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-   <title>Coin Slider | Kyon'Blog</title>   
+   <title>Coin Slider | Kyons'Blog</title>   
 
 
 
@@ -154,7 +154,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Kyon'Blog</span>
+        <span class="site-title">Kyons'Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -259,7 +259,37 @@
 </nav>
 
 
+<!-- none-select-br -->
 
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
  </div>     </header>      <main id="main" class="main">       <div class="main-inner">         <div class="content-wrap">           <div id="content" class="content">             
 
   <div id="posts" class="posts-expand">
@@ -285,8 +315,13 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kyon'Blog">
+      <meta itemprop="name" content="Kyons'Blog">
     </span>
+
+    
+    
+    
+    
 
     
       <header class="post-header">
@@ -386,7 +421,8 @@
       
 
       
-        <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>膜拜一位霓虹大佬<a href="https://www.hamayanhamayan.com/entry/2017/11/21/121449" target="_blank" rel="noopener">%%%%</a><br>平面上有一堆不重叠的硬币.<br>给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞.</p>
+        <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>膜拜一位霓虹大佬<a href="https://www.hamayanhamayan.com/entry/2017/11/21/121449" target="_blank" rel="noopener">%%%%</a></p>
+<p>平面上有一堆不重叠的硬币.<br>给定硬币的起点和终点,问最多可以把多少个硬币从起点直线移动到终点,且不会与其他硬币碰撞.</p>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>状压$dp$+计算几何<br>一个硬币能否移动的条件为:第$i$枚硬币的起点和终点的连线L,与第$j$个硬币中心的距离$d$是否大于这俩个硬币半径的和.<br>即$distance(L,O_j)&lt;r_j+r_i$<br>将每一个硬币是否移动过压缩为$0$和$1$,每次要移动$i_{th}$硬币时,先判断答案这一位是不是$1$.<br>再根据答案数中的二进制位判断$j_{th}$这个圆是在终点还是起点.<br>最后再判断能否移动,更新答案即可.</p>
 <div><div class="fold_hider"><div class="close hider_title">代码如下</div></div><div class="fold">
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">point</span> <span class="title">vec</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    point() &#123;&#125;</span><br><span class="line">    point(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span><br><span class="line">    &#123;</span><br><span class="line">        x = a, y = b;</span><br><span class="line">    &#125;</span><br><span class="line">    point <span class="keyword">operator</span>*(<span class="keyword">const</span> point&amp; i_T) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> point(x * i_T.x, y * i_T.y);</span><br><span class="line">    &#125;</span><br><span class="line">    point <span class="keyword">operator</span>*(<span class="keyword">double</span> u) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> point(x * u, y * u);</span><br><span class="line">    &#125;</span><br><span class="line">    point <span class="keyword">operator</span>/(<span class="keyword">double</span> u) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> point(x / u, y / u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;(<span class="keyword">const</span> point a) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> x == a.x ? y &gt; a.y : x &gt; a.x;</span><br><span class="line">    &#125;</span><br><span class="line">    point <span class="keyword">operator</span>-(<span class="keyword">const</span> point a) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> point(x - a.x, y - a.y);</span><br><span class="line">    &#125;</span><br><span class="line">    point <span class="keyword">operator</span>+(<span class="keyword">const</span> point a) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> point(x + a.x, y + a.y);</span><br><span class="line">    &#125;</span><br><span class="line">    point <span class="keyword">operator</span>+(<span class="keyword">double</span> a) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> point(x + a, y + a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> point a) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> y == a.y ? x &lt; a.x : y &lt; a.y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; out, point&amp; a)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a.x &lt;&lt; <span class="string">','</span> &lt;&lt; a.y;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> istream&amp; <span class="keyword">operator</span>&gt;&gt;(istream&amp; in, point&amp; a)</span><br><span class="line">    &#123;</span><br><span class="line">        in &gt;&gt; a.x &gt;&gt; a.y;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Line</span> <span class="title">Segment</span>;</span> <span class="comment">//线段Segment</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Line</span> &#123;</span> <span class="comment">//直线</span></span><br><span class="line">    vec a, b;</span><br><span class="line">    Line(point _a = point(), point _b = point())</span><br><span class="line">        : a(_a)</span><br><span class="line">        , b(_b)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> istream&amp; <span class="keyword">operator</span>&gt;&gt;(istream&amp; in, Line&amp; a)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a.a &gt;&gt; a.b;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; out, Line&amp; a)</span><br><span class="line">    &#123;</span><br><span class="line">        out &lt;&lt; a.a &lt;&lt; <span class="string">' '</span> &lt;&lt; a.b;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cirles</span> &#123;</span></span><br><span class="line">    point o;</span><br><span class="line">    <span class="keyword">double</span> r;</span><br><span class="line">    cirles(point _o = point(), <span class="keyword">double</span> _r = <span class="number">0.0</span>)</span><br><span class="line">        : r(_r)</span><br><span class="line">        , o(_o)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">point <span class="title">Point</span><span class="params">(<span class="keyword">double</span> t)</span> <span class="comment">//圆上任意一点</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> point(o.x + r * <span class="built_in">cos</span>(t), o.y + r * <span class="built_in">sin</span>(t));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> istream&amp; <span class="keyword">operator</span>&gt;&gt;(istream&amp; in, cirles&amp; a)</span><br><span class="line">    &#123;</span><br><span class="line">        in &gt;&gt; a.o &gt;&gt; a.r;</span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; out, cirles&amp; a)</span><br><span class="line">    &#123;</span><br><span class="line">        out &lt;&lt; a.o &lt;&lt; <span class="string">' '</span> &lt;&lt; a.r;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ceshi2</span> &#123;</span></span><br><span class="line">    cirles s, t;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dayu_dengyu</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(x - y) &lt; eps || x &gt; y)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">zhengfu</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(x) &lt; eps)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> x &gt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">changdu</span><span class="params">(vec a)</span> <span class="comment">//长度</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(a.x * a.x + a.y * a.y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dianji</span><span class="params">(vec A, vec B)</span> <span class="comment">//点积</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> A.x * B.x + A.y * B.y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dian_dao_xianduan</span><span class="params">(Segment l, point c)</span> <span class="comment">//点到线段的距离</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> L = changdu(l.b - l.a);</span><br><span class="line">    <span class="keyword">double</span> r = dianji(l.b - l.a, c - l.a) / (L * L);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (zhengfu(r) == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> changdu(c - l.a);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dayu_dengyu(r, <span class="number">1</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> changdu(c - l.b);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">double</span> L = r * changdu(l.b - l.a), l2 = changdu(c - l.a);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sqrt</span>(l2 * l2 - L * L);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        x -= (x &amp; -x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1</span> &lt;&lt; <span class="number">22</span>], N;</span><br><span class="line">ceshi2 K[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; K[i].s.r &gt;&gt; K[i].s.o &gt;&gt; K[i].t.o;</span><br><span class="line">        K[i].t.r = K[i].s.r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> msk = <span class="number">0</span>; msk &lt; (<span class="number">1</span> &lt;&lt; N); msk++)</span><br><span class="line">        <span class="keyword">if</span> (dp[msk])</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">                <span class="keyword">if</span> (!(msk &amp; (<span class="number">1</span> &lt;&lt; i))) &#123; <span class="comment">//如果硬币被移动过了</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="comment">//判断其他硬币位置是在s,还是在t</span></span><br><span class="line">                    <span class="built_in">vector</span>&lt;cirles&gt; V;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++)</span><br><span class="line">                        <span class="keyword">if</span> (i != j)</span><br><span class="line">                            <span class="keyword">if</span> (msk &amp; (<span class="number">1</span> &lt;&lt; j))</span><br><span class="line">                                V.push_back(K[j].t);</span><br><span class="line">                            <span class="keyword">else</span></span><br><span class="line">                                V.push_back(K[j].s);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">//判断该硬币能否移动</span></span><br><span class="line"></span><br><span class="line">                    <span class="function">Line <span class="title">l</span><span class="params">(K[i].s.o, K[i].t.o)</span></span>;</span><br><span class="line">                    <span class="keyword">int</span> ok = <span class="number">1</span>, n = V.size();</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                        <span class="keyword">double</span> d = dian_dao_xianduan(l, V[j].o);</span><br><span class="line">                        <span class="keyword">if</span> (d &lt; K[i].s.r + V[j].r - eps)</span><br><span class="line">                            ok = <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (ok)</span><br><span class="line">                        dp[msk + (<span class="number">1</span> &lt;&lt; i)] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> msk = <span class="number">0</span>; msk &lt; (<span class="number">1</span> &lt;&lt; N); msk++)</span><br><span class="line">        <span class="keyword">if</span> (dp[msk])</span><br><span class="line">            ans = max(ans, query(msk));</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -640,44 +676,10 @@
               </ul>
             </div>
           
-
-          
-          
           
           <div id="music">
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30474309&auto=0&height=66"></iframe>
 </div> 
-<!-- none-select-br -->
-
-<p></p>
-
-<!-- hitokoto -->
-
-<div class="hitokoto-title">
-	<i class="fa fa-paragraph"></i>
-	<b>一言</b>
-</div>
-
-<div id="hitokoto">:D 获取中...</div>
-<i id="hitofrom">:D 获取中...</i>
-
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
-      var hitofrom = document.getElementById('hitofrom');
-      hitofrom.innerText = "——" + data.from + '\xa0'; 
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
 
           </div>
 
