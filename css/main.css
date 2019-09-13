@@ -1935,7 +1935,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a388ff;
+  background: #fff1b6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3112,4 +3112,17 @@ img:hover {
 }
 .open:after {
   content: "▲";
+}
+.hitokoto-title {
+  text-align: center;
+  font-size: 14px;
+}
+#hitokoto {
+  font-family: "Microsoft YaHei";
+  font-size: 13px;
+}
+#hitofrom {
+  float: right;
+  font-family: "Microsoft YaHei";
+  font-size: 12px;
 }
