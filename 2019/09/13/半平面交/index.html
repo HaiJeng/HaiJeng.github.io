@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Kyons&#39;Blog">
 <meta property="og:description" content="首先是定义          一条直线和直线的一侧称为一个半平面。半平面是一个点集，因此是一条直线和直线的一侧构成的点集。当包含直线时，称为闭半平面；当不包含直线时，称为开半平面。        一般来讲,都写成$ax+by+c\ge 0$.是不是很眼熟,线性规划记得不,还有各种鬼畜应用题.用来求$(x,y)$的取值范围.然后半平面交呢….就是把一堆半平面的交集求出来,就是半平面交了.$\begi">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-09-16T03:19:58.204Z">
+<meta property="og:updated_time" content="2020-05-26T13:47:59.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="半平面交">
 <meta name="twitter:description" content="首先是定义          一条直线和直线的一侧称为一个半平面。半平面是一个点集，因此是一条直线和直线的一侧构成的点集。当包含直线时，称为闭半平面；当不包含直线时，称为开半平面。        一般来讲,都写成$ax+by+c\ge 0$.是不是很眼熟,线性规划记得不,还有各种鬼畜应用题.用来求$(x,y)$的取值范围.然后半平面交呢….就是把一堆半平面的交集求出来,就是半平面交了.$\begi">
@@ -464,7 +464,7 @@
 <li>我们以逆时针为正方向,半平面为向量方向的左手.</li>
 <li>维护一个双端队列</li>
 <li>加入一个直线,就判断$tail-1$和$tail$的交点在该直线的哪边.<ol>
-<li>在右面,说明$tail$的直线被新加入的直线覆盖了,于是$tail–$</li>
+<li>在右面,说明$tail$的直线被新加入的直线覆盖了,于是$tail-=1$</li>
 <li>在左面,不做处理</li>
 </ol>
 </li>
