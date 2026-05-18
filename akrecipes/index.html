@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明日方舟 · 生息演算 二期 配方查询</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --accent: #58a6ff;
+  --gold: #f0c060;
+  --green: #3fb950;
+  --red: #f85149;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+header h1 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--gold);
+}
+
+header p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin: 1.5rem 0 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs button {
+  flex: none;
+  padding: 0.6rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tabs button:hover { color: var(--text); }
+.tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Search */
+.search-area {
+  padding: 1.25rem 0;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-row input {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-row input:focus { border-color: var(--accent); }
+.search-row input::placeholder { color: var(--text-dim); }
+
+.btn {
+  padding: 0.6rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover { border-color: var(--accent); }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn.primary:hover { opacity: 0.9; }
+
+.mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  align-items: center;
+}
+
+.mode-toggle span { color: var(--text-dim); font-size: 0.85rem; }
+
+.mode-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.mode-toggle input[type="radio"] { accent-color: var(--accent); }
+.mode-toggle input[type="radio"]:checked + span { color: var(--text); }
+
+/* Results */
+.results { padding-bottom: 2rem; }
+
+.result-group {
+  margin-bottom: 1.5rem;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.result-header .material-name {
+  font-weight: 600;
+  color: var(--gold);
+  font-size: 1.05rem;
+}
+
+.recipe-cards {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.recipe-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: border-color 0.15s;
+}
+
+.recipe-card:hover { border-color: var(--accent); }
+
+.recipe-card .facility-badge {
+  flex: none;
+  background: #1a2332;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.recipe-card .arrow {
+  color: var(--gold);
+  flex: none;
+  font-size: 1.1rem;
+}
+
+.recipe-card .output-name {
+  font-weight: 600;
+  color: var(--green);
+  flex: none;
+  white-space: nowrap;
+}
+
+.recipe-card .input-names {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  min-width: 0;
+  word-break: break-all;
+}
+
+/* Summary */
+.summary {
+  padding: 1.25rem 0 2rem;
+}
+
+.summary .meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary .meta-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  text-align: center;
+}
+
+.summary .meta-card .number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.summary .meta-card .label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 0.15rem;
+}
+
+.facility-list {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.75rem;
+  gap: 0.75rem;
+}
+
+.facility-item .f-name {
+  font-size: 0.9rem;
+}
+
+.facility-item .f-levels {
+  color: var(--accent);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.facility-item .f-count {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* All recipes */
+.recipe-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recipe-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  vertical-align: top;
+}
+
+.recipe-table .mat-cell {
+  color: var(--gold);
+  font-weight: 600;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.recipe-table tr.material-row td {
+  padding-top: 0.85rem;
+}
+
+.recipe-table .arrow-cell { color: var(--green); width: 1%; white-space: nowrap; }
+.recipe-table .facility-cell { color: var(--accent); font-size: 0.8rem; }
+.recipe-table .detail-cell { color: var(--text-dim); }
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-dim);
+}
+
+.empty .emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+.basic-notice {
+  text-align: center;
+  padding: 1rem;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+/* Hint */
+.hint {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .recipe-card {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .tabs button { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+  .facility-item { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>明日方舟 · 生息演算 二期</h1>
+  <p>加工厂配方查询 · 反查工具</p>
+</header>
+
+<div class="container">
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="lookup" class="active">材料反查</button>
+    <button data-tab="output">产物正查</button>
+    <button data-tab="all">全部关系</button>
+    <button data-tab="summary">数据概况</button>
+  </nav>
+
+  <!-- Material Lookup -->
+  <div id="tab-lookup" class="tab-content">
+    <div class="search-area">
+      <div class="search-row">
+        <input type="text" id="lookup-input" placeholder="输入材料名称，如：木材、石板、蟹壳碎片…" autofocus>
+        <button class="btn primary" id="lookup-btn">查询</button>
+      </div>
+      <p class="hint">支持模糊搜索，如输入「板」可匹配「木板」「石板」「金属板」</p>
+    </div>
+    <div class="results" id="lookup-results"></div>
+  </div>
+
+  <!-- Output Lookup -->
+  <div id="tab-output" class="tab-content" hidden>
+    <div class="search-area">
+      <div class="search-row">
+        <input type="text" id="output-input" placeholder="输入产物名称，如：整箱的饮料、布匹…">
+        <button class="btn primary" id="output-btn">查询</button>
+      </div>
+      <p class="hint">查找某个物品由哪些设施和材料产出</p>
+    </div>
+    <div class="results" id="output-results"></div>
+  </div>
+
+  <!-- All Recipes -->
+  <div id="tab-all" class="tab-content" hidden>
+    <div class="results" id="all-results" style="padding-top:1.25rem"></div>
+  </div>
+
+  <!-- Summary -->
+  <div id="tab-summary" class="tab-content" hidden>
+    <div class="summary" id="summary-content"></div>
+  </div>
+
+</div>
+
+<script>
+// ── Embedded data ──
+const DATA = {"version":"1.0","game":"明日方舟","mode":"生息演算 二期","last_updated":"2026-05-17","basic_resources":["清水","木材","石材","澄亮石","铁矿石"],"recipes":[{"facility":"合成界面","level":1,"inputs":["木材","清水"],"output":"稻谷幼苗"},{"facility":"合成界面","level":1,"inputs":["木材","清水"],"output":"亚麻幼苗"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"蟹蟹抽水泵"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"高级捕猎笼"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"临时采集基站"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"通讯基站"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"建材加工台"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"干亚麻加工台"},{"facility":"合成界面","level":1,"inputs":["石板"],"output":"器械加工厂"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"饮品供给站"},{"facility":"合成界面","level":1,"inputs":["石板"],"output":"食品供给站"},{"facility":"合成界面","level":1,"inputs":["金属板"],"output":"工具供给站"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"酿造加工厂"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"稻谷加工台"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"毛线加工台"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"羽兽蛋加工台"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"药品供给站"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"皮毛加工台"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"食品加工厂"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"外勤加工厂"},{"facility":"合成界面","level":1,"inputs":["石板"],"output":"金属加工厂"},{"facility":"合成界面","level":1,"inputs":["石板"],"output":"石料加工厂"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"木料加工厂"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"后勤加工厂"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"纺织加工厂"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"高台工事"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"虚影壁障"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"反应壁障"},{"facility":"合成界面","level":1,"inputs":["金属板","澄亮石"],"output":"补给车出发站台"},{"facility":"合成界面","level":1,"inputs":["金属板","澄亮石"],"output":"补给车中转站台"},{"facility":"合成界面","level":1,"inputs":["金属板","澄亮石"],"output":"补给车终点站台"},{"facility":"合成界面","level":1,"inputs":["木材","铁矿石"],"output":"补给车直行轨道"},{"facility":"合成界面","level":1,"inputs":["木材","铁矿石"],"output":"补给车转角轨道"},{"facility":"合成界面","level":1,"inputs":["金属板"],"output":"动力补给站"},{"facility":"合成界面","level":1,"inputs":["金属板"],"output":"引雷针"},{"facility":"合成界面","level":1,"inputs":["铁矿石","木材"],"output":"喷拒器"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"缚网发射台"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"杂木林再生站"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"巨大岩石再生站"},{"facility":"合成界面","level":1,"inputs":["铁矿石"],"output":"奇异矿脉再生站"},{"facility":"合成界面","level":1,"inputs":["金属板","清水"],"output":"营养液喷洒器"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"蟹笼"},{"facility":"合成界面","level":1,"inputs":["石材","木材"],"output":"小型兽栏"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"野生动物引诱装置"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"捕猎笼"},{"facility":"合成界面","level":1,"inputs":["石板","木板"],"output":"大型兽栏"},{"facility":"合成界面","level":1,"inputs":["石板","清水"],"output":"澄澈清泉"},{"facility":"合成界面","level":1,"inputs":["石板"],"output":"清幽盆栽"},{"facility":"合成界面","level":1,"inputs":["木板","石板"],"output":"简约长椅"},{"facility":"合成界面","level":1,"inputs":["石板","澄亮石"],"output":"迎风招展"},{"facility":"合成界面","level":1,"inputs":["木材"],"output":"荒地秘匣:特制水上平台"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"荒地秘匣:支援轰隆隆"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"荒地秘匣:安眠迷香"},{"facility":"合成界面","level":1,"inputs":["铁矿石"],"output":"荒地秘匣:反侦察藏匿机"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"荒地秘匣:护盾遥控器"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"冰爆罐Ⅱ"},{"facility":"合成界面","level":1,"inputs":["铁矿石"],"output":"荒地秘匣:支援补给站"},{"facility":"合成界面","level":1,"inputs":["木材","石材"],"output":"荒地秘匣:支援起重机"},{"facility":"合成界面","level":1,"inputs":["石材","铁矿石"],"output":"荒地秘匣:支援源石炸弹"},{"facility":"合成界面","level":1,"inputs":["石材"],"output":"激励剂III"},{"facility":"合成界面","level":1,"inputs":["木板"],"output":"制备加工厂"},{"facility":"合成界面","level":1,"inputs":["木板","石板"],"output":"装备供给站"},{"facility":"稻谷幼苗","level":1,"inputs":[],"output":"稻谷"},{"facility":"亚麻幼苗","level":1,"inputs":[],"output":"干亚麻"},{"facility":"木料加工厂","level":1,"inputs":["木材"],"output":"木板"},{"facility":"建材加工台","level":1,"inputs":["木材"],"output":"木板"},{"facility":"建材加工台","level":1,"inputs":["石材"],"output":"石板"},{"facility":"建材加工台","level":1,"inputs":["铁矿石"],"output":"金属板"},{"facility":"干亚麻加工台","level":2,"inputs":["干亚麻"],"output":"布匹"},{"facility":"干亚麻加工台","level":1,"inputs":["干亚麻"],"output":"营养浓缩液"},{"facility":"外勤加工厂","level":3,"inputs":["干亚麻","木板"],"output":"整箱的外勤用品"},{"facility":"制备加工厂","level":2,"inputs":["木板","布匹"],"output":"整箱的医疗用品"},{"facility":"制备加工厂","level":1,"inputs":["皮毛"],"output":"工业纤维"},{"facility":"制备加工厂","level":1,"inputs":["营养浓缩液","清水"],"output":"整箱的能量剂"},{"facility":"木料加工厂","level":1,"inputs":["干亚麻","木板"],"output":"整箱的外勤用品"},{"facility":"木料加工厂","level":1,"inputs":["大米","木板"],"output":"整箱的口粮"},{"facility":"木料加工厂","level":1,"inputs":["木板","布匹"],"output":"整箱的医疗用品"},{"facility":"食品加工厂","level":2,"inputs":["大米","木板"],"output":"整箱的口粮"},{"facility":"酿造加工厂","level":2,"inputs":["营养浓缩液","清水"],"output":"整箱的能量剂"},{"facility":"酿造加工厂","level":2,"inputs":["稻谷","清水"],"output":"整箱的饮料"},{"facility":"蟹壳加工台","level":2,"inputs":["蟹壳碎片"],"output":"粘合剂"},{"facility":"蟹壳加工台","level":1,"inputs":["蟹壳碎片"],"output":"防水革"},{"facility":"皮毛加工台","level":2,"inputs":["皮毛"],"output":"防水革"},{"facility":"皮毛加工台","level":1,"inputs":["皮毛"],"output":"工业纤维"},{"facility":"毛线加工台","level":2,"inputs":["毛线"],"output":"工业纤维"},{"facility":"毛线加工台","level":1,"inputs":["毛线"],"output":"布匹"},{"facility":"稻谷加工台","level":1,"inputs":["稻谷"],"output":"粘合剂"},{"facility":"稻谷加工台","level":2,"inputs":["稻谷"],"output":"大米"},{"facility":"羽兽蛋加工台","level":1,"inputs":["羽兽蛋"],"output":"粘合剂"},{"facility":"羽兽蛋加工台","level":2,"inputs":["羽兽蛋"],"output":"营养浓缩液"},{"facility":"后勤加工厂","level":2,"inputs":["石板","金属板"],"output":"整箱的工具"},{"facility":"后勤加工厂","level":1,"inputs":["稻谷"],"output":"大米"},{"facility":"后勤加工厂","level":1,"inputs":["蟹壳碎片"],"output":"防水革"},{"facility":"石料加工厂","level":2,"inputs":["石板","防水革"],"output":"整箱的装备"},{"facility":"石料加工厂","level":1,"inputs":["石板","金属板"],"output":"整箱的工具"},{"facility":"石料加工厂","level":1,"inputs":["石材"],"output":"石板"},{"facility":"器械加工厂","level":3,"inputs":["粘合剂","金属板"],"output":"整箱的器械"},{"facility":"纺织加工厂","level":2,"inputs":["防水革","粘合剂"],"output":"整箱的防护器具"},{"facility":"纺织加工厂","level":1,"inputs":["石板","防水革"],"output":"整箱的装备"},{"facility":"纺织加工厂","level":1,"inputs":["毛线"],"output":"布匹"},{"facility":"外勤加工厂","level":1,"inputs":["防水革","粘合剂"],"output":"整箱的防护器具"},{"facility":"金属加工厂","level":1,"inputs":["粘合剂","金属板"],"output":"整箱的器械"},{"facility":"金属加工厂","level":2,"inputs":["工业纤维","金属板"],"output":"整箱的武器"},{"facility":"金属加工厂","level":1,"inputs":["铁矿石"],"output":"金属板"},{"facility":"小型兽栏","level":1,"inputs":["角跳兽"],"output":"毛线"},{"facility":"小型兽栏","level":1,"inputs":["苔生兽"],"output":"皮毛"},{"facility":"小型兽栏","level":1,"inputs":["岩壳蟹"],"output":"蟹壳碎片"},{"facility":"小型兽栏","level":1,"inputs":["荧羽兽"],"output":"羽兽蛋"},{"facility":"小型兽栏","level":1,"inputs":["啄奔羽兽"],"output":"羽兽蛋"},{"facility":"小型兽栏","level":1,"inputs":["绒绒兽"],"output":"粗制赤金"},{"facility":"大型兽栏","level":1,"inputs":["角跳兽"],"output":"毛线"},{"facility":"大型兽栏","level":1,"inputs":["苔生兽"],"output":"皮毛"},{"facility":"大型兽栏","level":1,"inputs":["岩壳蟹"],"output":"蟹壳碎片"},{"facility":"大型兽栏","level":1,"inputs":["荧羽兽"],"output":"羽兽蛋"},{"facility":"大型兽栏","level":1,"inputs":["啄奔羽兽"],"output":"羽兽蛋"},{"facility":"大型兽栏","level":1,"inputs":["绒绒兽"],"output":"粗制赤金"},{"facility":"大型兽栏","level":1,"inputs":["灵绒兽"],"output":"粗制赤金"},{"facility":"大型兽栏","level":1,"inputs":["落沙晶蹄兽"],"output":"晶肝茸髓"}]};
+
+// ── Build indexes ──
+function buildIndexes(data) {
+  const inputIndex = {};
+  const outputIndex = {};
+  const recipes = data.recipes || [];
+
+  for (const r of recipes) {
+    const { facility, level, inputs, output } = r;
+
+    // Output index
+    if (!outputIndex[output]) outputIndex[output] = [];
+    outputIndex[output].push({ facility, level, inputs });
+
+    // Input index
+    for (const mat of inputs) {
+      if (!inputIndex[mat]) inputIndex[mat] = [];
+      inputIndex[mat].push({
+        facility,
+        level,
+        co_inputs: inputs.filter(m => m !== mat),
+        output
+      });
+    }
+  }
+
+  return { inputIndex, outputIndex };
+}
+
+const { inputIndex, outputIndex } = buildIndexes(DATA);
+
+// ── Search helpers ──
+function fuzzyMatch(query, candidates) {
+  const q = query.trim();
+  if (!q) return [];
+  return candidates.filter(c => c.key.includes(q)).sort((a, b) => a.key.length - b.key.length);
+}
+
+// ── Render material lookup ──
+function renderLookup(query) {
+  const container = document.getElementById('lookup-results');
+  const q = query.trim();
+  if (!q) { container.innerHTML = ''; return; }
+
+  const matches = [];
+  for (const key of Object.keys(inputIndex)) {
+    if (key.includes(q)) matches.push(key);
+  }
+  matches.sort((a, b) => a.length - b.length);
+
+  if (matches.length === 0) {
+    if (DATA.basic_resources.includes(q)) {
+      container.innerHTML = `<div class="basic-notice">「${escapeHtml(q)}」是基础资源，暂无加工配方。</div>`;
+    } else {
+      container.innerHTML = `<div class="empty"><div class="emoji">🔍</div>未找到「${escapeHtml(q)}」相关的配方</div>`;
+    }
+    return;
+  }
+
+  let html = '';
+  for (const mat of matches) {
+    const items = inputIndex[mat];
+    html += `<div class="result-group">
+      <div class="result-header"><span class="material-name">${escapeHtml(mat)}</span></div>
+      <div class="recipe-cards">`;
+
+    for (const item of items) {
+      const co = item.co_inputs.length > 0 ? item.co_inputs.join(' + ') : '（无）';
+      html += `<div class="recipe-card">
+        <span class="facility-badge">${escapeHtml(item.facility)} Lv${item.level}</span>
+        <span class="input-names">${escapeHtml(co)}</span>
+        <span class="arrow">→</span>
+        <span class="output-name">${escapeHtml(item.output)}</span>
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ── Render output lookup ──
+function renderOutput(query) {
+  const container = document.getElementById('output-results');
+  const q = query.trim();
+  if (!q) { container.innerHTML = ''; return; }
+
+  const matches = [];
+  for (const key of Object.keys(outputIndex)) {
+    if (key.includes(q)) matches.push(key);
+  }
+  matches.sort((a, b) => a.length - b.length);
+
+  if (matches.length === 0) {
+    container.innerHTML = `<div class="empty"><div class="emoji">🔍</div>未找到「${escapeHtml(q)}」的生产配方</div>`;
+    return;
+  }
+
+  let html = '';
+  for (const out of matches) {
+    const items = outputIndex[out];
+    html += `<div class="result-group">
+      <div class="result-header"><span class="material-name">${escapeHtml(out)}</span></div>
+      <div class="recipe-cards">`;
+
+    for (const item of items) {
+      const inputs = item.inputs.length > 0 ? item.inputs.join(' + ') : '（无需材料）';
+      html += `<div class="recipe-card">
+        <span class="facility-badge">${escapeHtml(item.facility)} Lv${item.level}</span>
+        <span class="input-names">${escapeHtml(inputs)}</span>
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+// ── Render all ──
+function renderAll() {
+  const container = document.getElementById('all-results');
+  const mats = Object.keys(inputIndex).sort();
+  if (mats.length === 0) {
+    container.innerHTML = '<div class="basic-notice">数据库中暂无配方。</div>';
+    return;
+  }
+
+  let html = '';
+  for (const mat of mats) {
+    const items = inputIndex[mat];
+    const seen = new Set();
+    html += `<table class="recipe-table"><tr class="material-row"><td class="mat-cell">${escapeHtml(mat)}</td><td></td><td></td></tr>`;
+
+    for (const it of items) {
+      const key = `${it.facility}|${it.level}|${it.co_inputs.join(',')}|${it.output}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const co = it.co_inputs.length > 0 ? it.co_inputs.join(' + ') : '（无）';
+      html += `<tr>
+        <td></td>
+        <td class="facility-cell">├─ [${escapeHtml(it.facility)} Lv${it.level}]</td>
+        <td class="detail-cell">${escapeHtml(co)} <span class="arrow-cell">→</span> ${escapeHtml(it.output)}</td>
+      </tr>`;
+    }
+
+    html += '</table>';
+  }
+
+  container.innerHTML = html;
+}
+
+// ── Render summary ──
+function renderSummary() {
+  const container = document.getElementById('summary-content');
+  const recipes = DATA.recipes || [];
+  const facilities = {};
+  const outputs = new Set();
+  const inputs = new Set();
+
+  for (const r of recipes) {
+    if (!facilities[r.facility]) facilities[r.facility] = { count: 0, levels: new Set() };
+    facilities[r.facility].count++;
+    facilities[r.facility].levels.add(r.level);
+    outputs.add(r.output);
+    for (const m of r.inputs) inputs.add(m);
+  }
+
+  const fSorted = Object.keys(facilities).sort();
+
+  let html = `<div class="meta">
+    <div class="meta-card"><div class="number">${DATA.basic_resources.length}</div><div class="label">基础资源</div></div>
+    <div class="meta-card"><div class="number">${recipes.length}</div><div class="label">配方总数</div></div>
+    <div class="meta-card"><div class="number">${fSorted.length}</div><div class="label">加工设施</div></div>
+    <div class="meta-card"><div class="number">${inputs.size}</div><div class="label">加工材料</div></div>
+    <div class="meta-card"><div class="number">${outputs.size}</div><div class="label">产物种类</div></div>
+  </div>
+  <p style="color:var(--text-dim);margin-bottom:1rem;font-size:0.85rem">Lv = 生产效率，同一产物 Lv 越高生产越快</p>
+  <div class="facility-list">`;
+
+  for (const f of fSorted) {
+    const fdata = facilities[f];
+    const levels = [...fdata.levels].sort().map(l => `Lv${l}`).join(', ');
+    html += `<div class="facility-item">
+      <span class="f-name">${escapeHtml(f)}</span>
+      <span class="f-levels">[${levels}]</span>
+      <span class="f-count">${fdata.count} 配方</span>
+    </div>`;
+  }
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// ── Utility ──
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+// ── Tab switching ──
+const tabs = {
+  lookup: document.getElementById('tab-lookup'),
+  output: document.getElementById('tab-output'),
+  all: document.getElementById('tab-all'),
+  summary: document.getElementById('tab-summary')
+};
+
+document.getElementById('tabs').addEventListener('click', (e) => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  const tab = btn.dataset.tab;
+  if (!tab) return;
+
+  // Update active button
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Show/hide tabs
+  for (const [key, el] of Object.entries(tabs)) {
+    el.hidden = key !== tab;
+  }
+
+  // Lazy render
+  if (tab === 'all' && !document.getElementById('all-results').innerHTML) renderAll();
+  if (tab === 'summary' && !document.getElementById('summary-content').innerHTML) renderSummary();
+
+  // Focus search input
+  if (tab === 'lookup') document.getElementById('lookup-input').focus();
+  if (tab === 'output') document.getElementById('output-input').focus();
+});
+
+// ── Event handlers ──
+document.getElementById('lookup-btn').addEventListener('click', () => {
+  renderLookup(document.getElementById('lookup-input').value);
+});
+document.getElementById('lookup-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') renderLookup(e.target.value);
+});
+document.getElementById('output-btn').addEventListener('click', () => {
+  renderOutput(document.getElementById('output-input').value);
+});
+document.getElementById('output-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') renderOutput(e.target.value);
+});
+
+// ── Initial render: summary on load ──
+renderSummary();
+</script>
+
+</body>
+</html>
